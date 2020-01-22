@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Pago extends JFrame {
 	
@@ -61,6 +63,12 @@ public class Pago extends JFrame {
 		contentPane.add(IntroducirImporte);
 		
 		JButton Introducir = new JButton("Introducir");
+		Introducir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+			}
+		});
 		Introducir.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		Introducir.setBounds(136, 353, 189, 66);
 		contentPane.add(Introducir);

@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorRegistro;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
@@ -13,6 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Registro extends JFrame {
 
@@ -21,6 +28,30 @@ public class Registro extends JFrame {
 	private JTextField respuestaApellido;
 	private JTextField respuestaDNI;
 	private JTextField respuestaContrasena;
+	private JComboBox respuestaSexo;
+	
+	private JButton Registrarse;
+	private JButton Cancelar;
+	private JButton Atras;
+	
+	
+	
+
+	public JButton getCancelar() {
+		return Cancelar;
+	}
+
+	public void setCancelar(JButton cancelar) {
+		Cancelar = cancelar;
+	}
+
+	public JButton getAtras() {
+		return Atras;
+	}
+
+	public void setAtras(JButton atras) {
+		Atras = atras;
+	}
 
 	/**
 	 * Launch the application.
@@ -31,11 +62,63 @@ public class Registro extends JFrame {
 				try {
 					Registro frame = new Registro();
 					frame.setVisible(true);
+					
+					ControladorRegistro controladorRegistro = new ControladorRegistro(frame); 
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+	}
+
+	public JTextField getRespuestaNombre() {
+		return respuestaNombre;
+	}
+
+	public void setRespuestaNombre(JTextField respuestaNombre) {
+		this.respuestaNombre = respuestaNombre;
+	}
+
+	public JTextField getRespuestaApellido() {
+		return respuestaApellido;
+	}
+
+	public void setRespuestaApellido(JTextField respuestaApellido) {
+		this.respuestaApellido = respuestaApellido;
+	}
+
+	public JTextField getRespuestaDNI() {
+		return respuestaDNI;
+	}
+
+	public void setRespuestaDNI(JTextField respuestaDNI) {
+		this.respuestaDNI = respuestaDNI;
+	}
+
+	public JTextField getRespuestaContrasena() {
+		return respuestaContrasena;
+	}
+
+	public void setRespuestaContrasena(JTextField respuestaContrasena) {
+		this.respuestaContrasena = respuestaContrasena;
+	}
+
+	public JComboBox getRespuestaSexo() {
+		return respuestaSexo;
+	}
+
+	public void setRespuestaSexo(JComboBox respuestaSexo) {
+		this.respuestaSexo = respuestaSexo;
+	}
+
+	public JButton getRegistrarse() {
+		return Registrarse;
+	}
+
+	public void setRegistrarse(JButton registrarse) {
+		Registrarse = registrarse;
 	}
 
 	/**
@@ -90,7 +173,7 @@ public class Registro extends JFrame {
 		Sexo.setBounds(367, 211, 82, 25);
 		contentPane.add(Sexo);
 		
-		JComboBox respuestaSexo = new JComboBox();
+		respuestaSexo = new JComboBox();
 		respuestaSexo.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		respuestaSexo.setModel(new DefaultComboBoxModel(new String[] {"Otro", "Hombre", "Mujer"}));
 		respuestaSexo.setMaximumRowCount(50);
@@ -108,26 +191,28 @@ public class Registro extends JFrame {
 		respuestaContrasena.setBounds(221, 310, 215, 25);
 		contentPane.add(respuestaContrasena);
 		
-		JButton Retroceso = new JButton("<-\r\n");
-		Retroceso.setForeground(Color.BLACK);
-		Retroceso.setFont(new Font("Tahoma", Font.BOLD, 14));
-		Retroceso.setBackground(Color.BLACK);
-		Retroceso.setBounds(0, 422, 49, 39);
-		contentPane.add(Retroceso);
+		Registrarse = new JButton("Registrarse");
 		
-		JButton Registrarse = new JButton("Registrarse");
 		Registrarse.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Registrarse.setBackground(Color.BLACK);
 		Registrarse.setBounds(92, 368, 150, 51);
 		contentPane.add(Registrarse);
 		
 		JButton Cancelar = new JButton("Cancelar");
+		Cancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		Cancelar.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Cancelar.setBackground(Color.BLACK);
 		Cancelar.setBounds(299, 368, 150, 51);
 		contentPane.add(Cancelar);
 		
-		JButton Atras = new JButton("Atras");
+		JButton Atras = new JButton("Atrás");
+		Atras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		Atras.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Atras.setBackground(Color.BLACK);
 		Atras.setBounds(487, 368, 150, 51);
