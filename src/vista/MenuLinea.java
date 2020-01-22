@@ -15,11 +15,15 @@ import java.awt.Font;
 import javax.swing.JTextArea;
 import com.toedter.calendar.JCalendar;
 
+
+import controlador.ControladorBienvenida;
+
 public class MenuLinea extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
 	private JTable table_1;
+	private MenuLinea frame;
 
 	/**
 	 * Launch the application.
@@ -36,11 +40,23 @@ public class MenuLinea extends JFrame {
 			}
 		});
 	}
+	controlador.ControladorMenuLinea controladorMenuLinea= new controlador.ControladorMenuLinea(frame);
 
 	/**
 	 * Create the frame.
 	 */
 	public MenuLinea() {
+
+		mCrearPanelContenedor();
+		mCrearJLabel();
+		mCrearJTable();
+		mCrearJCalendar();
+		mCrearJComboBox();
+
+	}
+	
+	private void mCrearPanelContenedor() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		contentPane = new JPanel();
@@ -48,15 +64,17 @@ public class MenuLinea extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+	}
+	
+	private void mCrearJLabel() {
+	
 		JLabel SeleccioneLinea = new JLabel("Selecione la linea de autobus");
 		SeleccioneLinea.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		SeleccioneLinea.setBounds(31, 14, 454, 40);
 		contentPane.add(SeleccioneLinea);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(48, 65, 410, 60);
-		contentPane.add(comboBox);
+	}
+
+	private void mCrearJTable() {		
 		
 		table = new JTable();
 		table.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
@@ -68,9 +86,22 @@ public class MenuLinea extends JFrame {
 		table_1.setBounds(0, 155, 734, 306);
 		contentPane.add(table_1);
 		
+	}
+	
+	private void mCrearJComboBox() {
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(48, 65, 410, 60);
+		contentPane.add(comboBox);
+	}
+	
+	private void mCrearJCalendar() {
+		
 		JCalendar calendar = new JCalendar();
 		calendar.getYearChooser().getSpinner().setEnabled(false);
 		calendar.setBounds(530, 10, 184, 134);
 		contentPane.add(calendar);
+		
 	}
+	
 }
