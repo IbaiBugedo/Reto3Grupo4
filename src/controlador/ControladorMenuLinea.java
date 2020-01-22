@@ -3,7 +3,11 @@ package controlador;
 
 	import java.awt.event.ActionEvent;
 	import java.awt.event.ActionListener;
-	import java.awt.event.MouseAdapter;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
 	import java.awt.event.MouseEvent;
 
 	import javax.swing.JPanel;
@@ -13,30 +17,45 @@ package controlador;
 	import vista.Bienvenida;
 	import vista.MenuLinea;
 
+
+
 		public class ControladorMenuLinea implements ActionListener, ListSelectionListener {
 			
-			private vista.MenuLinea vistaMenuLinea;
+			private MenuLinea vistaMenuLinea;
 			
 			public ControladorMenuLinea(MenuLinea ventanaMenuLinea) {
-				this.vistaMenuLinea = vistaMenuLinea;
+				this.vistaMenuLinea = ventanaMenuLinea;
 				
 				this.inicializarControlador();
 			}
 
 			private void inicializarControlador() {
 				
+				/*this.vistaMenuLinea.getBtnSiguiente().addActionListener(this);
+				this.vistaMenuLinea.getBtnSiguiente()
+						.setActionCommand(MenuLinea.enumAcciones.SIGUIENTE_PAGINA.toString());*/
+				
+				vistaMenuLinea.getBoxLinea().addComponentListener(new ComponentAdapter() {
+					public void itemStateChanged(ItemEvent arg0) {
+								if(vistaMenuLinea.getBoxLinea().getSelectedItem()!="Selecciona la linea" && vistaMenuLinea.getCalendar().getDayChooser()!=null) {
+									vistaMenuLinea.getBtnSiguiente().setEnabled(true);
+								}
+							}
+						});
+					}
+		
+
+			
+			
+
+			public void valueChanged(ListSelectionEvent e) {
 			
 			}
 
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			
+				
+				
 				
 			}
 

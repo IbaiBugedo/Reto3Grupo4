@@ -30,6 +30,7 @@ import vista.MenuLinea;
 					vistaBienvenida.setVisible(false);
 					vista.MenuLinea ventanaMenuLinea = new vista.MenuLinea();
 					ventanaMenuLinea.setVisible(true);
+					ControladorMenuLinea controladorMenuLinea= new ControladorMenuLinea(ventanaMenuLinea);
 					}
 			});
 			
