@@ -34,11 +34,6 @@ import vista.MenuLinea;
 					}
 			});
 			
-		
-			/*this.vistaBienvenida.getPanelBienvenida().addActionListener(new ActionListener());
-			this.vistaBienvenida.getPanelBienvenida()
-					.setActionCommand(Bienvenida.enumAcciones.CONTINUAR.toString());*/
-			
 			
 		}
 		public void actionPerformed(ActionEvent e) {

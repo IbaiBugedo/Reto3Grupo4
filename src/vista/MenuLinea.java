@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 import com.toedter.calendar.JCalendar;
 import controlador.ControladorMenuLinea;
 
-import controlador.ControladorBienvenida;
+import controlador.ControladorResumen;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -25,11 +25,17 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MenuLinea extends JFrame {
 
 	public static enum enumAcciones{
-		SIGUIENTE_PAGINA
+		SIGUIENTE_PAGINA, 
+		VIAJE_IDA,
+		VIAJE_IDA_VUELTA
 	}
 	private JPanel contentPane;
 	private JTable table;
@@ -38,23 +44,6 @@ public class MenuLinea extends JFrame {
 	private JComboBox boxLinea;
 	private JCalendar calendar;
 	private JButton btnSiguiente;
-	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuLinea frame = new MenuLinea();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 
 	public MenuLinea() {

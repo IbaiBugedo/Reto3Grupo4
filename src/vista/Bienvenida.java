@@ -20,7 +20,7 @@ import java.awt.SystemColor;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import controlador.ControladorBienvenida;
+import controlador.ControladorResumen;
 
 public class Bienvenida extends JFrame {
 
@@ -29,22 +29,6 @@ public class Bienvenida extends JFrame {
 	}
 	public JPanel PanelBienvenida;
 	private JButton botonContinuar;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Bienvenida frame = new Bienvenida();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 
 	public Bienvenida() {
@@ -59,7 +43,6 @@ public class Bienvenida extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		PanelBienvenida = new JPanel();
-		
 		PanelBienvenida.setBackground(Color.WHITE);
 		PanelBienvenida.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(PanelBienvenida);
