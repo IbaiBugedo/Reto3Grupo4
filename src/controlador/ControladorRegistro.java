@@ -56,14 +56,14 @@ public class ControladorRegistro implements ActionListener {
 	}
 
 	private void metAtras() {
-		// TODO Auto-generated method stub
+		// Devuelve a la ventana anterior
 		
 	}
 
 
 
 	private void metCancelar() {
-		// TODO Auto-generated method stub
+		// Cancela toda la compra y devuelve a la ventana de Bienvenida
 		
 	}
 

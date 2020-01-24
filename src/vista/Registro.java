@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 
 public class Registro extends JFrame {
 
+	JFrame ventanaRegistro;
 	private JPanel contentPane;
 	private JTextField respuestaNombre;
 	private JTextField respuestaApellido;
@@ -199,6 +200,8 @@ public class Registro extends JFrame {
 		contentPane.add(Registrarse);
 		
 		JButton Cancelar = new JButton("Cancelar");
+		Cancelar.addMouseListener(new MouseAdapter() {
+		});
 		Cancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
