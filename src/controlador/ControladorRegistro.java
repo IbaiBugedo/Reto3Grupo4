@@ -3,6 +3,9 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import modelo.Cliente;
+import modelo.ClienteDAO;
+
 import vista.Registro;
 
 public class ControladorRegistro implements ActionListener {
@@ -29,6 +32,8 @@ public class ControladorRegistro implements ActionListener {
 		
 		this.ventanaRegistro.getAtras().addActionListener(this);
 		this.ventanaRegistro.getAtras().setActionCommand("Atrás");
+		
+		
 		
 		
 	}
@@ -69,8 +74,30 @@ public class ControladorRegistro implements ActionListener {
 
 
 
-	private void metRegistrarse() {
+	private void metRegistrarse() {	
+		
+		Cliente nuevoCliente = new Cliente();
+		
+		nuevoCliente.setNombre(ventanaRegistro.getRespuestaNombre().getText());
+		nuevoCliente.setApellido(ventanaRegistro.getRespuestaApellido().getText());
+		nuevoCliente.setSexo(ventanaRegistro.getRespuestaSexo().getSelectedItem().toString());
+		nuevoCliente.setContrasena(ventanaRegistro.getRespuestaContrasena().getText());
+		nuevoCliente.setDni(ventanaRegistro.getRespuestaDNI().getText());
+		
+		
+		ClienteDAO nuevoClienteDAO = new ClienteDAO();
+		nuevoClienteDAO.mInsetarContacto(nuevoCliente);
+		
+		
+		
+		ventanaRegistro.setVisible(false);
+		vista.Pago ventanaPago = new vista.Pago();
+		ventanaPago.setVisible(true);
+		
+		
 		
 	}
+	
+
 	
 }

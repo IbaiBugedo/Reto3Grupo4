@@ -14,6 +14,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.AbstractButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -35,24 +36,9 @@ public class Registro extends JFrame {
 	private JButton Cancelar;
 	private JButton Atras;
 	
-	
-	
 
-	public JButton getCancelar() {
-		return Cancelar;
-	}
 
-	public void setCancelar(JButton cancelar) {
-		Cancelar = cancelar;
-	}
 
-	public JButton getAtras() {
-		return Atras;
-	}
-
-	public void setAtras(JButton atras) {
-		Atras = atras;
-	}
 
 	/**
 	 * Launch the application.
@@ -74,54 +60,9 @@ public class Registro extends JFrame {
 		});
 	}
 
-	public JTextField getRespuestaNombre() {
-		return respuestaNombre;
-	}
+	
 
-	public void setRespuestaNombre(JTextField respuestaNombre) {
-		this.respuestaNombre = respuestaNombre;
-	}
-
-	public JTextField getRespuestaApellido() {
-		return respuestaApellido;
-	}
-
-	public void setRespuestaApellido(JTextField respuestaApellido) {
-		this.respuestaApellido = respuestaApellido;
-	}
-
-	public JTextField getRespuestaDNI() {
-		return respuestaDNI;
-	}
-
-	public void setRespuestaDNI(JTextField respuestaDNI) {
-		this.respuestaDNI = respuestaDNI;
-	}
-
-	public JTextField getRespuestaContrasena() {
-		return respuestaContrasena;
-	}
-
-	public void setRespuestaContrasena(JTextField respuestaContrasena) {
-		this.respuestaContrasena = respuestaContrasena;
-	}
-
-	public JComboBox getRespuestaSexo() {
-		return respuestaSexo;
-	}
-
-	public void setRespuestaSexo(JComboBox respuestaSexo) {
-		this.respuestaSexo = respuestaSexo;
-	}
-
-	public JButton getRegistrarse() {
-		return Registrarse;
-	}
-
-	public void setRegistrarse(JButton registrarse) {
-		Registrarse = registrarse;
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -199,26 +140,156 @@ public class Registro extends JFrame {
 		Registrarse.setBounds(92, 368, 150, 51);
 		contentPane.add(Registrarse);
 		
-		JButton Cancelar = new JButton("Cancelar");
-		Cancelar.addMouseListener(new MouseAdapter() {
+		Cancelar = new JButton("Cancelar");
+		/*Cancelar.addMouseListener(new MouseAdapter() {
 		});
 		Cancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
-		});
+		});*/
 		Cancelar.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Cancelar.setBackground(Color.BLACK);
 		Cancelar.setBounds(299, 368, 150, 51);
 		contentPane.add(Cancelar);
 		
-		JButton Atras = new JButton("Atrás");
-		Atras.addActionListener(new ActionListener() {
+		Atras = new JButton("Atrás");
+		/*Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
-		});
+		});*/
 		Atras.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Atras.setBackground(Color.BLACK);
 		Atras.setBounds(487, 368, 150, 51);
 		contentPane.add(Atras);
 	}
+
+
+
+
+	public JFrame getVentanaRegistro() {
+		return ventanaRegistro;
+	}
+
+
+
+
+	public void setVentanaRegistro(JFrame ventanaRegistro) {
+		this.ventanaRegistro = ventanaRegistro;
+	}
+
+
+
+
+	public JTextField getRespuestaNombre() {
+		return respuestaNombre;
+	}
+
+
+
+
+	public void setRespuestaNombre(JTextField respuestaNombre) {
+		this.respuestaNombre = respuestaNombre;
+	}
+
+
+
+
+	public JTextField getRespuestaApellido() {
+		return respuestaApellido;
+	}
+
+
+
+
+	public void setRespuestaApellido(JTextField respuestaApellido) {
+		this.respuestaApellido = respuestaApellido;
+	}
+
+
+
+
+	public JTextField getRespuestaDNI() {
+		return respuestaDNI;
+	}
+
+
+
+
+	public void setRespuestaDNI(JTextField respuestaDNI) {
+		this.respuestaDNI = respuestaDNI;
+	}
+
+
+
+
+	public JTextField getRespuestaContrasena() {
+		return respuestaContrasena;
+	}
+
+
+
+
+	public void setRespuestaContrasena(JTextField respuestaContrasena) {
+		this.respuestaContrasena = respuestaContrasena;
+	}
+
+
+
+
+	public JComboBox getRespuestaSexo() {
+		return respuestaSexo;
+	}
+
+
+
+
+	public void setRespuestaSexo(JComboBox respuestaSexo) {
+		this.respuestaSexo = respuestaSexo;
+	}
+
+
+
+
+	public JButton getRegistrarse() {
+		return Registrarse;
+	}
+
+
+
+
+	public void setRegistrarse(JButton registrarse) {
+		Registrarse = registrarse;
+	}
+
+
+
+
+	public JButton getCancelar() {
+		return Cancelar;
+	}
+
+
+
+
+	public void setCancelar(JButton cancelar) {
+		Cancelar = cancelar;
+	}
+
+
+
+
+	public JButton getAtras() {
+		return Atras;
+	}
+
+
+
+
+	public void setAtras(JButton atras) {
+		Atras = atras;
+	}
+
+	
+
+	
 }
