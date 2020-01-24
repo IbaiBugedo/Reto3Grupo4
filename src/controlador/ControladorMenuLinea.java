@@ -31,6 +31,12 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 
 	private void inicializarControlador() {
 
+		vistaMenuLinea.getBoxLinea().setSelectedIndex(ControladorResumen.Linea);
+		vistaMenuLinea.getCalendar().getDayChooser().setDay(ControladorResumen.dia);
+		vistaMenuLinea.getCalendar().getMonthChooser().setMonth(ControladorResumen.mes);
+		if ((vistaMenuLinea.getBoxLinea().getSelectedItem()) != "Selecciona la linea") {
+			vistaMenuLinea.getBtnSiguiente().setEnabled(true);
+		}
 		this.vistaMenuLinea.getBtnSiguiente().addActionListener(this);
 		this.vistaMenuLinea.getBtnSiguiente().setActionCommand(MenuLinea.enumAcciones.SIGUIENTE_PAGINA.toString());
 
@@ -50,7 +56,7 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 	}
 
 	public void actionPerformed(ActionEvent e) {
-
+		
 		MenuLinea.enumAcciones accion = MenuLinea.enumAcciones.valueOf(e.getActionCommand());
 
 		switch (accion) {
@@ -61,7 +67,7 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 			ControladorMenuOrigenDestino controladorMenuOrigenDestino = new ControladorMenuOrigenDestino(
 					ventanaMenuOrigenDestino);
 			break;
-
+			
 		}
 
 	}
@@ -74,13 +80,29 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 
 	public static String recogerFecha() {
 		String fecha;
-		int dia, mes, año;
+		int dia, mes, ano;
 
 		dia = vistaMenuLinea.getCalendar().getDayChooser().getDay();
 		mes = ((vistaMenuLinea.getCalendar().getMonthChooser().getMonth())+1);
-		año = vistaMenuLinea.getCalendar().getYearChooser().getYear();
-		fecha = (dia + "/" + mes + "/" + año);
+		ano = vistaMenuLinea.getCalendar().getYearChooser().getYear();
+		fecha = (dia + "/" + mes + "/" + ano);
 
 		return fecha;
 	}
+	public static int conservarLinea(){
+		int linea;
+		linea = (vistaMenuLinea.getBoxLinea().getSelectedIndex());
+		return linea;	
+	}
+	public static int conservarDia(){
+		int dia;
+		dia = vistaMenuLinea.getCalendar().getDayChooser().getDay();
+		return dia;
+	}
+	public static int conservarMes(){
+		int mes;
+		mes = vistaMenuLinea.getCalendar().getMonthChooser().getMonth();
+		return mes;
+	}
+	
 }

@@ -14,6 +14,12 @@ import javax.swing.JComboBox;
 
 public class Resumen extends JFrame {
 
+	public static enum enumAcciones{
+		SIGUIENTE_PAGINA,
+		CANCELAR_COMPRA,
+		MODIFICAR_COMPRA,
+		PAGINA_ANTERIOR
+	}
 	private JPanel contentPane;
 	private JLabel lblLinea;
 	private JLabel lblOrigenDestino;

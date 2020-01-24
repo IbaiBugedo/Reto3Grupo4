@@ -35,7 +35,8 @@ public class MenuLinea extends JFrame {
 	public static enum enumAcciones{
 		SIGUIENTE_PAGINA, 
 		VIAJE_IDA,
-		VIAJE_IDA_VUELTA
+		VIAJE_IDA_VUELTA, 
+		PAGINA_ANTERIOR
 	}
 	private JPanel contentPane;
 	private JTable table;
@@ -124,8 +125,8 @@ public class MenuLinea extends JFrame {
 		return calendar;
 	}
 
-	public void setCalendar(JCalendar calendar) {
-		this.calendar = calendar;
+	public void setCalendar(JCalendar mes) {
+		this.calendar = mes;
 	}
 
 	public JButton getBtnSiguiente() {

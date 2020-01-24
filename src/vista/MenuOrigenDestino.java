@@ -29,7 +29,10 @@ public class MenuOrigenDestino extends JFrame {
 	private JButton btnSiguiente;
 	private JButton btnIda;
 	private JButton btnIdaVuelta;
+	private JButton btnRetroceso;
 	
+
+
 	public MenuOrigenDestino() {
 		
 		mCrearPanelContenedor();
@@ -72,6 +75,23 @@ public class MenuOrigenDestino extends JFrame {
 		contentPane.add(boxDestino);
 	}
 	
+	private void mCrearJButton() {
+		
+		btnRetroceso = new JButton("<-\r\n");
+		btnRetroceso.setForeground(Color.BLACK);
+		btnRetroceso.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnRetroceso.setBackground(Color.LIGHT_GRAY);
+		btnRetroceso.setBounds(5, 416, 62, 39);
+		contentPane.add(btnRetroceso);
+		
+		btnSiguiente = new JButton("Siguiente");
+		btnSiguiente.setEnabled(false);
+		btnSiguiente.setBounds(631, 426, 97, 29);
+		contentPane.add(btnSiguiente);
+		
+	}
+
+	
 	private void mCrearJTable() {
 		table = new JTable();
 		table.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
@@ -91,6 +111,7 @@ public class MenuOrigenDestino extends JFrame {
 		btnIdaVuelta.setBounds(632, 122, 97, 29);
 		contentPane.add(btnIdaVuelta);
 		
+
 	
 	}
 
@@ -115,14 +136,6 @@ public class MenuOrigenDestino extends JFrame {
 
 
 	private void mCrearJLabel() {
-	}
-	
-	private void mCrearJButton(){
-		btnSiguiente = new JButton("Siguiente");
-		btnSiguiente.setEnabled(false);
-		btnSiguiente.setBounds(631, 426, 97, 29);
-		contentPane.add(btnSiguiente);
-		
 	}
 
 	public JComboBox getBoxDestino() {
@@ -157,5 +170,11 @@ public class MenuOrigenDestino extends JFrame {
 		this.btnSiguiente = btnSiguiente;
 	}
 	
-	
+	public JButton getBtnRetroceso() {
+		return btnRetroceso;
+	}
+
+	public void setBtnRetroceso(JButton btnRetroceso) {
+		this.btnRetroceso = btnRetroceso;
+	}
 }
