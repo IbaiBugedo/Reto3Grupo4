@@ -32,22 +32,22 @@ import vista.MenuOrigenDestino;
 			vistaMenuOrigenDestino.getBoxHora().setSelectedIndex(ControladorResumen.horaInt);
 			
 			
-			this.vistaMenuOrigenDestino.getBtnSiguiente().addActionListener(this);
-			this.vistaMenuOrigenDestino.getBtnSiguiente().setActionCommand(MenuLinea.enumAcciones.SIGUIENTE_PAGINA.toString());
-			this.vistaMenuOrigenDestino.getBtnIda().addActionListener(this);
-			this.vistaMenuOrigenDestino.getBtnIda().setActionCommand(MenuLinea.enumAcciones.VIAJE_IDA.toString());
-			this.vistaMenuOrigenDestino.getBtnIdaVuelta().addActionListener(this);
-			this.vistaMenuOrigenDestino.getBtnIdaVuelta().setActionCommand(MenuLinea.enumAcciones.VIAJE_IDA_VUELTA.toString());
-			this.vistaMenuOrigenDestino.getBtnRetroceso().addActionListener(this);
-			this.vistaMenuOrigenDestino.getBtnRetroceso().setActionCommand(MenuLinea.enumAcciones.PAGINA_ANTERIOR.toString());
+			vistaMenuOrigenDestino.getBtnSiguiente().addActionListener(this);
+			vistaMenuOrigenDestino.getBtnSiguiente().setActionCommand(MenuLinea.enumAcciones.SIGUIENTE_PAGINA.toString());
+			vistaMenuOrigenDestino.getBtnIda().addActionListener(this);
+			vistaMenuOrigenDestino.getBtnIda().setActionCommand(MenuLinea.enumAcciones.VIAJE_IDA.toString());
+			vistaMenuOrigenDestino.getBtnIdaVuelta().addActionListener(this);
+			vistaMenuOrigenDestino.getBtnIdaVuelta().setActionCommand(MenuLinea.enumAcciones.VIAJE_IDA_VUELTA.toString());
+			vistaMenuOrigenDestino.getBtnRetroceso().addActionListener(this);
+			vistaMenuOrigenDestino.getBtnRetroceso().setActionCommand(MenuLinea.enumAcciones.PAGINA_ANTERIOR.toString());
 
 			vistaMenuOrigenDestino.getBoxOrigen().addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
 					if ((vistaMenuOrigenDestino.getBoxOrigen().getSelectedItem()) != "Selecione Origen" && 
 							vistaMenuOrigenDestino.getBoxDestino().getSelectedItem() != "Selecione Destino" && 
 							vistaMenuOrigenDestino.getBoxHora().getSelectedItem() != "Seleccione Hora"&&(
-									vistaMenuOrigenDestino.getBtnIda().isSelected()==true||
-									vistaMenuOrigenDestino.getBtnIdaVuelta().isSelected()==true
+									vistaMenuOrigenDestino.getBtnIda().isEnabled()==false||
+									vistaMenuOrigenDestino.getBtnIdaVuelta().isEnabled()==false
 									)) {
 						
 						
@@ -63,8 +63,8 @@ import vista.MenuOrigenDestino;
 					if ((vistaMenuOrigenDestino.getBoxOrigen().getSelectedItem()) != "Selecione Origen" && 
 							vistaMenuOrigenDestino.getBoxDestino().getSelectedItem() != "Selecione Destino" && 
 							vistaMenuOrigenDestino.getBoxHora().getSelectedItem() != "Seleccione Hora"&&(
-							vistaMenuOrigenDestino.getBtnIda().isSelected()==true||
-							vistaMenuOrigenDestino.getBtnIdaVuelta().isSelected()==true
+									vistaMenuOrigenDestino.getBtnIda().isEnabled()==false||
+									vistaMenuOrigenDestino.getBtnIdaVuelta().isEnabled()==false
 									)) {
 						
 						
@@ -74,7 +74,6 @@ import vista.MenuOrigenDestino;
 					}
 				}
 			});
-			
 			vistaMenuOrigenDestino.getBoxHora().addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
 					if ((vistaMenuOrigenDestino.getBoxOrigen().getSelectedItem()) != "Selecione Origen" && 

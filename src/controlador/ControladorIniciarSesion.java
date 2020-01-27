@@ -24,13 +24,23 @@ import vista.MenuLinea;
 		}
 
 		private void inicializarControlador() {
-
+			this.vistaIniciarSesion.getBtnIniciarSesion().addActionListener(this);
+			this.vistaIniciarSesion.getBtnIniciarSesion().setActionCommand(IniciarSesion.enumAcciones.SIGUIENTE_PAGINA.toString());
 			
 			
 		}
 		public void actionPerformed(ActionEvent e) {
-	
-			
+
+			IniciarSesion.enumAcciones accion = IniciarSesion.enumAcciones.valueOf(e.getActionCommand());
+
+			switch (accion) {
+			case SIGUIENTE_PAGINA:
+			vistaIniciarSesion.setVisible(false);
+			vista.Pago ventanaPago = new vista.Pago();
+			ventanaPago.setVisible(true);
+			ControladorPago controladorPago= new ControladorPago(ventanaPago);
+			break;
+			}
 		}
 
 		public void valueChanged(ListSelectionEvent e) {

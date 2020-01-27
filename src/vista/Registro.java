@@ -136,7 +136,7 @@ public class Registro extends JFrame {
 		Registrarse = new JButton("Registrarse");
 		
 		Registrarse.setFont(new Font("Tahoma", Font.BOLD, 20));
-		Registrarse.setBackground(Color.BLACK);
+		Registrarse.setBackground(Color.LIGHT_GRAY);
 		Registrarse.setBounds(92, 368, 150, 51);
 		contentPane.add(Registrarse);
 		
@@ -148,17 +148,11 @@ public class Registro extends JFrame {
 			}
 		});*/
 		Cancelar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		Cancelar.setBackground(Color.BLACK);
+		Cancelar.setBackground(Color.LIGHT_GRAY);
 		Cancelar.setBounds(299, 368, 150, 51);
 		contentPane.add(Cancelar);
-		
-		Atras = new JButton("Atrás");
-		/*Atras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});*/
 		Atras.setFont(new Font("Tahoma", Font.BOLD, 20));
-		Atras.setBackground(Color.BLACK);
+		Atras.setBackground(Color.LIGHT_GRAY);
 		Atras.setBounds(487, 368, 150, 51);
 		contentPane.add(Atras);
 	}

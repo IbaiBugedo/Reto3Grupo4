@@ -67,13 +67,6 @@ public class Bienvenida extends JFrame {
 
 	}
 	
-	private void mCrearJButton(){
-	}
-
-	private void mCrearJTable() {
-	}
-	
-	
 	public JPanel getPanelBienvenida() {
 		return PanelBienvenida;
 	}

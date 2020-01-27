@@ -7,22 +7,23 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class Pago extends JFrame {
-	
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ticket frame = new Ticket();
+					Pago frame = new Pago();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,9 +31,10 @@ public class Pago extends JFrame {
 			}
 		});
 	}
-	
-	private JPanel contentPane;
-	public String [] monedas = {"0,05\u20AC","0,10\u20AC", "0,20\u20AC", "0,50\u20AC", "1,00\u20AC", "2,00\u20AC", "5,00\u20AC", "10,00\u20AC", "20,00\u20AC", "50,00\u20AC"};
+
+	/**
+	 * Create the frame.
+	 */
 	public Pago() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
@@ -42,59 +44,39 @@ public class Pago extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel TotalAPagar = new JLabel("Total a pagar:");
-		TotalAPagar.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		TotalAPagar.setBounds(136, 52, 189, 57);
-		contentPane.add(TotalAPagar);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(448, 288, 106, 32);
+		contentPane.add(comboBox);
 		
-		JLabel ImporteIntroducido = new JLabel("Importe introducido:");
-		ImporteIntroducido.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		ImporteIntroducido.setBounds(136, 127, 283, 57);
-		contentPane.add(ImporteIntroducido);
+		JLabel label = new JLabel("Total a pagar:");
+		label.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		label.setBounds(148, 35, 189, 57);
+		contentPane.add(label);
 		
-		JLabel ImporteRestante = new JLabel("Importe restante:");
-		ImporteRestante.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		ImporteRestante.setBounds(136, 204, 246, 57);
-		contentPane.add(ImporteRestante);
+		JLabel label_1 = new JLabel("Importe introducido:");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		label_1.setBounds(148, 110, 283, 57);
+		contentPane.add(label_1);
 		
-		JLabel IntroducirImporte = new JLabel("Introducir importe:");
-		IntroducirImporte.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		IntroducirImporte.setBounds(136, 285, 258, 57);
-		contentPane.add(IntroducirImporte);
+		JLabel label_2 = new JLabel("Importe restante:");
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		label_2.setBounds(148, 187, 246, 57);
+		contentPane.add(label_2);
 		
-		JButton Introducir = new JButton("Introducir");
-		Introducir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-			}
-		});
-		Introducir.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		Introducir.setBounds(136, 353, 189, 66);
-		contentPane.add(Introducir);
+		JLabel label_3 = new JLabel("Introducir importe:");
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		label_3.setBounds(148, 268, 258, 57);
+		contentPane.add(label_3);
 		
-		JButton Cancelar = new JButton("Cancelar");
-		Cancelar.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		Cancelar.setBounds(403, 353, 189, 66);
-		contentPane.add(Cancelar);
+		JButton button = new JButton("Introducir");
+		button.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		button.setBounds(148, 336, 189, 66);
+		contentPane.add(button);
 		
-		JPanel respuestaTotalPagar = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) respuestaTotalPagar.getLayout();
-		respuestaTotalPagar.setBounds(436, 66, 106, 46);
-		contentPane.add(respuestaTotalPagar);
-		
-		JPanel respuestaTotalIntroducido = new JPanel();
-		respuestaTotalIntroducido.setBounds(436, 138, 106, 46);
-		contentPane.add(respuestaTotalIntroducido);
-		
-		JPanel respuestaTotalRestante = new JPanel();
-		respuestaTotalRestante.setBounds(436, 215, 106, 46);
-		contentPane.add(respuestaTotalRestante);
-		
-		JComboBox monedasBilletes = new JComboBox();
-		monedasBilletes.setModel(new DefaultComboBoxModel(monedas));
-		monedasBilletes.setBounds(436, 305, 106, 32);
-		contentPane.add(monedasBilletes);
+		JButton button_1 = new JButton("Cancelar");
+		button_1.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		button_1.setBounds(415, 336, 189, 66);
+		contentPane.add(button_1);
 	}
 
 }

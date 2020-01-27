@@ -55,12 +55,24 @@ import vista.Resumen;
 
 			switch (accion) {
 			case SIGUIENTE_PAGINA:
+				Linea=0;
+				mes=0;
+				dia=0;
+				origen=0;
+				horaInt=0;
+				destino=0;
 				vistaResumen.setVisible(false);
 				vista.IniciarSesion ventanaIniciarSesion = new vista.IniciarSesion();
 				ventanaIniciarSesion.setVisible(true);
 				ControladorIniciarSesion controladorIniciarSesion = new ControladorIniciarSesion(ventanaIniciarSesion);
 				break;
 			case CANCELAR_COMPRA:
+				Linea=0;
+				mes=0;
+				dia=0;
+				origen=0;
+				horaInt=0;
+				destino=0;
 				vistaResumen.setVisible(false);
 				vista.Bienvenida ventanaBienvenida = new vista.Bienvenida();
 				ventanaBienvenida.setVisible(true);

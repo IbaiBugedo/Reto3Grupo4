@@ -91,7 +91,7 @@ public class ControladorRegistro implements ActionListener {
 		
 		
 		ventanaRegistro.setVisible(false);
-		vista.Pago ventanaPago = new vista.Pago();
+		vista.Pago2 ventanaPago = new vista.Pago2();
 		ventanaPago.setVisible(true);
 		
 		
