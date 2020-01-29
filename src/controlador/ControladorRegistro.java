@@ -4,8 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import modelo.Cliente;
-import modelo.ClienteDAO;
-
+import modeloDAO.ClienteDAO;
 import vista.Registro;
 
 public class ControladorRegistro implements ActionListener {
