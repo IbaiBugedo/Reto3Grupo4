@@ -63,14 +63,14 @@ public class MenuOrigenDestino extends JFrame {
 		
 		boxOrigen = new JComboBox();
 		boxOrigen.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		boxOrigen.setModel(new DefaultComboBoxModel(new String[] {"Selecione Origen", "Bilbao", "Gernika"}));
+		boxOrigen.setModel(new DefaultComboBoxModel(new String[] {"Selecione Origen"}));
 		boxOrigen.setBounds(24, 59, 218, 40);
 		contentPane.add(boxOrigen);
 		
 		
 		boxDestino = new JComboBox();
 		boxDestino.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		boxDestino.setModel(new DefaultComboBoxModel(new String[] {"Selecione Destino", "Gernika", "Amorebieta"}));
+		boxDestino.setModel(new DefaultComboBoxModel(new String[] {"Selecione Destino"}));
 		boxDestino.setBounds(270, 59, 218, 40);
 		contentPane.add(boxDestino);
 	}

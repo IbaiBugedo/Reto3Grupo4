@@ -60,7 +60,7 @@ public class Resumen extends JFrame {
 		
 		JLabel label = new JLabel("Linea");
 		label.setFont(new Font("Tahoma", Font.BOLD, 20));
-		label.setBounds(60, 40, 62, 25);
+		label.setBounds(79, 40, 62, 25);
 		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("Origen - Destino");
@@ -75,17 +75,17 @@ public class Resumen extends JFrame {
 		
 		JLabel label_3 = new JLabel("Fecha");
 		label_3.setFont(new Font("Tahoma", Font.BOLD, 20));
-		label_3.setBounds(60, 166, 62, 25);
+		label_3.setBounds(79, 166, 62, 25);
 		contentPane.add(label_3);
 		
 		JLabel label_4 = new JLabel("Hora");
 		label_4.setFont(new Font("Tahoma", Font.BOLD, 20));
-		label_4.setBounds(303, 166, 62, 25);
+		label_4.setBounds(325, 166, 62, 25);
 		contentPane.add(label_4);
 		
 		JLabel label_5 = new JLabel("Precio");
 		label_5.setFont(new Font("Tahoma", Font.BOLD, 20));
-		label_5.setBounds(574, 166, 77, 25);
+		label_5.setBounds(559, 166, 77, 25);
 		contentPane.add(label_5);
 		
 		JLabel label_6 = new JLabel("Numero de tiquets :");
@@ -100,7 +100,7 @@ public class Resumen extends JFrame {
 		
 		lblOrigenDestino = new JLabel("Sondika-Derio");
 		lblOrigenDestino.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblOrigenDestino.setBounds(270, 95, 156, 25);
+		lblOrigenDestino.setBounds(268, 95, 223, 25);
 		contentPane.add(lblOrigenDestino);
 		
 		lblTipoViaje = new JLabel("Ida y Vuelta");
@@ -115,12 +115,12 @@ public class Resumen extends JFrame {
 		
 		lblHora = new JLabel("15:30");
 		lblHora.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblHora.setBounds(303, 221, 52, 25);
+		lblHora.setBounds(325, 221, 52, 25);
 		contentPane.add(lblHora);
 		
 		lblPrecio = new JLabel("28,95\u20AC");
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblPrecio.setBounds(574, 221, 106, 25);
+		lblPrecio.setBounds(559, 221, 106, 25);
 		contentPane.add(lblPrecio);
 	}
 	

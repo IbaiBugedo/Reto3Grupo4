@@ -10,14 +10,16 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
+import modelo.Linea;
 import vista.Bienvenida;
 import vista.MenuLinea;
 import vista.MenuOrigenDestino;
+
 
 public class ControladorMenuLinea implements ActionListener, ListSelectionListener {
 
@@ -30,7 +32,7 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 	}
 
 	private void inicializarControlador() {
-
+		mCargarContactos();
 		vistaMenuLinea.getBoxLinea().setSelectedIndex(ControladorResumen.Linea);
 		vistaMenuLinea.getCalendar().getDayChooser().setDay(ControladorResumen.dia);
 		vistaMenuLinea.getCalendar().getMonthChooser().setMonth(ControladorResumen.mes);
@@ -105,4 +107,20 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 		return mes;
 	}
 	
+	private void mCargarContactos() {
+
+		
+
+		ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
+
+		String nombreLinea[][] = new String[listaLinea.size()][4];
+
+		for (int i = 0; i < listaLinea.size(); i++) {
+			nombreLinea[i][0] =(listaLinea.get(i).getNombreLinea());
+			nombreLinea[i][1]=(listaLinea.get(i).getCod_Linea());
+			vistaMenuLinea.getBoxLinea().addItem(nombreLinea[i][1]+" "+nombreLinea[i][0]);
+
+
+		}
+	}
 }

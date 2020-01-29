@@ -16,8 +16,10 @@ import javax.swing.SwingConstants;
 public class IniciarSesion extends JFrame {
 
 	public static enum enumAcciones{
-		SIGUIENTE_PAGINA
-		
+		SIGUIENTE_PAGINA,
+		PAGINA_REGISTRO, 
+		CANCELAR, 
+		RETROCESO	
 	}
 	private JPanel contentPane;
 	private JTextField respuestaDNI;

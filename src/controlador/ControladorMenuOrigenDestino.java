@@ -6,11 +6,14 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import modelo.Linea;
+import modelo.Parada;
 import vista.MenuLinea;
 import vista.MenuOrigenDestino;
 
@@ -27,6 +30,8 @@ import vista.MenuOrigenDestino;
 
 		private void inicializarControlador() {
 			
+			
+			mCargarParada();
 			vistaMenuOrigenDestino.getBoxOrigen().setSelectedIndex(ControladorResumen.origen);
 			vistaMenuOrigenDestino.getBoxDestino().setSelectedIndex(ControladorResumen.destino);
 			vistaMenuOrigenDestino.getBoxHora().setSelectedIndex(ControladorResumen.horaInt);
@@ -200,5 +205,32 @@ import vista.MenuOrigenDestino;
 			return hora;
 		}
 		
-		
-}
+		public static boolean conservarTipoBillete() {
+			boolean tipoBillete;
+			
+			if(vistaMenuOrigenDestino.getBtnIda().isEnabled()==false) {
+				tipoBillete=true;
+			}
+			else {
+				tipoBillete=false;
+			}
+			return tipoBillete;
+		}
+		private void mCargarParada() {
+
+			
+
+			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(ControladorMenuLinea.conservarLinea());
+
+			String nombreParada[][] = new String[listaParada.size()][4];
+
+			for (int i = 0; i < listaParada.size(); i++) {
+				nombreParada[i][0] =(listaParada.get(i).getNombre());
+				vistaMenuOrigenDestino.getBoxOrigen().addItem(nombreParada[i][0]);
+				vistaMenuOrigenDestino.getBoxDestino().addItem(nombreParada[i][0]);
+
+
+			}
+	
+	}
+	}

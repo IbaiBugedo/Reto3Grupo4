@@ -8,22 +8,25 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import vista.Bienvenida;
 import vista.MenuLinea;
-import vista.Pago;
+import vista.Ticket;
 
-
-	public class ControladorPago implements ActionListener, ListSelectionListener {
+	public class ControladorTiquet implements ActionListener, ListSelectionListener {
 		
-		private Pago vistaPago;
+		private Ticket vistaTicket;
 		
-		public ControladorPago(Pago ventanaPago) {
-			this.vistaPago = ventanaPago;
+		public ControladorTiquet(Ticket ventanaTicket) {
+			this.vistaTicket = ventanaTicket;
 			
 			this.inicializarControlador();
 		}
 
 		private void inicializarControlador() {
-
+	
+			
+			
 		}
 		public void actionPerformed(ActionEvent e) {
 	

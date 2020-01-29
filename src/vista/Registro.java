@@ -141,12 +141,6 @@ public class Registro extends JFrame {
 		contentPane.add(Registrarse);
 		
 		Cancelar = new JButton("Cancelar");
-		/*Cancelar.addMouseListener(new MouseAdapter() {
-		});
-		Cancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});*/
 		Cancelar.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Cancelar.setBackground(Color.LIGHT_GRAY);
 		Cancelar.setBounds(299, 368, 150, 51);
