@@ -1,17 +1,19 @@
-package modelo;
+package modeloDAO;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import conexion.Conexion;
+import modelo.Cliente;
 
-public class ClienteDAO {
+public class LineaDAO {
 	
-	public ClienteDAO() {
+	public LineaDAO() {
 		
 	}
+	
+	
 	
 	public boolean mInsetarContacto(Cliente cliente) {
 		boolean registrar = false;
@@ -45,4 +47,31 @@ public class ClienteDAO {
 		return registrar;
 	}
 
+	
+	public boolean mConsultarContacto(Cliente cliente) {
+		boolean registrar = false;
+		
+		Connection con=null;
+		
+
+		String sql = " select * from Clientes where DNI="+cliente.getDni();
+		
+		try {
+			con=Conexion.conectar();
+			
+		    PreparedStatement cs = con.prepareStatement(sql);
+
+
+		    cs.execute();
+			
+		
+		    registrar=true;
+		
+
+		} catch (SQLException e) {
+			System.out.println("Error: Clase Contacto, método insertar");
+			e.printStackTrace();
+		}
+		return registrar;
+	}
 }
