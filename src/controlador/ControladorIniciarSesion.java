@@ -34,12 +34,12 @@ import vista.MenuLinea;
 			IniciarSesion.enumAcciones accion = IniciarSesion.enumAcciones.valueOf(e.getActionCommand());
 
 			switch (accion) {
-			case SIGUIENTE_PAGINA:
-			vistaIniciarSesion.setVisible(false);
-			vista.Pago ventanaPago = new vista.Pago();
-			ventanaPago.setVisible(true);
-			ControladorPago controladorPago= new ControladorPago(ventanaPago);
-			break;
+				case SIGUIENTE_PAGINA:
+					vistaIniciarSesion.setVisible(false);
+					vista.Pago ventanaPago = new vista.Pago();
+					ventanaPago.setVisible(true);
+					ControladorPago controladorPago= new ControladorPago(ventanaPago);
+					break;
 			}
 		}
 

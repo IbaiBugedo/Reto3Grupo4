@@ -19,13 +19,15 @@ public class ClienteDAO {
 		Connection con=null;
 		
 
-		String sql = " insert into Clientes values(?,?,?,?) ";
+		String sql = " insert into Cliente values(?,?,?,?) ";
 		
 		try {
 			con=Conexion.conectar();
 			
 		    PreparedStatement cs = con.prepareStatement(sql);
 		   
+		    // ordenar tal cual este puesto en la bd //
+		    
 		    cs.setString(1, cliente.getDni());
 		    cs.setString(2, "");
 		    cs.setString(3, cliente.getNombre());
@@ -44,5 +46,7 @@ public class ClienteDAO {
 		}
 		return registrar;
 	}
+	
+	
 
 }
