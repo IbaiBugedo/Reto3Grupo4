@@ -11,10 +11,12 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
 
 public class Pago extends JFrame {
 
 	private JPanel contentPane;
+	private double [] dinero=new double[]{0.05,0.10,0.20,0.50,1.00,2.00,5.00,10.00,20.00,50.00};
 
 	/**
 	 * Launch the application.
@@ -45,6 +47,9 @@ public class Pago extends JFrame {
 		contentPane.setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
+		for(int contador=0;contador <dinero.length;contador++) {
+		comboBox.addItem(dinero[contador]);
+		}
 		comboBox.setBounds(448, 288, 106, 32);
 		contentPane.add(comboBox);
 		

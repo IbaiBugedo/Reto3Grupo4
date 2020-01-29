@@ -34,8 +34,6 @@ public class Bienvenida extends JFrame {
 	public Bienvenida() {
 		mCrearPanelContenedor();
 		mCrearJLabel();
-		mCrearJButton();
-		mCrearJTable();
 		
 	}
 	

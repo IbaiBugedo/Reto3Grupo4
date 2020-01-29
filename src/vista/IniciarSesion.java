@@ -89,7 +89,7 @@ public class IniciarSesion extends JFrame {
 	
 	private void mCrearJButton() {
 		btnRetroceso = new JButton("<-\r\n");
-		btnRetroceso.setForeground(Color.LIGHT_GRAY);
+		btnRetroceso.setForeground(Color.BLACK);
 		btnRetroceso.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnRetroceso.setBackground(Color.LIGHT_GRAY);
 		btnRetroceso.setBounds(0, 422, 49, 39);
@@ -99,7 +99,7 @@ public class IniciarSesion extends JFrame {
 		btnIniciarSesion.setHorizontalAlignment(SwingConstants.LEFT);
 		btnIniciarSesion.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnIniciarSesion.setBackground(Color.LIGHT_GRAY);
-		btnIniciarSesion.setBounds(90, 384, 171, 51);
+		btnIniciarSesion.setBounds(94, 384, 171, 51);
 		contentPane.add(btnIniciarSesion);
 		
 		btnRegistrarse = new JButton("Registrarse");
