@@ -42,7 +42,7 @@ public class ParadaDAO {
 			rs.close();
 			co.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase Contacto, método mObtenerContactos");
+			System.out.println("Error: Clase ParadaDAO, método mObtenerParada");
 			e.printStackTrace();
 		}
 		
