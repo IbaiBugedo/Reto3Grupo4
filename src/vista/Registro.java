@@ -220,4 +220,6 @@ public class Registro extends JFrame {
 	public void setBtnAtras(JButton btnAtras) {
 		this.btnAtras = btnAtras;
 	}
+	
+	
 }

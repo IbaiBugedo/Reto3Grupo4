@@ -16,7 +16,7 @@ import vista.Resumen;
 
 	public class ControladorResumen implements ActionListener, ListSelectionListener {
 		private String fecha,linea,origenDestino,horaStr,tipoBillete;
-		private Resumen vistaResumen;
+		private static Resumen vistaResumen;
 		public static int Linea=0,mes,dia,origen,horaInt,destino;
 		
 		public ControladorResumen(Resumen ventanaResumen) {
@@ -104,6 +104,18 @@ import vista.Resumen;
 			
 			
 		}
+		
+		/*
+		public static float recogerPrecio() {
+			// recoge aqui el precio para llevarlo al ControladorPago //
+			
+			float precio;
+			
+			precio = vistaResumen.getLblPrecio().setText();
+			
+			return precio;
+		}
+		*/
 	
 }
 

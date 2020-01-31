@@ -35,6 +35,7 @@ import vista.MenuLinea;
 
 			
 		}
+		
 		public void actionPerformed(ActionEvent e) {
 
 			IniciarSesion.enumAcciones accion = IniciarSesion.enumAcciones.valueOf(e.getActionCommand());

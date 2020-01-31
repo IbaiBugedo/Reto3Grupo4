@@ -11,9 +11,9 @@ public class ControladorRegistro implements ActionListener {
 	
 	private Registro ventanaRegistro;
 	
-	public ControladorRegistro(Registro VentanaRegistro) {
+	public ControladorRegistro(Registro pVentanaRegistro) {
 		
-		this.ventanaRegistro = VentanaRegistro;
+		this.ventanaRegistro = pVentanaRegistro;
 		
 		metInicializarControlador();
 		
@@ -26,14 +26,11 @@ public class ControladorRegistro implements ActionListener {
 		this.ventanaRegistro.getBtnRegistro().addActionListener(this);
 		this.ventanaRegistro.getBtnRegistro().setActionCommand("Registrarse");
 		
-		this.ventanaRegistro.getBtnCancelar().addActionListener(this);
-		this.ventanaRegistro.getBtnCancelar().setActionCommand("Cancelar");
+		this.ventanaRegistro.getBtnRegistro().addActionListener(this);
+		this.ventanaRegistro.getBtnRegistro().setActionCommand("Cancelar");
 		
-		this.ventanaRegistro.getBtnAtras().addActionListener(this);
-		this.ventanaRegistro.getBtnAtras().setActionCommand("Atrás");
-		
-		
-		
+		this.ventanaRegistro.getBtnRegistro().addActionListener(this);
+		this.ventanaRegistro.getBtnRegistro().setActionCommand("Atrás");
 		
 	}
 
@@ -62,6 +59,11 @@ public class ControladorRegistro implements ActionListener {
 	private void metAtras() {
 		// Devuelve a la ventana anterior
 		
+		ventanaRegistro.setVisible(false);
+		vista.Pago ventanaPago = new vista.Pago();
+		ventanaPago.setVisible(true);
+		ControladorPago controladorPago= new ControladorPago(ventanaPago);
+		
 	}
 
 
@@ -74,33 +76,28 @@ public class ControladorRegistro implements ActionListener {
 
 
 	private void metRegistrarse() {	
-		String sexo,letraSexo;
-		sexo=ventanaRegistro.getRespuestaSexo().getSelectedItem().toString();
-		if (sexo.equals("Hombre")) {
-			letraSexo="V";
-		}
-		else if(sexo.contentEquals("Mujer")) {
-			letraSexo="M";
-		}
-		else {
-			letraSexo="Otro";
-		}
+		// Los campos completados los registra en la base de datos.
+		
 		Cliente nuevoCliente = new Cliente();
 		
 		nuevoCliente.setNombre(ventanaRegistro.getRespuestaNombre().getText());
 		nuevoCliente.setApellido(ventanaRegistro.getRespuestaApellido().getText());
-		nuevoCliente.setSexo(letraSexo);
+		nuevoCliente.setSexo(ventanaRegistro.getRespuestaSexo().getSelectedItem().toString());
 		nuevoCliente.setContrasena(ventanaRegistro.getRespuestaContrasena().getText());
 		nuevoCliente.setDni(ventanaRegistro.getRespuestaDNI().getText());
 		
 		
 		ClienteDAO nuevoClienteDAO = new ClienteDAO();
+		nuevoClienteDAO.mInsetarContacto(nuevoCliente);
+		
+		
 		if(modeloDAO.ClienteDAO.mInsetarContacto(nuevoCliente)) {	
 		ventanaRegistro.setVisible(false);
 		vista.Pago ventanaPago = new vista.Pago();
 		ventanaPago.setVisible(true);
-		}
+	
 		
+		}
 	}
 	
 
