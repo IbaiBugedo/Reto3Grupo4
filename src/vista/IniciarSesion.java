@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -12,6 +13,12 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class IniciarSesion extends JFrame {
 
@@ -19,11 +26,13 @@ public class IniciarSesion extends JFrame {
 		SIGUIENTE_PAGINA,
 		PAGINA_REGISTRO, 
 		CANCELAR, 
-		RETROCESO	
+		RETROCESO, 
+		RESPUESTA_DNI,
+		RESPUESTA_CONTRASENA	
 	}
 	private JPanel contentPane;
 	private JTextField respuestaDNI;
-	private JTextField respuestaContrasena;
+	private JPasswordField respuestaContrasena;
 	private JButton btnRetroceso;
 	private JButton btnIniciarSesion;
 	private JButton btnRegistrarse;
@@ -65,7 +74,12 @@ public class IniciarSesion extends JFrame {
 		contentPane.add(respuestaDNI);
 		respuestaDNI.setColumns(10);
 		
-		respuestaContrasena = new JTextField();
+		respuestaContrasena = new JPasswordField();
+		respuestaContrasena.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+			}
+		});
 		respuestaContrasena.setColumns(10);
 		respuestaContrasena.setBounds(323, 239, 332, 61);
 		contentPane.add(respuestaContrasena);
@@ -129,7 +143,7 @@ public class IniciarSesion extends JFrame {
 		return respuestaContrasena;
 	}
 
-	public void setRespuestaContrasena(JTextField respuestaContrasena) {
+	public void setRespuestaContrasena(JPasswordField respuestaContrasena) {
 		this.respuestaContrasena = respuestaContrasena;
 	}
 

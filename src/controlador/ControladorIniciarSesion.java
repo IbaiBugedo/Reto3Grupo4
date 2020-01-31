@@ -31,7 +31,9 @@ import vista.MenuLinea;
 			this.vistaIniciarSesion.getBtnCancelar().addActionListener(this);
 			this.vistaIniciarSesion.getBtnCancelar().setActionCommand(IniciarSesion.enumAcciones.CANCELAR.toString());
 			this.vistaIniciarSesion.getBtnRetroceso().addActionListener(this);
-			this.vistaIniciarSesion.getBtnRetroceso().setActionCommand(IniciarSesion.enumAcciones.RETROCESO.toString());;			
+			this.vistaIniciarSesion.getBtnRetroceso().setActionCommand(IniciarSesion.enumAcciones.RETROCESO.toString());;	
+
+			
 		}
 		
 		public void actionPerformed(ActionEvent e) {
@@ -40,12 +42,25 @@ import vista.MenuLinea;
 
 			switch (accion) {
 			case SIGUIENTE_PAGINA:
-				if ((modeloDAO.ClienteDAO.mIniciarSesion(vistaIniciarSesion.getRespuestaDNI().toString(), vistaIniciarSesion.getRespuestaContrasena().toString()))==false) {
-				vistaIniciarSesion.setVisible(false);
-				vista.Pago ventanaPago = new vista.Pago();
-				ventanaPago.setVisible(true);
-				ControladorPago controladorPago= new ControladorPago(ventanaPago);
-				break;}
+				String respuestaDNI,respuestaContrasena,vacio;
+				respuestaDNI =vistaIniciarSesion.getRespuestaDNI().getText();
+				respuestaContrasena = vistaIniciarSesion.getRespuestaContrasena().getText();
+				vacio="";
+				
+				/***descomentar al entregar***/
+				if(respuestaDNI.equals(vacio)==false&&respuestaContrasena.equals("")==false) {
+					if ((modeloDAO.ClienteDAO.mIniciarSesion(respuestaDNI,respuestaContrasena))) {
+					vistaIniciarSesion.setVisible(false);
+					vista.Pago ventanaPago = new vista.Pago();
+					ventanaPago.setVisible(true);
+					ControladorPago controladorPago= new ControladorPago(ventanaPago);}
+				}
+				else {
+					vista.vistaAlerta ventanaAlerta = new vista.vistaAlerta(1);
+					ventanaAlerta.setVisible(true);
+					
+				}
+				break;
 			case PAGINA_REGISTRO:
 				vistaIniciarSesion.setVisible(false);
 				vista.Registro ventanaRegistro = new vista.Registro();
@@ -63,6 +78,16 @@ import vista.MenuLinea;
 				vista.Resumen ventanaResumen = new vista.Resumen();
 				ventanaResumen.setVisible(true);
 				ControladorResumen controladorResumen= new ControladorResumen(ventanaResumen);
+				break;
+			case RESPUESTA_DNI:
+				if(vistaIniciarSesion.getRespuestaContrasena().getText().length()>0 && vistaIniciarSesion.getRespuestaDNI().getText().length()>0) {
+					vistaIniciarSesion.getBtnIniciarSesion().setEnabled(true);
+				}
+				break;
+			case RESPUESTA_CONTRASENA:
+				if(vistaIniciarSesion.getRespuestaContrasena().getText().length()>0 && vistaIniciarSesion.getRespuestaDNI().getText().length()>0) {
+					vistaIniciarSesion.getBtnIniciarSesion().setEnabled(true);
+				}
 				break;
 			}
 		}

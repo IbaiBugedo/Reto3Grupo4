@@ -95,17 +95,17 @@ public class Resumen extends JFrame {
 		
 		lblLinea = new JLabel("Bilbao-San Sebastian");
 		lblLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblLinea.setBounds(27, 95, 156, 25);
+		lblLinea.setBounds(27, 95, 185, 25);
 		contentPane.add(lblLinea);
 		
 		lblOrigenDestino = new JLabel("Sondika-Derio");
 		lblOrigenDestino.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblOrigenDestino.setBounds(268, 95, 223, 25);
+		lblOrigenDestino.setBounds(222, 95, 373, 25);
 		contentPane.add(lblOrigenDestino);
 		
 		lblTipoViaje = new JLabel("Ida y Vuelta");
 		lblTipoViaje.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoViaje.setBounds(545, 95, 156, 25);
+		lblTipoViaje.setBounds(618, 95, 106, 25);
 		contentPane.add(lblTipoViaje);
 		
 		lblFecha = new JLabel("24 Enero 2020");
@@ -115,7 +115,7 @@ public class Resumen extends JFrame {
 		
 		lblHora = new JLabel("15:30");
 		lblHora.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblHora.setBounds(325, 221, 52, 25);
+		lblHora.setBounds(297, 221, 156, 25);
 		contentPane.add(lblHora);
 		
 		lblPrecio = new JLabel("28,95\u20AC");

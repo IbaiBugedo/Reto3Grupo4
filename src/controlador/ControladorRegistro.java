@@ -23,14 +23,14 @@ public class ControladorRegistro implements ActionListener {
 
 	private void metInicializarControlador() {
 		
-		this.ventanaRegistro.getRegistrarse().addActionListener(this);
-		this.ventanaRegistro.getRegistrarse().setActionCommand("Registrarse");
+		this.ventanaRegistro.getBtnRegistro().addActionListener(this);
+		this.ventanaRegistro.getBtnRegistro().setActionCommand("Registrarse");
 		
-		this.ventanaRegistro.getCancelar().addActionListener(this);
-		this.ventanaRegistro.getCancelar().setActionCommand("Cancelar");
+		this.ventanaRegistro.getBtnRegistro().addActionListener(this);
+		this.ventanaRegistro.getBtnRegistro().setActionCommand("Cancelar");
 		
-		this.ventanaRegistro.getAtras().addActionListener(this);
-		this.ventanaRegistro.getAtras().setActionCommand("Atrás");
+		this.ventanaRegistro.getBtnRegistro().addActionListener(this);
+		this.ventanaRegistro.getBtnRegistro().setActionCommand("Atrás");
 		
 	}
 
@@ -91,10 +91,13 @@ public class ControladorRegistro implements ActionListener {
 		nuevoClienteDAO.mInsetarContacto(nuevoCliente);
 		
 		
+		if(modeloDAO.ClienteDAO.mInsetarContacto(nuevoCliente)) {	
 		ventanaRegistro.setVisible(false);
 		vista.Pago ventanaPago = new vista.Pago();
 		ventanaPago.setVisible(true);
 	
+		
+		}
 	}
 	
 

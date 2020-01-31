@@ -1,35 +1,34 @@
 package modeloDAO;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import conexion.Conexion;
 import modelo.Autobus;
 import modelo.Linea;
 
-public class LineaDAO {
+public class AutobusDAO {
 
-	public static ArrayList<Linea> mObtenerLinea() {
+	public static ArrayList<Autobus> mObtenerHoraAutobus(String fecha, String cod_Linea) {
 		Connection co =null;
 		Statement stm= null;
 		ResultSet rs=null;
 		
-		String sql="SELECT nombre,Cod_Linea FROM linea ORDER BY cod_linea;";
+		String sql="SELECT hora FROM linea_autobus where fecha='"+fecha+"'and cod_linea='"+cod_Linea+"'ORDER BY hora;";
 		
-		ArrayList<Linea> listaLinea= new ArrayList<Linea>();
+		ArrayList<Autobus> listaAutobus= new ArrayList<Autobus>();
 		
 		try {			
 			co= Conexion.conectar();
 			stm=co.createStatement();
 			rs=stm.executeQuery(sql);
 			while (rs.next()) {
-				Linea c=new Linea(sql, sql);
-				c.setNombreLinea(rs.getString(1));
-				c.setCod_Linea(rs.getString(2));
-				listaLinea.add(c);
+				Autobus c=new Autobus();
+				c.setHora(rs.getString(1));
+				listaAutobus.add(c);
 			}
 			stm.close();
 			rs.close();
@@ -39,6 +38,7 @@ public class LineaDAO {
 			e.printStackTrace();
 		}
 		
-		return listaLinea;
+		return listaAutobus;
 	}
+	
 }

@@ -1,6 +1,9 @@
+
 package modeloDAO;
 
-import java.sql.CallableStatement;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,29 +18,30 @@ public class ClienteDAO {
 		
 	}
 	
-	public boolean mInsetarContacto(Cliente cliente) {
+	public static boolean mInsetarContacto(Cliente cliente) {
 		boolean registrar = false;
 		
 		Connection con=null;
-		
+		PreparedStatement stmt = null;
 	
-		String sql = " insert into Cliente values(?,?,?,?,?) ";
+		String sql = " insert into Cliente(DNI, NOMBRE, APELLIDOS,SEXO,CONTRASEÑA) values(?,?,?,?,?); ";
 		
 		try {
 			con=Conexion.conectar();
 			
-		    PreparedStatement cs = con.prepareStatement(sql);
+		   stmt = con.prepareStatement(sql);
 		   
-		    cs.setString(1, cliente.getDni());
-		    cs.setString(2, cliente.getNombre());
-		    cs.setString(3, cliente.getApellido());
-		    cs.setString(4, cliente.getSexo());
-		    cs.setString(5, cliente.getContraseña());
+		   stmt.setString(1, cliente.getDni());
+		   stmt.setString(2, cliente.getNombre());
+		   stmt.setString(3, cliente.getApellido());
+		   stmt.setString(4, cliente.getSexo());
+		   stmt.setString(5, getMD5(cliente.getContraseña()));
 	
-		    cs.execute();
+		   stmt.executeUpdate();
 			
-		
-		    registrar=true;
+		   stmt.close();
+		   con.close();
+		   registrar=true;
 		
 	
 		} catch (SQLException e) {
@@ -47,7 +51,7 @@ public class ClienteDAO {
 		return registrar;
 	}
 
-	public boolean mIniciarSesion(String dniCliente, String contraseñaCliente) {
+	public static boolean mIniciarSesion(String dniCliente, String contraseñaCliente) {
 		boolean existeContacto=false;
 		Connection co = null;
 	
@@ -63,7 +67,7 @@ public class ClienteDAO {
 	
 			stmt = co.prepareStatement(sql);
 			stmt.setString(1, dniCliente);
-			stmt.setString(2, contraseñaCliente);
+			stmt.setString(2, getMD5(contraseñaCliente));
 			rs = stmt.executeQuery();
 	
 			if (rs.first()) {
@@ -81,5 +85,22 @@ public class ClienteDAO {
 	
 		return existeContacto;
 	}
+	
+	
+	public static String getMD5(String input) {
+		 try {
+		 MessageDigest md = MessageDigest.getInstance("MD5");
+		 byte[] messageDigest = md.digest(input.getBytes());
+		 BigInteger number = new BigInteger(1, messageDigest);
+		 String hashtext = number.toString(16);
 
+		 while (hashtext.length() < 32) {
+		 hashtext = "0" + hashtext;
+		 }
+		 return hashtext;
+		 }
+		 catch (NoSuchAlgorithmException e) {
+		 throw new RuntimeException(e);
+		 }
+		 }
 }
