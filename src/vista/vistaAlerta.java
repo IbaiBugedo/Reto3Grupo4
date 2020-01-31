@@ -6,8 +6,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.mysql.cj.x.protobuf.MysqlxNotice.Warning.Level;
+
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.util.logging.Logger;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -29,8 +33,13 @@ public class vistaAlerta extends JFrame {
 	switch (cod_Alerta) {
 	case 1:
 		txtAlert.setText("Debe introducir un DNI y una contrase\u00F1a valida");
+		
 		break;
 	}
+
+
+       
+
 		
 	}
 	private void mCrearPanelContenedor(){

@@ -6,14 +6,15 @@ public class Parada {
 	private String Calle;
 	private double latitud;
 	private double longitud;
+	private int cod_Parada;
 	
-	
-	public Parada(String nombre, String calle, double latitud, double longitud) {
+	public Parada(String nombre, String calle, double latitud, double longitud, int cod_Parada) {
 		super();
-		Nombre = nombre;
-		Calle = calle;
+		this.Nombre = nombre;
+		this.Calle = calle;
 		this.latitud = latitud;
 		this.longitud = longitud;
+		this.cod_Parada= cod_Parada;
 	}
 
 
@@ -54,6 +55,16 @@ public class Parada {
 
 	public void setLongitud(double longitud) {
 		this.longitud = longitud;
+	}
+
+
+	public int getCod_Parada() {
+		return cod_Parada;
+	}
+
+
+	public void setCod_Parada(int cod_Parada) {
+		this.cod_Parada = cod_Parada;
 	}
 	
 	

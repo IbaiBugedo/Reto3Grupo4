@@ -20,7 +20,8 @@ public class ParadaDAO {
 		Statement stm= null;
 		ResultSet rs=null;
 		
-		String sql="SELECT nombre,calle,latitud,longitud FROM parada where cod_parada in(select cod_parada from linea_parada where cod_linea="+lineaS+") ORDER BY cod_parada ;";
+		
+		String sql="SELECT nombre,calle,latitud,longitud,cod_parada FROM parada where cod_parada in(select cod_parada from linea_parada where cod_linea="+lineaS+") ORDER BY cod_parada ;";
 		
 		ArrayList<Parada> listaParada= new ArrayList<Parada>();
 		
@@ -29,11 +30,12 @@ public class ParadaDAO {
 			stm=co.createStatement();
 			rs=stm.executeQuery(sql);
 			while (rs.next()) {
-				Parada c=new Parada(sql, sql, 0, 0);
+				Parada c=new Parada(sql, sql, 0, 0, linea);
 				c.setNombre(rs.getString(1));
 				c.setCalle(rs.getString(2));
 				c.setLatitud(rs.getDouble(3));
 				c.setLongitud(rs.getDouble(4));
+				c.setCod_Parada(rs.getInt(5));
 				listaParada.add(c);
 			}
 			stm.close();

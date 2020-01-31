@@ -57,7 +57,17 @@ import vista.MenuLinea;
 				else {
 					vista.vistaAlerta ventanaAlerta = new vista.vistaAlerta(1);
 					ventanaAlerta.setVisible(true);
-					
+			         
+			 			try {
+							Thread.sleep(5000); 
+							ventanaAlerta.setVisible(false);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+			 		   
+
+			 		
 				}
 				break;
 			case PAGINA_REGISTRO:
