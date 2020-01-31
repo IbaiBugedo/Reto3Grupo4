@@ -56,20 +56,20 @@ public class MenuOrigenDestino extends JFrame {
 	private void mCrearJComboBox() {
 		boxHora = new JComboBox();
 		boxHora.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		boxHora.setModel(new DefaultComboBoxModel(new String[] {"Seleccione Hora", "20:00", "21:00", "22:00"}));
+		boxHora.setModel(new DefaultComboBoxModel(new String[] {"Seleccione Hora"}));
 		boxHora.setBounds(520, 59, 194, 40);
 		contentPane.add(boxHora);
 		
 		
 		boxOrigen = new JComboBox();
-		boxOrigen.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		boxOrigen.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		boxOrigen.setModel(new DefaultComboBoxModel(new String[] {"Selecione Origen"}));
 		boxOrigen.setBounds(24, 59, 218, 40);
 		contentPane.add(boxOrigen);
 		
 		
 		boxDestino = new JComboBox();
-		boxDestino.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		boxDestino.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		boxDestino.setModel(new DefaultComboBoxModel(new String[] {"Selecione Destino"}));
 		boxDestino.setBounds(270, 59, 218, 40);
 		contentPane.add(boxDestino);

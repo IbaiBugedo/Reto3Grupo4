@@ -11,9 +11,9 @@ public class ControladorRegistro implements ActionListener {
 	
 	private Registro ventanaRegistro;
 	
-	public ControladorRegistro(Registro pVentanaRegistro) {
+	public ControladorRegistro(Registro VentanaRegistro) {
 		
-		this.ventanaRegistro = pVentanaRegistro;
+		this.ventanaRegistro = VentanaRegistro;
 		
 		metInicializarControlador();
 		
@@ -23,14 +23,14 @@ public class ControladorRegistro implements ActionListener {
 
 	private void metInicializarControlador() {
 		
-		this.ventanaRegistro.getRegistrarse().addActionListener(this);
-		this.ventanaRegistro.getRegistrarse().setActionCommand("Registrarse");
+		this.ventanaRegistro.getBtnRegistro().addActionListener(this);
+		this.ventanaRegistro.getBtnRegistro().setActionCommand("Registrarse");
 		
-		this.ventanaRegistro.getCancelar().addActionListener(this);
-		this.ventanaRegistro.getCancelar().setActionCommand("Cancelar");
+		this.ventanaRegistro.getBtnCancelar().addActionListener(this);
+		this.ventanaRegistro.getBtnCancelar().setActionCommand("Cancelar");
 		
-		this.ventanaRegistro.getAtras().addActionListener(this);
-		this.ventanaRegistro.getAtras().setActionCommand("Atrás");
+		this.ventanaRegistro.getBtnAtras().addActionListener(this);
+		this.ventanaRegistro.getBtnAtras().setActionCommand("Atrás");
 		
 		
 		
@@ -74,26 +74,32 @@ public class ControladorRegistro implements ActionListener {
 
 
 	private void metRegistrarse() {	
-		
+		String sexo,letraSexo;
+		sexo=ventanaRegistro.getRespuestaSexo().getSelectedItem().toString();
+		if (sexo.equals("Hombre")) {
+			letraSexo="V";
+		}
+		else if(sexo.contentEquals("Mujer")) {
+			letraSexo="M";
+		}
+		else {
+			letraSexo="Otro";
+		}
 		Cliente nuevoCliente = new Cliente();
 		
 		nuevoCliente.setNombre(ventanaRegistro.getRespuestaNombre().getText());
 		nuevoCliente.setApellido(ventanaRegistro.getRespuestaApellido().getText());
-		nuevoCliente.setSexo(ventanaRegistro.getRespuestaSexo().getSelectedItem().toString());
+		nuevoCliente.setSexo(letraSexo);
 		nuevoCliente.setContrasena(ventanaRegistro.getRespuestaContrasena().getText());
 		nuevoCliente.setDni(ventanaRegistro.getRespuestaDNI().getText());
 		
 		
 		ClienteDAO nuevoClienteDAO = new ClienteDAO();
-		nuevoClienteDAO.mInsetarContacto(nuevoCliente);
-		
-		
-		
+		if(modeloDAO.ClienteDAO.mInsetarContacto(nuevoCliente)) {	
 		ventanaRegistro.setVisible(false);
 		vista.Pago ventanaPago = new vista.Pago();
 		ventanaPago.setVisible(true);
-		
-		
+		}
 		
 	}
 	

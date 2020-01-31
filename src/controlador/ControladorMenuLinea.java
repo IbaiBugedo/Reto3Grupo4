@@ -10,11 +10,20 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import modelo.Autobus;
 import modelo.Linea;
 import vista.Bienvenida;
 import vista.MenuLinea;
@@ -32,7 +41,8 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 	}
 
 	private void inicializarControlador() {
-		mCargarContactos();
+		mcargarfecha();
+		mCargarLinea();
 		vistaMenuLinea.getBoxLinea().setSelectedIndex(ControladorResumen.Linea);
 		vistaMenuLinea.getCalendar().getDayChooser().setDay(ControladorResumen.dia);
 		vistaMenuLinea.getCalendar().getMonthChooser().setMonth(ControladorResumen.mes);
@@ -83,11 +93,15 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 	public static String recogerFecha() {
 		String fecha;
 		int dia, mes, ano;
+		String cero="";
 
 		dia = vistaMenuLinea.getCalendar().getDayChooser().getDay();
 		mes = ((vistaMenuLinea.getCalendar().getMonthChooser().getMonth())+1);
 		ano = vistaMenuLinea.getCalendar().getYearChooser().getYear();
-		fecha = (dia + "/" + mes + "/" + ano);
+		if(Integer.toString(mes).length()==1) {
+			cero="0";
+		}
+		fecha = ( ano+ "-" + cero + mes + "-" + dia);
 
 		return fecha;
 	}
@@ -107,7 +121,7 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 		return mes;
 	}
 	
-	private void mCargarContactos() {
+	private void mCargarLinea() {
 
 		
 
@@ -122,5 +136,14 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 
 
 		}
+	}
+	
+	private void mcargarfecha() {
+		Calendar calendario = Calendar.getInstance();
+		Date fechaMinima = calendario.getTime();
+		calendario.add(Calendar.DAY_OF_YEAR, 7);
+		Date fechaMaxima = calendario.getTime();
+		vistaMenuLinea.getCalendar().setSelectableDateRange(fechaMinima,fechaMaxima);
+		
 	}
 }

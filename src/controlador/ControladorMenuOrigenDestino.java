@@ -7,11 +7,13 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import modelo.Autobus;
 import modelo.Linea;
 import modelo.Parada;
 import vista.MenuLinea;
@@ -30,7 +32,7 @@ import vista.MenuOrigenDestino;
 
 		private void inicializarControlador() {
 			
-			
+			mCargarHoraAutobus();
 			mCargarParada();
 			vistaMenuOrigenDestino.getBoxOrigen().setSelectedIndex(ControladorResumen.origen);
 			vistaMenuOrigenDestino.getBoxDestino().setSelectedIndex(ControladorResumen.destino);
@@ -228,9 +230,43 @@ import vista.MenuOrigenDestino;
 				nombreParada[i][0] =(listaParada.get(i).getNombre());
 				vistaMenuOrigenDestino.getBoxOrigen().addItem(nombreParada[i][0]);
 				vistaMenuOrigenDestino.getBoxDestino().addItem(nombreParada[i][0]);
-
+			}
 
 			}
+			private void mCargarHoraAutobus() {
+				String fecha,Cod_Linea,Cod_Linea2="";
+				fecha=ControladorMenuLinea.recogerFecha();
+				
+				ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
+				
+				
+				
+				
+				String nombreLinea[]= new String[listaLinea.size()];
+				
+				for (int i = 0; i < listaLinea.size(); i++) {
+					Cod_Linea=ControladorMenuLinea.recogerLinea();
+					nombreLinea[i] =(listaLinea.get(i).getCod_Linea());
+					Cod_Linea = Cod_Linea.substring(0,nombreLinea[i].length());
+					System.out.println(nombreLinea[i]);
+					if(nombreLinea[i].equals(Cod_Linea)) {
+						Cod_Linea2=nombreLinea[i];
+					}
+				}
+			
+				
+			
+
+				ArrayList<Autobus> listaAutobus = modeloDAO.AutobusDAO.mObtenerHoraAutobus(fecha,Cod_Linea2);
+
+				String nombreAutobus[][] = new String[listaAutobus.size()][4];
+
+				for (int i = 0; i < listaAutobus.size(); i++) {
+					nombreAutobus[i][0] =(listaAutobus.get(i).getHora());
+					vistaMenuOrigenDestino.getBoxHora().addItem(nombreAutobus[i][0]);
+
+
+				}
 	
 	}
 	}
