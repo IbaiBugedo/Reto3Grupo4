@@ -218,8 +218,6 @@ import vista.MenuOrigenDestino;
 		}
 		private void mCargarParada() {
 
-			
-
 			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(ControladorMenuLinea.conservarLinea());
 
 			String nombreParada[][] = new String[listaParada.size()][4];

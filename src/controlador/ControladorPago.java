@@ -8,15 +8,16 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 import vista.MenuLinea;
 import vista.Pago;
 
 
+
 	public class ControladorPago implements ActionListener, ListSelectionListener {
 		
+		private float precio;
 		private static Pago ventanaPago;
-		
-		
 		
 		
 		public ControladorPago(Pago pVentanaPago) {
@@ -26,6 +27,11 @@ import vista.Pago;
 		}
 
 		private void inicializarControlador() {
+			
+			// recoge de la ventana Resumen el precio para operar con el.
+			
+			//* precio = (ControladorMenuResumen.recogerPrecio()); */
+					
 			
 			this.ventanaPago.getIntroducir().addActionListener(this);
 			this.ventanaPago.getIntroducir().setActionCommand("Introducir");
@@ -39,7 +45,7 @@ import vista.Pago;
 			
 			switch (e.getActionCommand()) {
 			case "Introducir":
-				metIntroducir();
+				//metIntroducir();
 			break;
 			
 			case "Cancelar":
@@ -54,31 +60,26 @@ import vista.Pago;
 			
 	}
 	
-	private int metIntroducir() {
+	/*
+	
+	private boolean metIntroducir() {
 			
-		int importe;
+
+		float importe;
+		float aPagar;
+		float importeRestante;
+		float sumaImporte;
 		
-		
-			ventanaPago.getBoxImporte();
-		
-		return 0;
+		importe = (float) ventanaPago.getBoxImporte().getSelectedItem();
 					
 	}
-		
+	
+	*/
+	
+	
 	private void metCancelar() {
 		
-	/*	Linea=0;
-		mes=0;
-		dia=0;
-		origen=0;
-		horaInt=0;
-		destino=0;
-		vistaResumen.setVisible(false);
-		vista.Bienvenida ventanaBienvenida = new vista.Bienvenida();
-		ventanaBienvenida.setVisible(true);
-		
-		ControladorBienvenida controladorBienvenida= new ControladorBienvenida(ventanaBienvenida);
-		*/
+	
 	}
 		
 }		

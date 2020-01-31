@@ -15,6 +15,8 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Pago extends JFrame {
 
@@ -24,10 +26,11 @@ public class Pago extends JFrame {
 	private double [] dinero=new double[]{0.05,0.10,0.20,0.50,1.00,2.00,5.00,10.00,20.00,50.00};
 	private JButton Introducir;
 	private JButton Cancelar;
-	private JTextField txfTotalAPagar;
-	private JTextField txfImporteIntroducido;
-	private JTextField txfImporteRestante;
 	private JComboBox boxImporte;
+	private JLabel lblAPagar;
+	private JLabel lblImporteIntroducido;
+	private JLabel lblImporteRestante;
+	
 	
 
 	/**
@@ -95,24 +98,29 @@ public class Pago extends JFrame {
 		contentPane.add(button);
 		
 		JButton button_1 = new JButton("Cancelar");
+		button_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			}
+		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		button_1.setBounds(415, 336, 189, 66);
 		contentPane.add(button_1);
 		
-		txfTotalAPagar = new JTextField();
-		txfTotalAPagar.setBounds(441, 71, 148, 32);
-		contentPane.add(txfTotalAPagar);
-		txfTotalAPagar.setColumns(10);
+		JLabel lblAPagar = new JLabel("30");
+		lblAPagar.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblAPagar.setBounds(441, 68, 163, 26);
+		contentPane.add(lblAPagar);
 		
-		txfImporteIntroducido = new JTextField();
-		txfImporteIntroducido.setBounds(441, 139, 148, 32);
-		contentPane.add(txfImporteIntroducido);
-		txfImporteIntroducido.setColumns(10);
+		JLabel lblImporteIntroducido = new JLabel("0");
+		lblImporteIntroducido.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblImporteIntroducido.setBounds(441, 130, 148, 32);
+		contentPane.add(lblImporteIntroducido);
 		
-		txfImporteRestante = new JTextField();
-		txfImporteRestante.setBounds(441, 207, 148, 32);
-		contentPane.add(txfImporteRestante);
-		txfImporteRestante.setColumns(10);
+		JLabel lblImporteRestante = new JLabel("30");
+		lblImporteRestante.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblImporteRestante.setBounds(441, 199, 163, 26);
+		contentPane.add(lblImporteRestante);
 	}
 
 	
@@ -150,30 +158,6 @@ public class Pago extends JFrame {
 	public void setCancelar(JButton cancelar) {
 		Cancelar = cancelar;
 	}
-	
-	public JTextField getTxfTotalAPagar() {
-		return txfTotalAPagar;
-	}
-
-	public void setTxfTotalAPagar(JTextField txfTotalAPagar) {
-		this.txfTotalAPagar = txfTotalAPagar;
-	}
-
-	public JTextField getTxfImporteIntroducido() {
-		return txfImporteIntroducido;
-	}
-
-	public void setTxfImporteIntroducido(JTextField txfImporteIntroducido) {
-		this.txfImporteIntroducido = txfImporteIntroducido;
-	}
-
-	public JTextField getTxfImporteRestante() {
-		return txfImporteRestante;
-	}
-
-	public void setTxfImporteRestante(JTextField txfImporteRestante) {
-		this.txfImporteRestante = txfImporteRestante;
-	}
 
 	public JComboBox getBoxImporte() {
 		return boxImporte;
@@ -182,4 +166,30 @@ public class Pago extends JFrame {
 	public void setBoxImporte(JComboBox boxImporte) {
 		this.boxImporte = boxImporte;
 	}
+
+	public JLabel getLblAPagar() {
+		return lblAPagar;
+	}
+
+	public void setLblAPagar(JLabel lblAPagar) {
+		this.lblAPagar = lblAPagar;
+	}
+
+	public JLabel getLblImporteIntroducido() {
+		return lblImporteIntroducido;
+	}
+
+	public void setLblImporteIntroducido(JLabel lblImporteIntroducido) {
+		this.lblImporteIntroducido = lblImporteIntroducido;
+	}
+
+	public JLabel getLblImporteRestante() {
+		return lblImporteRestante;
+	}
+
+	public void setLblImporteRestante(JLabel lblImporteRestante) {
+		this.lblImporteRestante = lblImporteRestante;
+	}
+	
+	
 }

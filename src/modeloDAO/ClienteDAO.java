@@ -1,6 +1,6 @@
-
 package modeloDAO;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,7 +47,7 @@ public class ClienteDAO {
 		return registrar;
 	}
 
-	public static boolean mIniciarSesion(String dniCliente, String contraseñaCliente) {
+	public boolean mIniciarSesion(String dniCliente, String contraseñaCliente) {
 		boolean existeContacto=false;
 		Connection co = null;
 	

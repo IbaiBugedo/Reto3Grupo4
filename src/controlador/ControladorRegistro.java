@@ -32,9 +32,6 @@ public class ControladorRegistro implements ActionListener {
 		this.ventanaRegistro.getAtras().addActionListener(this);
 		this.ventanaRegistro.getAtras().setActionCommand("Atrás");
 		
-		
-		
-		
 	}
 
 	@Override
@@ -62,6 +59,11 @@ public class ControladorRegistro implements ActionListener {
 	private void metAtras() {
 		// Devuelve a la ventana anterior
 		
+		ventanaRegistro.setVisible(false);
+		vista.Pago ventanaPago = new vista.Pago();
+		ventanaPago.setVisible(true);
+		ControladorPago controladorPago= new ControladorPago(ventanaPago);
+		
 	}
 
 
@@ -74,6 +76,7 @@ public class ControladorRegistro implements ActionListener {
 
 
 	private void metRegistrarse() {	
+		// Los campos completados los registra en la base de datos.
 		
 		Cliente nuevoCliente = new Cliente();
 		
@@ -88,13 +91,10 @@ public class ControladorRegistro implements ActionListener {
 		nuevoClienteDAO.mInsetarContacto(nuevoCliente);
 		
 		
-		
 		ventanaRegistro.setVisible(false);
 		vista.Pago ventanaPago = new vista.Pago();
 		ventanaPago.setVisible(true);
-		
-		
-		
+	
 	}
 	
 

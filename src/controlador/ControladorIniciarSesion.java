@@ -33,6 +33,7 @@ import vista.MenuLinea;
 			this.vistaIniciarSesion.getBtnRetroceso().addActionListener(this);
 			this.vistaIniciarSesion.getBtnRetroceso().setActionCommand(IniciarSesion.enumAcciones.RETROCESO.toString());;			
 		}
+		
 		public void actionPerformed(ActionEvent e) {
 
 			IniciarSesion.enumAcciones accion = IniciarSesion.enumAcciones.valueOf(e.getActionCommand());
