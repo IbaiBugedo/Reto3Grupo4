@@ -156,9 +156,12 @@ public class Resumen extends JFrame {
 		boxNumeroTiquets.setMaximumRowCount(50);
 		boxNumeroTiquets.setBackground(Color.LIGHT_GRAY);
 		boxNumeroTiquets.setBounds(339, 311, 185, 25);
+		boxNumeroTiquets.setPrototypeDisplayValue(true);	
+		boxNumeroTiquets.setMaximumRowCount(8);
 		contentPane.add(boxNumeroTiquets);
 	}
 
+	
 	public JLabel getLblLinea() {
 		return lblLinea;
 	}

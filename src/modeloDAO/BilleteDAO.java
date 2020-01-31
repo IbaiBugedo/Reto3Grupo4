@@ -10,18 +10,19 @@ import modelo.Parada;
 
 public class BilleteDAO {
 
-	private final double precioGasoil=0.80;
+	private final static double precioGasoil=0.80;
 	
-	public double mPrecioTrayecto(Autobus pAutobus, Parada parada1, Parada parada2) {
-		
+	public static double mPrecioTrayecto(Autobus pAutobus, Parada parada1, Parada parada2,String billetes) {
+		int billeteInt;
+		billeteInt=Integer.parseInt(billetes);
 		double beneficio;
 		double precioFinal=0;
 		double distancia=distanciaCoord(parada1, parada2);
 		double consumo=pAutobus.getConsumoPorKm();
 		int numAsientosOcupados=pAutobus.getNumPlazasOcupadas();
-		
-		beneficio=(((distancia/consumo)*precioGasoil)/numAsientosOcupados)*0.2;
-		precioFinal = (((distancia/consumo)/numAsientosOcupados)*precioGasoil)+beneficio;
+		int numPlazasTotales=pAutobus.getNumPlazas();
+		beneficio=(((distancia/consumo)*precioGasoil)/numPlazasTotales)*0.2;
+		precioFinal = (((distancia/consumo)/(numAsientosOcupados+billeteInt))*precioGasoil)+beneficio;
 		
 		
 		return precioFinal;

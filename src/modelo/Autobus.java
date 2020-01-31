@@ -1,20 +1,20 @@
 package modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Autobus {
 	
-	private String codAutobus;
+	private int codAutobus;
 	private int numPlazas;
 	private double consumoPorKm;
 	private int numPlazasOcupadas;
-	private int fecha;
+	private Date fecha;
 	private String hora;
 	
 
 	
-	public Autobus(String codAutobus, int numPlazas, double consumoPorKm, String color, int numPlazasOcupadas,
-			int fecha, String hora) {
+	public Autobus(int codAutobus, int numPlazas, double consumoPorKm, String color, int numPlazasOcupadas,
+			Date fecha, String hora) {
 		super();
 		this.codAutobus = codAutobus;
 		this.numPlazas = numPlazas;
@@ -30,12 +30,12 @@ public class Autobus {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getCodAutobus() {
+	public int getCodAutobus() {
 		return codAutobus;
 	}
 
 
-	public void setCodAutobus(String codAutobus) {
+	public void setCodAutobus(int codAutobus) {
 		this.codAutobus = codAutobus;
 	}
 
@@ -70,12 +70,12 @@ public class Autobus {
 	}
 
 
-	public int getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
 
-	public void setFecha(int fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
