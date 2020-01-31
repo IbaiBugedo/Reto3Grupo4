@@ -5,19 +5,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import modelo.Parada;
 import vista.IniciarSesion;
 import vista.MenuLinea;
 import vista.Resumen;
 
 	public class ControladorResumen implements ActionListener, ListSelectionListener {
-		private String fecha,linea,origenDestino,horaStr,tipoBillete;
+		private String fecha,linea,origenDestino,horaStr,tipoBillete,destinoS,origenS;
 		private static Resumen vistaResumen;
-		public static int Linea=0,mes,dia,origen,horaInt,destino;
+		public static int Linea=0,mes,dia,origen,horaInt,destino,objetoOrigen,objetoDestino;
 		
 		public ControladorResumen(Resumen ventanaResumen) {
 			this.vistaResumen = ventanaResumen;
@@ -28,10 +31,13 @@ import vista.Resumen;
 		private void inicializarControlador() {
 			fecha=(ControladorMenuLinea.recogerFecha());
 			linea=(ControladorMenuLinea.recogerLinea());
-			origenDestino=(ControladorMenuOrigenDestino.recogerOrigenDestino());
+			origenS=(ControladorMenuOrigenDestino.recogerOrigen());
+			destinoS=(ControladorMenuOrigenDestino.recogerDestino());
+			origenDestino=(origenS+" - "+destinoS);
 			horaStr=(ControladorMenuOrigenDestino.recogerHora());
 			tipoBillete=(ControladorMenuOrigenDestino.recogerTipoBillete());
-			
+			objetoOrigen=mDevolverNObjetoOrigen();
+			objetoDestino=mDevolverNObjetoDestino();
 			
 			vistaResumen.getLblFecha().setText(fecha);
 			vistaResumen.getLblLinea().setText(linea);
@@ -104,6 +110,43 @@ import vista.Resumen;
 			
 			
 		}
+		
+		private int mDevolverNObjetoOrigen() {
+
+			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(ControladorMenuLinea.conservarLinea());
+
+			int origenDestino = 1000;
+			
+			String nombreParada[][] = new String[listaParada.size()][4];
+
+			for (int i = 0; i < listaParada.size(); i++) {
+				nombreParada[i][0] =(listaParada.get(i).getNombre());
+				if(nombreParada[i][0].equals(origen)) {
+					origenDestino=i;
+				}
+				
+				}
+			return origenDestino;
+			}
+		
+		
+		private int mDevolverNObjetoDestino() {
+
+			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(ControladorMenuLinea.conservarLinea());
+
+			int origenDestino = 1000;
+			
+			String nombreParada[][] = new String[listaParada.size()][4];
+
+			for (int i = 0; i < listaParada.size(); i++) {
+				nombreParada[i][0] =(listaParada.get(i).getNombre());
+				if(nombreParada[i][0].equals(destino)) {
+					origenDestino=i;
+				}
+				
+				}
+			return origenDestino;
+			}
 		
 		/*
 		public static float recogerPrecio() {

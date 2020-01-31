@@ -56,10 +56,12 @@ import vista.MenuLinea;
 					ControladorPago controladorPago= new ControladorPago(ventanaPago);}
 				}
 				else {
-					vista.vistaAlerta ventanaAlerta = new vista.vistaAlerta(1);
-					ventanaAlerta.setVisible(true);
+				
+					
 			         
 			 			try {
+			 				vista.vistaAlerta ventanaAlerta = new vista.vistaAlerta(1);
+							ventanaAlerta.setVisible(true);
 							Thread.sleep(5000); 
 							ventanaAlerta.setVisible(false);
 						} catch (InterruptedException e1) {

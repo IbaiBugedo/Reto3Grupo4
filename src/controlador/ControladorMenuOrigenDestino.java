@@ -163,12 +163,17 @@ import vista.MenuOrigenDestino;
 			
 		}
 	
-		public static String recogerOrigenDestino() {
-			String origenDestino,origen,destino;
+		public static String recogerOrigen() {
+			String origen;
 			origen = vistaMenuOrigenDestino.getBoxOrigen().getSelectedItem().toString();
+			
+			
+			return origen;
+		}
+		public static String recogerDestino() {
+			String destino;
 			destino = vistaMenuOrigenDestino.getBoxDestino().getSelectedItem().toString();
-			origenDestino=(origen + " - " + destino);
-			return origenDestino;
+			return destino;
 		}
 		
 		public static String recogerHora() {

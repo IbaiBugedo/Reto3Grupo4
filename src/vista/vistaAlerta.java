@@ -29,13 +29,12 @@ public class vistaAlerta extends JFrame {
 	 */
 	public vistaAlerta(int cod_Alerta) {
 		mCrearPanelContenedor();
-		mCrearJLabel();
-	switch (cod_Alerta) {
-	case 1:
-		txtAlert.setText("Debe introducir un DNI y una contrase\u00F1a valida");
-		
-		break;
-	}
+		mCrearJLabel(); 
+		switch (cod_Alerta) {
+		case 1:
+			txtAlert.setText("Debe introducir un DNI y una contrase\u00F1a valida");
+			break;
+		}
 
 
        
@@ -48,6 +47,7 @@ public class vistaAlerta extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	}
@@ -56,9 +56,16 @@ public class vistaAlerta extends JFrame {
 		txtAlert = new JTextArea();
 		txtAlert.setFont(new Font("Monospaced", Font.PLAIN, 19));
 		txtAlert.setLineWrap(true);
-		
+		txtAlert.setText("este es el texto por defecto");
 		txtAlert.setBounds(10, 11, 229, 114);
 		txtAlert.setWrapStyleWord(true);
 		contentPane.add(txtAlert);
 	}
+	public JTextArea getTxtAlert() {
+		return txtAlert;
+	}
+	public void setTxtAlert(JTextArea txtAlert) {
+		this.txtAlert = txtAlert;
+	}
+	
 }
