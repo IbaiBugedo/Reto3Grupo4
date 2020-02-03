@@ -19,6 +19,7 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -33,6 +34,8 @@ import vista.MenuOrigenDestino;
 public class ControladorMenuLinea implements ActionListener, ListSelectionListener {
 
 	private static MenuLinea vistaMenuLinea;
+	private String Imagen;
+	private int numArray;
 
 	public ControladorMenuLinea(MenuLinea ventanaMenuLinea) {
 		this.vistaMenuLinea = ventanaMenuLinea;
@@ -54,6 +57,10 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 			public void itemStateChanged(ItemEvent e) {
 				if ((vistaMenuLinea.getBoxLinea().getSelectedItem()) != "Selecciona la linea") {
 					vistaMenuLinea.getBtnSiguiente().setEnabled(true);
+					ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
+					numArray=(vistaMenuLinea.getBoxLinea().getSelectedIndex())-1;
+					Imagen=listaLinea.get(numArray).getImagen_linea().toString();
+					vistaMenuLinea.getLblImagen().setIcon(new ImageIcon(ControladorMenuLinea.class.getResource(Imagen)));
 				} else {
 					vistaMenuLinea.getBtnSiguiente().setEnabled(false);
 				}

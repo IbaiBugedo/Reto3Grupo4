@@ -29,7 +29,7 @@ import vista.Resumen;
 		private static Resumen vistaResumen;
 		public static int Linea=0,origen,horaInt,destino,objetoOrigen,objetoDestino,asientosOcupados,numAsientos,asientosLibres,multiplicador;
 		String cod_Linea;
-		private double precioBillete;
+		private static double precioBillete;
 		
 		public ControladorResumen(Resumen ventanaResumen) {
 			this.vistaResumen = ventanaResumen;
@@ -70,7 +70,7 @@ import vista.Resumen;
 			if(tipoBillete.equals("Ida y Vuelta")) {
 				precioBillete=precioBillete*2;
 			}
-			vistaResumen.getLblPrecio().setText(precioBillete+"");
+			vistaResumen.getLblPrecio().setText(precioBillete+"\u20AC");
 			vistaResumen.getLblFecha().setText(fecha);
 			vistaResumen.getLblLinea().setText(linea);
 			vistaResumen.getLblOrigenDestino().setText(origenDestino);
@@ -194,14 +194,14 @@ import vista.Resumen;
 			}
 
 		
-		public static float recogerPrecio() {
+		public static double recogerPrecio() {
 			// recoge aqui el precio para llevarlo al ControladorPago //
 			
-			float precio;
 			
-			precio = Float.parseFloat(vistaResumen.getLblPrecio().getText().toString());
 			
-			return precio;
+			
+			
+			return precioBillete;
 		}
 		
 	

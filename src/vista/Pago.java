@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorRegistro;
+
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -33,25 +36,6 @@ public class Pago extends JFrame {
 	
 	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Pago frame = new Pago();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Pago() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
@@ -61,12 +45,12 @@ public class Pago extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JComboBox BoxImporte = new JComboBox();
+		boxImporte = new JComboBox();
 		for(int contador=0;contador <dinero.length;contador++) {
-		BoxImporte.addItem(dinero[contador]);
+		boxImporte.addItem(dinero[contador]);
 		}
-		BoxImporte.setBounds(441, 288, 148, 32);
-		contentPane.add(BoxImporte);
+		boxImporte.setBounds(441, 288, 148, 32);
+		contentPane.add(boxImporte);
 		
 		JLabel label = new JLabel("Total a pagar:");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -88,36 +72,27 @@ public class Pago extends JFrame {
 		label_3.setBounds(148, 268, 258, 57);
 		contentPane.add(label_3);
 		
-		JButton button = new JButton("Introducir");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		button.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		button.setBounds(148, 336, 189, 66);
-		contentPane.add(button);
+		Introducir = new JButton("Introducir");
+		Introducir.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		Introducir.setBounds(148, 336, 189, 66);
+		contentPane.add(Introducir);
 		
-		JButton button_1 = new JButton("Cancelar");
-		button_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			}
-		});
-		button_1.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		button_1.setBounds(415, 336, 189, 66);
-		contentPane.add(button_1);
+		Cancelar = new JButton("Cancelar");
+		Cancelar.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		Cancelar.setBounds(415, 336, 189, 66);
+		contentPane.add(Cancelar);
 		
-		JLabel lblAPagar = new JLabel("30");
+		lblAPagar = new JLabel("");
 		lblAPagar.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblAPagar.setBounds(441, 68, 163, 26);
 		contentPane.add(lblAPagar);
 		
-		JLabel lblImporteIntroducido = new JLabel("0");
+		lblImporteIntroducido = new JLabel("0");
 		lblImporteIntroducido.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblImporteIntroducido.setBounds(441, 130, 148, 32);
 		contentPane.add(lblImporteIntroducido);
 		
-		JLabel lblImporteRestante = new JLabel("30");
+		lblImporteRestante = new JLabel("30");
 		lblImporteRestante.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblImporteRestante.setBounds(441, 199, 163, 26);
 		contentPane.add(lblImporteRestante);

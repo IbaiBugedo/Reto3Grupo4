@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.math.BigDecimal;
+import java.math.MathContext;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
@@ -16,12 +18,13 @@ import vista.Pago;
 
 	public class ControladorPago implements ActionListener, ListSelectionListener {
 		
-		private float precio;
-		private static Pago ventanaPago;
+
+		private Pago vistaPago;
+		private double precio,importeRestante,sumaImporte=0;
 		
 		
-		public ControladorPago(Pago pVentanaPago) {
-			this.ventanaPago = pVentanaPago;
+		public ControladorPago(Pago ventanaPago) {
+			this.vistaPago = ventanaPago;
 			
 			this.inicializarControlador();
 		}
@@ -31,13 +34,18 @@ import vista.Pago;
 			// recoge de la ventana Resumen el precio para operar con el.
 			
 			precio = (ControladorResumen.recogerPrecio()); 
-			ventanaPago.getLblAPagar().setText(precio+"");
+			importeRestante=precio;
+			vistaPago.getLblAPagar().setText(precio+"\u20AC");
+			MathContext formatoDecimal = new MathContext(4);
+			BigDecimal decimal = new BigDecimal(precio,formatoDecimal);
+			precio=decimal.doubleValue();
+			vistaPago.getLblImporteRestante().setText(precio+"\u20AC");
 			
-			this.ventanaPago.getIntroducir().addActionListener(this);
-			this.ventanaPago.getIntroducir().setActionCommand("Introducir");
+			this.vistaPago.getIntroducir().addActionListener(this);
+			this.vistaPago.getIntroducir().setActionCommand("Introducir");
 			
-			this.ventanaPago.getCancelar().addActionListener(this);
-			this.ventanaPago.getCancelar().setActionCommand("Cancelar");
+			this.vistaPago.getCancelar().addActionListener(this);
+			this.vistaPago.getCancelar().setActionCommand("Cancelar");
 					
 		}
 		
@@ -45,7 +53,12 @@ import vista.Pago;
 			
 			switch (e.getActionCommand()) {
 			case "Introducir":
-				//metIntroducir();
+				if(metIntroducir()) {
+					vistaPago.setVisible(false);
+					vista.Devolucion ventanaDevolucion = new vista.Devolucion();
+					ventanaDevolucion.setVisible(true);
+					ControladorDevolucion controladorDevolucion= new ControladorDevolucion(ventanaDevolucion);
+				}
 			break;
 			
 			case "Cancelar":
@@ -60,26 +73,42 @@ import vista.Pago;
 			
 	}
 	
-	/*
+	
 	
 	private boolean metIntroducir() {
-			
+			boolean pasarPagina=false;
 
-		float importe;
-		float aPagar;
-		float importeRestante;
-		float sumaImporte;
+		double importe;
 		
-		importe = (float) ventanaPago.getBoxImporte().getSelectedItem();
+		importe = Double.parseDouble(vistaPago.getBoxImporte().getSelectedItem().toString());
+		
+		if (importe>=importeRestante) {
+			pasarPagina=true;
+		}
+		else {
+			importeRestante = importeRestante-importe;
+			sumaImporte = sumaImporte + importe;
+			MathContext formatoDecimal = new MathContext(4);
+			BigDecimal decimal = new BigDecimal(sumaImporte,formatoDecimal);
+			sumaImporte=decimal.doubleValue();
+			BigDecimal decimal2 = new BigDecimal(importeRestante,formatoDecimal);
+			importeRestante=decimal2.doubleValue();
+			vistaPago.getLblImporteIntroducido().setText(sumaImporte+"\u20AC");
+			vistaPago.getLblImporteRestante().setText(importeRestante+"\u20AC");
+		}
 					
+		return pasarPagina;
 	}
 	
-	*/
+	
 	
 	
 	private void metCancelar() {
 		
-	
+		vistaPago.setVisible(false);
+		vista.Bienvenida ventanaBienvenida = new vista.Bienvenida();
+		ventanaBienvenida.setVisible(true);
+		ControladorBienvenida controladorBienvenida= new ControladorBienvenida(ventanaBienvenida);
 	}
 		
 }		

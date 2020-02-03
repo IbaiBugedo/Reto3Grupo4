@@ -29,6 +29,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class MenuLinea extends JFrame {
 
@@ -45,6 +46,7 @@ public class MenuLinea extends JFrame {
 	private JComboBox boxLinea;
 	private JCalendar calendar;
 	private JButton btnSiguiente;
+	private JLabel lblImagen;
 
 
 	public MenuLinea() {
@@ -72,6 +74,10 @@ public class MenuLinea extends JFrame {
 
 	private void mCrearJTable() {	
 		
+		lblImagen = new JLabel("");
+		lblImagen.setBounds(10, 160, 718, 295);
+		contentPane.add(lblImagen);
+		
 		table_1 = new JTable();
 		table_1.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		table_1.setBounds(0, 155, 734, 306);
@@ -86,7 +92,7 @@ public class MenuLinea extends JFrame {
 	private void mCrearJComboBox() {
 		
 		boxLinea = new JComboBox();
-		boxLinea.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		boxLinea.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		boxLinea.setModel(new DefaultComboBoxModel(new String[] {"Selecciona la linea"}));
 		boxLinea.setBounds(33, 29, 444, 98);
 		contentPane.add(boxLinea);
@@ -138,5 +144,12 @@ public class MenuLinea extends JFrame {
 		this.btnSiguiente = btnSiguiente;
 	}
 
+	public JLabel getLblImagen() {
+		return lblImagen;
+	}
+
+	public void setLblImagen(JLabel lblImagen) {
+		this.lblImagen = lblImagen;
+	}
 	
 }
