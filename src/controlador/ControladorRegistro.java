@@ -32,9 +32,6 @@ public class ControladorRegistro implements ActionListener {
 		this.ventanaRegistro.getBtnAtras().addActionListener(this);
 		this.ventanaRegistro.getBtnAtras().setActionCommand("Atrás");
 		
-		
-		
-		
 	}
 
 	@Override
@@ -44,15 +41,13 @@ public class ControladorRegistro implements ActionListener {
 			case "Registrarse":
 				metRegistrarse();
 			break;
-			
 			case "Cancelar":
-				metCancelar();
-				
+				metCancelar();	
 			break;
-			
 			case "Atrás":
 				metAtras();
 			break;
+			
 		}
 		
 		

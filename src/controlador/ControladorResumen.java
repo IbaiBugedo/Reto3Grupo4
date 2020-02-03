@@ -190,8 +190,11 @@ import vista.Resumen;
 				}
 				
 				}
+			
 			return origenDestino;
-			}
+		}
+
+
 
 		
 		public static double recogerPrecio() {
