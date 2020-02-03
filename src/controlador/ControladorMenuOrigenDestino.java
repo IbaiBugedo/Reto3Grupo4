@@ -224,8 +224,9 @@ import vista.MenuOrigenDestino;
 			return tipoBillete;
 		}
 		private void mCargarParada() {
-
-			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(ControladorMenuLinea.conservarLinea());
+			
+			ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
+			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea()-1).getCod_Linea());
 
 			String nombreParada[][] = new String[listaParada.size()][4];
 

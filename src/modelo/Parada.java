@@ -18,6 +18,11 @@ public class Parada {
 	}
 
 
+	public Parada(String sql, String sql2, int latitud2, int longitud2, String sql3) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public String getNombre() {
 		return Nombre;
 	}

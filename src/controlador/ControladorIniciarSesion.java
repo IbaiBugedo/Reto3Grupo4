@@ -91,16 +91,6 @@ import vista.MenuLinea;
 				ventanaResumen.setVisible(true);
 				ControladorResumen controladorResumen= new ControladorResumen(ventanaResumen);
 				break;
-			case RESPUESTA_DNI:
-				if(vistaIniciarSesion.getRespuestaContrasena().getText().length()>0 && vistaIniciarSesion.getRespuestaDNI().getText().length()>0) {
-					vistaIniciarSesion.getBtnIniciarSesion().setEnabled(true);
-				}
-				break;
-			case RESPUESTA_CONTRASENA:
-				if(vistaIniciarSesion.getRespuestaContrasena().getText().length()>0 && vistaIniciarSesion.getRespuestaDNI().getText().length()>0) {
-					vistaIniciarSesion.getBtnIniciarSesion().setEnabled(true);
-				}
-				break;
 			}
 		}
 

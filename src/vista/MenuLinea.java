@@ -97,7 +97,7 @@ public class MenuLinea extends JFrame {
 		calendar = new JCalendar();
 		calendar.getDayChooser().getDayPanel().setForeground(new Color(0, 0, 0));
 		calendar.getYearChooser().getSpinner().setEnabled(false);
-		calendar.setBounds(530, 10, 184, 134);
+		calendar.setBounds(530, 10, 184, 141);
 		contentPane.add(calendar);
 		
 	}

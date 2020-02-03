@@ -44,8 +44,6 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 		mcargarfecha();
 		mCargarLinea();
 		vistaMenuLinea.getBoxLinea().setSelectedIndex(ControladorResumen.Linea);
-		vistaMenuLinea.getCalendar().getDayChooser().setDay(ControladorResumen.dia);
-		vistaMenuLinea.getCalendar().getMonthChooser().setMonth(ControladorResumen.mes);
 		if ((vistaMenuLinea.getBoxLinea().getSelectedItem()) != "Selecciona la linea") {
 			vistaMenuLinea.getBtnSiguiente().setEnabled(true);
 		}

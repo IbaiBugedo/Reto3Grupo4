@@ -12,20 +12,18 @@ public class BilleteDAO {
 
 	private final static double precioGasoil=0.80;
 	
-	public static double mPrecioTrayecto(Autobus pAutobus, Parada parada1, Parada parada2,String billetes) {
+	public static double mPrecioTrayecto(Autobus pAutobus, Parada parada1, Parada parada2) {
 		int billeteInt;
-		billeteInt=Integer.parseInt(billetes);
 		double beneficio;
 		double precioFinal=0;
 		double distancia=distanciaCoord(parada1, parada2);
-		double consumo=pAutobus.getConsumoPorKm();
+		double consumo=pAutobus.getConsumoPorKm()*100;
 		int numAsientosOcupados=pAutobus.getNumPlazasOcupadas();
 		int numPlazasTotales=pAutobus.getNumPlazas();
-		beneficio=(((distancia/consumo)*precioGasoil)/numPlazasTotales)*0.2;
-		precioFinal = (((distancia/consumo)/(numAsientosOcupados+billeteInt))*precioGasoil)+beneficio;
+		beneficio=(((distancia*consumo)*precioGasoil)*1.2)/numPlazasTotales;
 		
 		
-		return precioFinal;
+		return beneficio;
 		
 	}
 	

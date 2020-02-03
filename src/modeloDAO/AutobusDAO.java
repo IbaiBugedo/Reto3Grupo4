@@ -41,15 +41,15 @@ public class AutobusDAO {
 		return listaAutobus;
 	}
 	
-	public static ArrayList<Autobus> mObtenerDatosAutobus(int linea,String hora,String fecha) {
-		String lineaS,horaS;
-		lineaS = "L"+linea+"";
+	public static ArrayList<Autobus> mObtenerDatosAutobus(String cod_Linea,String hora,String fecha) {
+		String horaS;
+		
 		horaS=""+hora+"";
 		Connection co =null;
 		Statement stm= null;
 		ResultSet rs=null;
 		
-		String sql="SELECT a.hora,a.Cod_bus,b.consumo_km,a.fecha,b.N_plazas,a.Plazas_Ocupadas FROM linea_autobus A,autobus B where A.cod_bus=B.cod_bus and cod_linea='"+lineaS+"'and hora='"+horaS+"' and a.fecha ='"+fecha+"'ORDER BY hora;";
+		String sql="SELECT a.hora,a.Cod_bus,b.consumo_km,a.fecha,b.N_plazas,a.Plazas_Ocupadas FROM linea_autobus A,autobus B where A.cod_bus=B.cod_bus and cod_linea='"+cod_Linea+"'and hora='"+horaS+"' and a.fecha ='"+fecha+"'ORDER BY hora;";
 		
 		ArrayList<Autobus> listaAutobus= new ArrayList<Autobus>();
 		

@@ -3,6 +3,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Array;
@@ -16,6 +18,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import modelo.Autobus;
+import modelo.Linea;
 import modelo.Parada;
 import vista.IniciarSesion;
 import vista.MenuLinea;
@@ -24,7 +27,8 @@ import vista.Resumen;
 	public class ControladorResumen implements ActionListener, ListSelectionListener {
 		private String fecha,linea,origenDestino,horaStr,tipoBillete,destinoS,origenS;
 		private static Resumen vistaResumen;
-		public static int Linea=0,mes,dia,origen,horaInt,destino,objetoOrigen,objetoDestino,cod_Linea,asientosOcupados,numAsientos,asientosLibres;
+		public static int Linea=0,origen,horaInt,destino,objetoOrigen,objetoDestino,asientosOcupados,numAsientos,asientosLibres,multiplicador;
+		String cod_Linea;
 		private double precioBillete;
 		
 		public ControladorResumen(Resumen ventanaResumen) {
@@ -35,7 +39,8 @@ import vista.Resumen;
 
 		private void inicializarControlador() {
 			
-			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(ControladorMenuLinea.conservarLinea());
+			ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
+			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea()-1).getCod_Linea());
 			
 			fecha=(ControladorMenuLinea.recogerFecha());
 			linea=(ControladorMenuLinea.recogerLinea());
@@ -46,7 +51,7 @@ import vista.Resumen;
 			tipoBillete=(ControladorMenuOrigenDestino.recogerTipoBillete());
 			objetoOrigen=mDevolverNObjetoOrigen();
 			objetoDestino=mDevolverNObjetoDestino();
-			cod_Linea=ControladorMenuLinea.conservarLinea();
+			cod_Linea=listaLinea.get(ControladorMenuLinea.conservarLinea()-1).getCod_Linea();
 			ArrayList<Autobus> listaAutobus = modeloDAO.AutobusDAO.mObtenerDatosAutobus(cod_Linea,horaStr,fecha);
 			asientosOcupados=listaAutobus.get(0).getNumPlazasOcupadas();
 			numAsientos=listaAutobus.get(0).getNumPlazas();
@@ -54,7 +59,7 @@ import vista.Resumen;
 			for(int i=1;i<=asientosLibres;i++) {
 				vistaResumen.getBoxNumeroTiquets().addItem(i);
 			}
-			precioBillete=modeloDAO.BilleteDAO.mPrecioTrayecto(listaAutobus.get(0), listaParada.get(objetoOrigen),listaParada.get(objetoDestino),vistaResumen.getBoxNumeroTiquets().getSelectedItem().toString());
+			precioBillete=modeloDAO.BilleteDAO.mPrecioTrayecto(listaAutobus.get(0), listaParada.get(objetoOrigen),listaParada.get(objetoDestino));
 			MathContext formatoDecimal = new MathContext(3);
 			BigDecimal decimal = new BigDecimal(precioBillete,formatoDecimal);
 			precioBillete=decimal.doubleValue();
@@ -65,7 +70,7 @@ import vista.Resumen;
 			if(tipoBillete.equals("Ida y Vuelta")) {
 				precioBillete=precioBillete*2;
 			}
-			vistaResumen.getLblPrecio().setText(precioBillete+"\u20AC");
+			vistaResumen.getLblPrecio().setText(precioBillete+"");
 			vistaResumen.getLblFecha().setText(fecha);
 			vistaResumen.getLblLinea().setText(linea);
 			vistaResumen.getLblOrigenDestino().setText(origenDestino);
@@ -80,17 +85,32 @@ import vista.Resumen;
 			this.vistaResumen.getBtnModificar().setActionCommand(Resumen.enumAcciones.MODIFICAR_COMPRA.toString());
 			this.vistaResumen.getBtnRetroceso().addActionListener(this);
 			this.vistaResumen.getBtnRetroceso().setActionCommand(Resumen.enumAcciones.PAGINA_ANTERIOR.toString());
-			
-		}
+		
+		
+		vistaResumen.getBoxNumeroTiquets().addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				precioBillete=modeloDAO.BilleteDAO.mPrecioTrayecto(listaAutobus.get(0), listaParada.get(objetoOrigen),listaParada.get(objetoDestino));
+				
+				multiplicador=Integer.parseInt(vistaResumen.getBoxNumeroTiquets().getSelectedItem().toString());
+				precioBillete=precioBillete*multiplicador;
+				if(tipoBillete.equals("Ida y Vuelta")) {
+					precioBillete=precioBillete*2;
+				} 
+				MathContext formatoDecimal = new MathContext(3);
+				BigDecimal decimal = new BigDecimal(precioBillete,formatoDecimal);
+				precioBillete=decimal.doubleValue();
+				vistaResumen.getLblPrecio().setText(precioBillete+"\u20AC");
+			}
+			});}
+		
 		public void actionPerformed(ActionEvent e) {
-	
+			
 			Resumen.enumAcciones accion = Resumen.enumAcciones.valueOf(e.getActionCommand());
+	
 
 			switch (accion) {
 			case SIGUIENTE_PAGINA:
 				Linea=0;
-				mes=0;
-				dia=0;
 				origen=0;
 				horaInt=0;
 				destino=0;
@@ -101,8 +121,6 @@ import vista.Resumen;
 				break;
 			case CANCELAR_COMPRA:
 				Linea=0;
-				mes=0;
-				dia=0;
 				origen=0;
 				horaInt=0;
 				destino=0;
@@ -119,8 +137,6 @@ import vista.Resumen;
 				break;
 			case MODIFICAR_COMPRA:
 				Linea=(ControladorMenuLinea.conservarLinea());
-				dia=(ControladorMenuLinea.conservarDia());
-				mes=(ControladorMenuLinea.conservarMes());
 				origen=(ControladorMenuOrigenDestino.conservarOrigen());
 				destino=(ControladorMenuOrigenDestino.conservarDestino());
 				horaInt=(ControladorMenuOrigenDestino.conservarHora());
@@ -140,7 +156,8 @@ import vista.Resumen;
 		
 		private int mDevolverNObjetoOrigen() {
 
-			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(ControladorMenuLinea.conservarLinea());
+			ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
+			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea()-1).getCod_Linea());
 
 			int origenDestino = 1000;
 			
@@ -159,7 +176,8 @@ import vista.Resumen;
 		
 		private int mDevolverNObjetoDestino() {
 
-			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(ControladorMenuLinea.conservarLinea());
+			ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
+			ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea()-1).getCod_Linea());
 
 			int origenDestino = 1000;
 			
@@ -175,17 +193,17 @@ import vista.Resumen;
 			return origenDestino;
 			}
 
-		/*
+		
 		public static float recogerPrecio() {
 			// recoge aqui el precio para llevarlo al ControladorPago //
 			
 			float precio;
 			
-			precio = vistaResumen.getLblPrecio().setText();
+			precio = Float.parseFloat(vistaResumen.getLblPrecio().getText().toString());
 			
 			return precio;
 		}
-		*/
+		
 	
 }
 
