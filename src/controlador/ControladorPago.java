@@ -30,8 +30,10 @@ import vista.Pago;
 			
 			// recoge de la ventana Resumen el precio para operar con el.
 			
+
 			precio = (ControladorResumen.recogerPrecio()); 
 			ventanaPago.getLblAPagar().setText(precio+"");
+
 			
 			this.ventanaPago.getIntroducir().addActionListener(this);
 			this.ventanaPago.getIntroducir().setActionCommand("Introducir");
@@ -60,11 +62,10 @@ import vista.Pago;
 			
 	}
 	
-	/*
 	
+	/*
 	private boolean metIntroducir() {
 			
-
 		float importe;
 		float aPagar;
 		float importeRestante;
