@@ -17,6 +17,7 @@ import java.awt.Component;
 import com.toedter.calendar.JCalendar;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
 
 public class MenuOrigenDestino extends JFrame {
 
@@ -30,7 +31,7 @@ public class MenuOrigenDestino extends JFrame {
 	private JButton btnIda;
 	private JButton btnIdaVuelta;
 	private JButton btnRetroceso;
-	
+	private JLabel lblImagen;
 
 
 	public MenuOrigenDestino() {
@@ -93,15 +94,6 @@ public class MenuOrigenDestino extends JFrame {
 
 	
 	private void mCrearJTable() {
-		table = new JTable();
-		table.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		table.setBounds(0, 0, 510, 156);
-		contentPane.add(table);
-		
-		table_1 = new JTable();
-		table_1.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		table_1.setBounds(0, 155, 734, 306);
-		contentPane.add(table_1);
 		
 		btnIda = new JButton("Ida");
 		btnIda.setBounds(519, 122, 97, 29);
@@ -110,6 +102,20 @@ public class MenuOrigenDestino extends JFrame {
 		btnIdaVuelta = new JButton("Ida y Vuelta");
 		btnIdaVuelta.setBounds(632, 122, 97, 29);
 		contentPane.add(btnIdaVuelta);
+		
+		lblImagen = new JLabel("");
+		lblImagen.setVerticalAlignment(SwingConstants.TOP);
+		lblImagen.setBounds(5, 160, 723, 295);
+		contentPane.add(lblImagen);
+		
+		table_1 = new JTable();
+		table_1.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+		table_1.setBounds(0, 155, 734, 306);
+		contentPane.add(table_1);
+		table = new JTable();
+		table.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+		table.setBounds(0, 0, 510, 156);
+		contentPane.add(table);
 		
 
 	
@@ -177,4 +183,13 @@ public class MenuOrigenDestino extends JFrame {
 	public void setBtnRetroceso(JButton btnRetroceso) {
 		this.btnRetroceso = btnRetroceso;
 	}
+
+	public JLabel getLblImagen() {
+		return lblImagen;
+	}
+
+	public void setLblImagen(JLabel lblImagen) {
+		this.lblImagen = lblImagen;
+	}
+	
 }

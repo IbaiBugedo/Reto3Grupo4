@@ -45,22 +45,22 @@ public class Fin extends JFrame {
 		
 		JLabel GraciasPorSu = new JLabel("Gracias por su");
 		GraciasPorSu.setFont(new Font("Tahoma", Font.PLAIN, 74));
-		GraciasPorSu.setBounds(107, 71, 494, 72);
+		GraciasPorSu.setBounds(107, 52, 494, 72);
 		contentPane.add(GraciasPorSu);
 		
 		JLabel CompraSu = new JLabel("compra su");
 		CompraSu.setFont(new Font("Tahoma", Font.PLAIN, 74));
-		CompraSu.setBounds(107, 140, 438, 78);
+		CompraSu.setBounds(107, 135, 438, 78);
 		contentPane.add(CompraSu);
 		
 		JLabel SesionASido = new JLabel("sesion ha sido");
 		SesionASido.setFont(new Font("Tahoma", Font.PLAIN, 74));
-		SesionASido.setBounds(107, 229, 590, 78);
+		SesionASido.setBounds(107, 224, 590, 78);
 		contentPane.add(SesionASido);
 		
 		JLabel Cerrada = new JLabel("cerrada");
 		Cerrada.setFont(new Font("Tahoma", Font.PLAIN, 74));
-		Cerrada.setBounds(117, 325, 309, 78);
+		Cerrada.setBounds(107, 313, 309, 78);
 		contentPane.add(Cerrada);
 	}
 }

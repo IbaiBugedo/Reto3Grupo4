@@ -30,6 +30,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class MenuLinea extends JFrame {
 
@@ -75,6 +76,7 @@ public class MenuLinea extends JFrame {
 	private void mCrearJTable() {	
 		
 		lblImagen = new JLabel("");
+		lblImagen.setVerticalAlignment(SwingConstants.TOP);
 		lblImagen.setBounds(10, 160, 718, 295);
 		contentPane.add(lblImagen);
 		

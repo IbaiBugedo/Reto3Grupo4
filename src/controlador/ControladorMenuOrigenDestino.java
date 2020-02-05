@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -19,16 +20,16 @@ import modelo.Parada;
 import vista.MenuLinea;
 import vista.MenuOrigenDestino;
 
-public class ControladorMenuOrigenDestino implements ActionListener, ListSelectionListener {
+	public class ControladorMenuOrigenDestino implements ActionListener, ListSelectionListener {
+		
+		private static MenuOrigenDestino vistaMenuOrigenDestino;
+		
+		public ControladorMenuOrigenDestino(MenuOrigenDestino ventanaMenuOrigenDestino) {
+			this.vistaMenuOrigenDestino = ventanaMenuOrigenDestino;
+			
+			this.inicializarControlador();
+		}
 
-	private MenuOrigenDestino vistaBienvenida;
-	private static MenuOrigenDestino vistaMenuOrigenDestino;
-
-	public ControladorMenuOrigenDestino(MenuOrigenDestino ventanaMenuOrigenDestino) {
-		this.vistaMenuOrigenDestino = ventanaMenuOrigenDestino;
-
-		this.inicializarControlador();
-	}
 
 	private void inicializarControlador() {
 
