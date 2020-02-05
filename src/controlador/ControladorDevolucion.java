@@ -4,6 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
@@ -31,7 +35,26 @@ import vista.MenuLinea;
 			
 			
 			
+			vistaDevolucion.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowOpened(WindowEvent arg0) {
+					 try {
+				            // TODO add your handling code here:
+				            Thread.sleep(5000);
+				            vistaDevolucion.setVisible(false);
+							vista.Ticket ventanaTicket = new vista.Ticket();
+							ventanaTicket.setVisible(true);
+							ControladorTiquet controladorTicket = new ControladorTiquet(ventanaTicket);
+				        } catch (InterruptedException ex) {
+				            Logger.getLogger(Devolucion.class.getName()).log(Level.SEVERE, null, ex);
+				        }
+				}
+				
+			});
 		}
+		
+		
+		
 		public void actionPerformed(ActionEvent e) {
 	
 			

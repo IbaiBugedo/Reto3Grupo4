@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.ImageIcon;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Devolucion extends JFrame {
 
@@ -36,6 +38,7 @@ public class Devolucion extends JFrame {
 	 * Create the frame.
 	 */
 	public Devolucion() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		contentPane = new JPanel();
