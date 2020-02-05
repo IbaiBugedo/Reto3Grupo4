@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import validacionDNI.DNIException;
-import validacionDNI.ValidarDNI;
+import otrosMetodos.DNIException;
+import otrosMetodos.ValidarDNI;
 import vista.Bienvenida;
 import vista.IniciarSesion;
 import vista.MenuLinea;
@@ -51,7 +51,7 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 			try {
 				ValidarDNI.validarDNI(respuestaDNI);
 			} catch (DNIException e2) {
-				// TODO Auto-generated catch block
+				
 				e2.printStackTrace();
 			}
 			respuestaContrasena = vistaIniciarSesion.getRespuestaContrasena().getText();

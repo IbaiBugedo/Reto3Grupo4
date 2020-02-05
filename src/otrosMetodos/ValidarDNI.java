@@ -1,4 +1,4 @@
-package validacionDNI;
+package otrosMetodos;
 
 public class ValidarDNI {
 
