@@ -2,7 +2,7 @@ package validacionDNI;
 
 public class ValidarDNI {
 
-
+// Validar dni
 
     /**
      * Valida un DNI
