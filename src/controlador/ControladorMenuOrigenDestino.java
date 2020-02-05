@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -37,7 +38,7 @@ import vista.MenuOrigenDestino;
 			vistaMenuOrigenDestino.getBoxOrigen().setSelectedIndex(ControladorResumen.origen);
 			vistaMenuOrigenDestino.getBoxDestino().setSelectedIndex(ControladorResumen.destino);
 			vistaMenuOrigenDestino.getBoxHora().setSelectedIndex(ControladorResumen.horaInt);
-			
+			vistaMenuOrigenDestino.getLblImagen().setIcon(new ImageIcon(ControladorMenuLinea.class.getResource(ControladorMenuLinea.Imagen)));
 			
 			vistaMenuOrigenDestino.getBtnSiguiente().addActionListener(this);
 			vistaMenuOrigenDestino.getBtnSiguiente().setActionCommand(MenuLinea.enumAcciones.SIGUIENTE_PAGINA.toString());

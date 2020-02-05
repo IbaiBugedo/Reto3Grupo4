@@ -34,7 +34,7 @@ import vista.MenuOrigenDestino;
 public class ControladorMenuLinea implements ActionListener, ListSelectionListener {
 
 	private static MenuLinea vistaMenuLinea;
-	private String Imagen;
+	public static String Imagen;
 	private int numArray;
 
 	public ControladorMenuLinea(MenuLinea ventanaMenuLinea) {
