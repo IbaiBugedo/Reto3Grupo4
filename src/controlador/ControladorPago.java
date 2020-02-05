@@ -20,8 +20,7 @@ import vista.Pago;
 		
 
 		private Pago vistaPago;
-		private double precio,importeRestante,sumaImporte=0;
-		
+		public static double importe,precio,importeRestante,sumaImporte=0;
 		
 		public ControladorPago(Pago ventanaPago) {
 			this.vistaPago = ventanaPago;
@@ -36,7 +35,7 @@ import vista.Pago;
 			precio = (ControladorResumen.recogerPrecio()); 
 			importeRestante=precio;
 			vistaPago.getLblAPagar().setText(precio+"\u20AC");
-			MathContext formatoDecimal = new MathContext(4);
+			MathContext formatoDecimal = new MathContext(5);
 			BigDecimal decimal = new BigDecimal(precio,formatoDecimal);
 			precio=decimal.doubleValue();
 			vistaPago.getLblImporteRestante().setText(precio+"\u20AC");
@@ -54,6 +53,7 @@ import vista.Pago;
 			switch (e.getActionCommand()) {
 			case "Introducir":
 				if(metIntroducir()) {
+					
 					vistaPago.setVisible(false);
 					vista.Devolucion ventanaDevolucion = new vista.Devolucion();
 					ventanaDevolucion.setVisible(true);
@@ -77,8 +77,6 @@ import vista.Pago;
 	
 	private boolean metIntroducir() {
 			boolean pasarPagina=false;
-
-		double importe;
 		
 		importe = Double.parseDouble(vistaPago.getBoxImporte().getSelectedItem().toString());
 		
@@ -88,7 +86,7 @@ import vista.Pago;
 		else {
 			importeRestante = importeRestante-importe;
 			sumaImporte = sumaImporte + importe;
-			MathContext formatoDecimal = new MathContext(4);
+			MathContext formatoDecimal = new MathContext(5);
 			BigDecimal decimal = new BigDecimal(sumaImporte,formatoDecimal);
 			sumaImporte=decimal.doubleValue();
 			BigDecimal decimal2 = new BigDecimal(importeRestante,formatoDecimal);
@@ -110,5 +108,16 @@ import vista.Pago;
 		ventanaBienvenida.setVisible(true);
 		ControladorBienvenida controladorBienvenida= new ControladorBienvenida(ventanaBienvenida);
 	}
+	
+	public static double mConservarDineroIntroducido(){
 		
+		return importe;
+		
+	}
+
+	public static double mConservarDineroRestante(){
+		
+		return importeRestante;
+		
+	}
 }		

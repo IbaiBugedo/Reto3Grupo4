@@ -151,4 +151,11 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 		vistaMenuLinea.getCalendar().setSelectableDateRange(fechaMinima,fechaMaxima);
 		
 	}
+	
+	
+	
+	
+	
+	
+	
 }

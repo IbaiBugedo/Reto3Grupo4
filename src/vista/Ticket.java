@@ -67,22 +67,22 @@ public class Ticket extends JFrame {
 		
 		JLabel Linea = new JLabel("Linea");
 		Linea.setFont(new Font("Tahoma", Font.BOLD, 14));
-		Linea.setBounds(340, 11, 45, 24);
+		Linea.setBounds(166, 78, 45, 24);
 		contentPane.add(Linea);
 		
 		JLabel OrigenDestino = new JLabel("Origen - Destino");
 		OrigenDestino.setFont(new Font("Tahoma", Font.BOLD, 14));
-		OrigenDestino.setBounds(535, 11, 121, 24);
+		OrigenDestino.setBounds(493, 81, 121, 24);
 		contentPane.add(OrigenDestino);
 		
 		JLabel CodigoAutobus = new JLabel("Codigo Autobus");
 		CodigoAutobus.setFont(new Font("Tahoma", Font.BOLD, 14));
-		CodigoAutobus.setBounds(150, 78, 126, 24);
+		CodigoAutobus.setBounds(300, 11, 126, 24);
 		contentPane.add(CodigoAutobus);
 		
 		JLabel FechaDeCompra = new JLabel("Fecha de compra");
 		FechaDeCompra.setFont(new Font("Tahoma", Font.BOLD, 14));
-		FechaDeCompra.setBounds(513, 78, 126, 24);
+		FechaDeCompra.setBounds(493, 11, 126, 24);
 		contentPane.add(FechaDeCompra);
 		
 		JLabel FechaDeSalida = new JLabel("Fecha de salida");
@@ -127,7 +127,7 @@ public class Ticket extends JFrame {
 		
 		respuestaLinea = new JLabel("Bilbao - Mungia");
 		respuestaLinea.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		respuestaLinea.setBounds(300, 43, 138, 24);
+		respuestaLinea.setBounds(34, 113, 354, 24);
 		contentPane.add(respuestaLinea);
 		
 		respuestaEmpresa = new JLabel("Termibus");
@@ -137,17 +137,17 @@ public class Ticket extends JFrame {
 		
 		respuestaOrigen = new JLabel("Univ. Deusto - Mungia");
 		respuestaOrigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		respuestaOrigen.setBounds(513, 46, 163, 24);
+		respuestaOrigen.setBounds(415, 111, 309, 24);
 		contentPane.add(respuestaOrigen);
 		
 		respuestaCodigo = new JLabel("2348");
 		respuestaCodigo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		respuestaCodigo.setBounds(181, 111, 75, 24);
+		respuestaCodigo.setBounds(331, 46, 75, 24);
 		contentPane.add(respuestaCodigo);
 		
 		respuestaFechaCompra = new JLabel("12/01/2020");
 		respuestaFechaCompra.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		respuestaFechaCompra.setBounds(535, 113, 84, 24);
+		respuestaFechaCompra.setBounds(514, 46, 84, 24);
 		contentPane.add(respuestaFechaCompra);
 		
 		respuestaFechaSalida = new JLabel("15/01/2020");

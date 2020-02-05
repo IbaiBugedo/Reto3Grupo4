@@ -13,26 +13,14 @@ import java.awt.SystemColor;
 import javax.swing.ImageIcon;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JTextArea;
 
 public class Devolucion extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Devolucion frame = new Devolucion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JLabel RecojaSusCambios;
+	private JPanel panelCambios2;
+	private JTextArea panelCambios;
 
 	/**
 	 * Create the frame.
@@ -52,14 +40,35 @@ public class Devolucion extends JFrame {
 		Cambios.setBounds(212, 11, 285, 72);
 		contentPane.add(Cambios);
 		
-		JPanel panelCambios = new JPanel();
-		panelCambios.setBackground(SystemColor.control);
-		panelCambios.setBounds(196, 169, 310, 264);
-		contentPane.add(panelCambios);
+		panelCambios2 = new JPanel();
+		panelCambios2.setBackground(SystemColor.control);
+		panelCambios2.setBounds(196, 169, 310, 264);
+		contentPane.add(panelCambios2);
+		panelCambios2.setLayout(null);
 		
-		JLabel RecojaSusCambios = new JLabel("Recoja sus cambios porfavor");
+		panelCambios = new JTextArea();
+		panelCambios.setBounds(0, 0, 310, 264);
+		panelCambios2.add(panelCambios);
+		
+		RecojaSusCambios = new JLabel("Recoja sus cambios porfavor");
 		RecojaSusCambios.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		RecojaSusCambios.setBounds(196, 122, 301, 28);
 		contentPane.add(RecojaSusCambios);
+	}
+
+	public JLabel getRecojaSusCambios() {
+		return RecojaSusCambios;
+	}
+
+	public void setRecojaSusCambios(JLabel recojaSusCambios) {
+		RecojaSusCambios = recojaSusCambios;
+	}
+
+	public JTextArea getPanelCambios() {
+		return panelCambios;
+	}
+
+	public void setPanelCambios(JTextArea panelCambios) {
+		this.panelCambios = panelCambios;
 	}
 }

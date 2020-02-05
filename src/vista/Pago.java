@@ -26,7 +26,7 @@ public class Pago extends JFrame {
 	
 	JFrame ventanaPago;
 	private JPanel contentPane;
-	private double [] dinero=new double[]{0.05,0.10,0.20,0.50,1.00,2.00,5.00,10.00,20.00,50.00};
+	private double [] dinero=new double[]{0.01,0.02,0.05,0.10,0.20,0.50,1.00,2.00,5.00,10.00,20.00,50.00};
 	private JButton Introducir;
 	private JButton Cancelar;
 	private JComboBox boxImporte;
