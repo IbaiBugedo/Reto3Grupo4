@@ -84,7 +84,7 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 			ControladorMenuOrigenDestino controladorMenuOrigenDestino = new ControladorMenuOrigenDestino(
 					ventanaMenuOrigenDestino);
 			break;
-			
+
 		}
 
 	}

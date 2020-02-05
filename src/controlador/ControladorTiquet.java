@@ -13,29 +13,26 @@ import vista.Bienvenida;
 import vista.MenuLinea;
 import vista.Ticket;
 
-	public class ControladorTiquet implements ActionListener, ListSelectionListener {
-		
-		private Ticket vistaTicket;
-		
-		public ControladorTiquet(Ticket ventanaTicket) {
-			this.vistaTicket = ventanaTicket;
-			
-			this.inicializarControlador();
-		}
+public class ControladorTiquet implements ActionListener, ListSelectionListener {
 
-		private void inicializarControlador() {
-	
-			
-			
-		}
-		public void actionPerformed(ActionEvent e) {
-	
-			
-		}
+	private Ticket vistaTicket;
 
-		public void valueChanged(ListSelectionEvent e) {
-			
-			
-		}
-	
+	public ControladorTiquet(Ticket ventanaTicket) {
+		this.vistaTicket = ventanaTicket;
+
+		this.inicializarControlador();
+	}
+
+	private void inicializarControlador() {
+
+	}
+
+	public void actionPerformed(ActionEvent e) {
+
+	}
+
+	public void valueChanged(ListSelectionEvent e) {
+
+	}
+
 }

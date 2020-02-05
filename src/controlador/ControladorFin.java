@@ -18,45 +18,43 @@ import vista.Devolucion;
 import vista.Fin;
 import vista.MenuLinea;
 
-	public class ControladorFin implements ActionListener, ListSelectionListener {
-		
-		private Fin vistaFin;
-		
-		public ControladorFin(Fin ventanaFin) {
-			this.vistaFin = ventanaFin;
-			
-			this.inicializarControlador();
-		}
+public class ControladorFin implements ActionListener, ListSelectionListener {
 
-		private void inicializarControlador() {
-			
-			vistaFin.addWindowListener(new WindowAdapter() {
-				@Override
-				public void windowOpened(WindowEvent arg0) {
-					 try {
-				            // TODO add your handling code here:
-				            Thread.sleep(5000);
-				            vistaFin.setVisible(false);
-							vista.Bienvenida ventanaBienvenida = new vista.Bienvenida();
-							ventanaBienvenida.setVisible(true);
-							ControladorBienvenida controladorBienvenida = new ControladorBienvenida(ventanaBienvenida);
-				        } catch (InterruptedException ex) {
-				            Logger.getLogger(Devolucion.class.getName()).log(Level.SEVERE, null, ex);
-				        }
+	private Fin vistaFin;
+
+	public ControladorFin(Fin ventanaFin) {
+		this.vistaFin = ventanaFin;
+
+		this.inicializarControlador();
+	}
+
+	private void inicializarControlador() {
+
+		vistaFin.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				try {
+					// TODO add your handling code here:
+					Thread.sleep(5000);
+					vistaFin.setVisible(false);
+					vista.Bienvenida ventanaBienvenida = new vista.Bienvenida();
+					ventanaBienvenida.setVisible(true);
+					ControladorBienvenida controladorBienvenida = new ControladorBienvenida(ventanaBienvenida);
+				} catch (InterruptedException ex) {
+					Logger.getLogger(Devolucion.class.getName()).log(Level.SEVERE, null, ex);
 				}
-				
-			});
-			
-			
-		}
-		public void actionPerformed(ActionEvent e) {
-	
-			
-		}
+			}
 
-		public void valueChanged(ListSelectionEvent e) {
-			
-			
-		}
-	
+		});
+
+	}
+
+	public void actionPerformed(ActionEvent e) {
+
+	}
+
+	public void valueChanged(ListSelectionEvent e) {
+
+	}
+
 }
