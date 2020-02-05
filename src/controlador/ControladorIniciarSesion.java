@@ -59,18 +59,9 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 				}
 			} else {
 
-				vista.vistaAlerta ventanaAlerta = new vista.vistaAlerta(1);
+				vista.Alerta ventanaAlerta = new vista.Alerta(1);
 				ventanaAlerta.setVisible(true);
-
-				try {
-
-					Thread.sleep(5000);
-					ventanaAlerta.setVisible(false);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
+				ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
 			}
 			break;
 		case PAGINA_REGISTRO:

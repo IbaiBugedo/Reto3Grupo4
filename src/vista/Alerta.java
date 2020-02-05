@@ -15,8 +15,10 @@ import java.util.logging.Logger;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-public class vistaAlerta extends JFrame {
+public class Alerta extends JFrame {
 
 	private JPanel contentPane;
 	private JTextArea txtAlert;
@@ -27,7 +29,8 @@ public class vistaAlerta extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public vistaAlerta(int cod_Alerta) {
+	public Alerta(int cod_Alerta) {
+	
 		mCrearPanelContenedor();
 		mCrearJLabel(); 
 		switch (cod_Alerta) {
@@ -35,8 +38,7 @@ public class vistaAlerta extends JFrame {
 			txtAlert.setText("Debe introducir un DNI y una contrase\u00F1a valida");
 			break;
 		}
-
-
+		
        
 
 		

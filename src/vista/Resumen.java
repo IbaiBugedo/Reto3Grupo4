@@ -21,16 +21,16 @@ public class Resumen extends JFrame {
 		PAGINA_ANTERIOR
 	}
 	private JPanel contentPane;
-	private JLabel lblLinea;
-	private JLabel lblOrigenDestino;
-	private JLabel lblTipoViaje;
-	private JLabel lblFecha;
-	private JLabel lblHora;
-	private JLabel lblPrecio;
-	private JButton btnRetroceso;
-	private JButton btnCancelar;
-	private JButton btnModificar;
-	private JButton btnAceptar;
+	private JLabel lblLinea,
+	lblOrigenDestino,
+	lblTipoViaje,
+	lblFecha,
+	lblHora,
+	lblPrecio;
+	private JButton btnRetroceso,
+	btnCancelar,
+	btnModificar,
+	btnAceptar;
 	private JComboBox boxNumeroTiquets;
 	
 	
@@ -161,7 +161,7 @@ public class Resumen extends JFrame {
 		contentPane.add(boxNumeroTiquets);
 	}
 
-	
+	//
 	public JLabel getLblLinea() {
 		return lblLinea;
 	}
@@ -249,9 +249,5 @@ public class Resumen extends JFrame {
 	public void setBoxNumeroTiquets(JComboBox boxNumeroTiquets) {
 		this.boxNumeroTiquets = boxNumeroTiquets;
 	}
-
-
-
-
 
 }

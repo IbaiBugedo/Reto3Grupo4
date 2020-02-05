@@ -44,7 +44,7 @@ public class ControladorDevolucion implements ActionListener, ListSelectionListe
 			vistaDevolucion.setVisible(false);
 			vista.Ticket ventanaTicket = new vista.Ticket();
 			ventanaTicket.setVisible(true);
-			ControladorTiquet controladorTicket = new ControladorTiquet(ventanaTicket);
+			ControladorTicket controladorTicket = new ControladorTicket(ventanaTicket);
 		}
 		vueltas = vueltas * 100;
 
@@ -142,7 +142,7 @@ public class ControladorDevolucion implements ActionListener, ListSelectionListe
 					vistaDevolucion.setVisible(false);
 					vista.Ticket ventanaTicket = new vista.Ticket();
 					ventanaTicket.setVisible(true);
-					ControladorTiquet controladorTicket = new ControladorTiquet(ventanaTicket);
+					ControladorTicket controladorTicket = new ControladorTicket(ventanaTicket);
 				} catch (InterruptedException ex) {
 					Logger.getLogger(Devolucion.class.getName()).log(Level.SEVERE, null, ex);
 				}

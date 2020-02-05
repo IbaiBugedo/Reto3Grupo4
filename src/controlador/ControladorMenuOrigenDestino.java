@@ -35,6 +35,7 @@ import vista.MenuOrigenDestino;
 
 		mCargarHoraAutobus();
 		mCargarParada();
+		vistaMenuOrigenDestino.getLblImagen().setIcon(new ImageIcon(ControladorMenuLinea.class.getResource(ControladorMenuLinea.Imagen)));
 		vistaMenuOrigenDestino.getBoxOrigen().setSelectedIndex(ControladorResumen.origen);
 		vistaMenuOrigenDestino.getBoxDestino().setSelectedIndex(ControladorResumen.destino);
 		vistaMenuOrigenDestino.getBoxHora().setSelectedIndex(ControladorResumen.horaInt);
