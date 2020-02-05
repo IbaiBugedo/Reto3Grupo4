@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import otrosMetodos.DNIException;
+import otrosMetodos.ValidarDNI;
 import vista.Bienvenida;
 import vista.IniciarSesion;
 import vista.MenuLinea;
@@ -46,6 +48,12 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 		case SIGUIENTE_PAGINA:
 			String respuestaDNI, respuestaContrasena, vacio;
 			respuestaDNI = vistaIniciarSesion.getRespuestaDNI().getText();
+			try {
+				ValidarDNI.validarDNI(respuestaDNI);
+			} catch (DNIException e2) {
+				
+				e2.printStackTrace();
+			}
 			respuestaContrasena = vistaIniciarSesion.getRespuestaContrasena().getText();
 			vacio = "";
 
