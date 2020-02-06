@@ -8,8 +8,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
-import otrosMetodos.DNIException;
 import otrosMetodos.ValidarDNI;
 import vista.Bienvenida;
 import vista.IniciarSesion;
@@ -47,13 +45,8 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 		switch (accion) {
 		case SIGUIENTE_PAGINA:
 			String respuestaDNI, respuestaContrasena, vacio;
-			respuestaDNI = vistaIniciarSesion.getRespuestaDNI().getText();
-			try {
-				ValidarDNI.validarDNI(respuestaDNI);
-			} catch (DNIException e2) {
-				
-				e2.printStackTrace();
-			}
+			respuestaDNI = vistaIniciarSesion.getRespuestaDNI().getText();	
+			ValidarDNI.validarDNI(respuestaDNI);
 			respuestaContrasena = vistaIniciarSesion.getRespuestaContrasena().getText();
 			vacio = "";
 
@@ -65,12 +58,7 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 					ventanaPago.setVisible(true);
 					ControladorPago controladorPago = new ControladorPago(ventanaPago);
 				}
-			} else {
-
-				vista.Alerta ventanaAlerta = new vista.Alerta(1);
-				ventanaAlerta.setVisible(true);
-				ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
-			}
+			} 
 			break;
 		case PAGINA_REGISTRO:
 			vistaIniciarSesion.setVisible(false);

@@ -1,9 +1,11 @@
 package otrosMetodos;
 
+import controlador.ControladorAlerta;
+
 public class ValidarDNI {
 
 // Validar dni
-
+private static boolean error=false;
     /**
      * Valida un DNI
      * Comprueba si tiene entre 8 y 9 caracteres
@@ -13,11 +15,13 @@ public class ValidarDNI {
      * @param DNI
      * @throws DNIException 
      */
-    public static void validarDNI(String DNI) throws DNIException {
+    public static void validarDNI(String DNI){
 
         //Comprobamos la longitud del dni
         if (!(DNI.length() >= 8 && DNI.length() <= 9)) {
-            throw new DNIException(DNIException.LONGITUD_NO_CORRECTA);
+			vista.Alerta ventanaAlerta = new vista.Alerta(2);
+			ventanaAlerta.setVisible(true);
+			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
         }
 
         //saco la parte numerica
@@ -31,15 +35,16 @@ public class ValidarDNI {
             //Puede saltar la excepcion
             numeroDNI = Integer.parseInt(parte_numerica);
         } catch (NumberFormatException e) {
-            throw new DNIException(DNIException.PARTE_NUMERICA_NO_CORRECTA);
+			vista.Alerta ventanaAlerta = new vista.Alerta(3);
+			ventanaAlerta.setVisible(true);
+			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
+			error=true;
         }
 
         //
         char letra = DNI.substring(DNI.length() - 1, DNI.length()).toUpperCase().charAt(0);
 
-        if (!(letra >= 'A' && letra <= 'Z')) {
-            throw new DNIException(DNIException.PARTE_LETRA_NO_CORRECTA);
-        }
+      
 
         //Ya hemos validado el formato
         final int DIVISOR = 23;
@@ -55,9 +60,15 @@ public class ValidarDNI {
         if(DNI.startsWith("0")){
             nuevoDNI = "0"+nuevoDNI;
         }
-        
-        if (!(nuevoDNI.equals(DNI))) {
-            throw new DNIException(DNIException.FORMATO_NO_CORRECTO);
+        if (!(letra >= 'A' && letra <= 'Z')||error==false) {
+			vista.Alerta ventanaAlerta = new vista.Alerta(4);
+			ventanaAlerta.setVisible(true);
+			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
+        }
+        else if (!(nuevoDNI.equals(DNI))) {
+        	vista.Alerta ventanaAlerta = new vista.Alerta(5);
+			ventanaAlerta.setVisible(true);
+			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
         }
 
     }

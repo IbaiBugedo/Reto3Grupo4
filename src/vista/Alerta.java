@@ -35,7 +35,19 @@ public class Alerta extends JFrame {
 		mCrearJLabel(); 
 		switch (cod_Alerta) {
 		case 1:
-			txtAlert.setText("Debe introducir un DNI y una contrase\u00F1a valida");
+			txtAlert.setText("");
+			break;
+		case 2:
+			txtAlert.setText("La longitud debe estar entre 8 y 9");
+			break;
+		case 3:
+			txtAlert.setText("La parte numerica del DNI debe ser un numero");
+			break;
+		case 4:
+			txtAlert.setText("La parte de la letra del DNI debe ser una letra entre A y Z");
+			break;
+		case 5:
+			txtAlert.setText("El DNI es incorrecto");
 			break;
 		}
 		
