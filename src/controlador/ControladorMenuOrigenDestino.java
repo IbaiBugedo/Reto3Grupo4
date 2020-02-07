@@ -101,10 +101,17 @@ import vista.MenuOrigenDestino;
 
 		switch (accion) {
 		case SIGUIENTE_PAGINA:
+			if(vistaMenuOrigenDestino.getBtnIdaVuelta().isEnabled()==false) {
+				vistaMenuOrigenDestino.setVisible(false);
+				vista.IdaVuelta ventanaIdaVuelta = new vista.IdaVuelta();
+				ventanaIdaVuelta.setVisible(true);
+				ControladorIdaVuelta controladorIdaVuelta = new ControladorIdaVuelta(ventanaIdaVuelta);
+			}else {
 			vistaMenuOrigenDestino.setVisible(false);
 			vista.Resumen ventanaResumen = new vista.Resumen();
 			ventanaResumen.setVisible(true);
 			ControladorResumen controladorResumen = new ControladorResumen(ventanaResumen);
+			}
 			break;
 		case VIAJE_IDA:
 			vistaMenuOrigenDestino.getBtnIda().setEnabled(false);
@@ -235,7 +242,6 @@ import vista.MenuOrigenDestino;
 			Cod_Linea = ControladorMenuLinea.recogerLinea();
 			nombreLinea[i] = (listaLinea.get(i).getCod_Linea());
 			Cod_Linea = Cod_Linea.substring(0, nombreLinea[i].length());
-			System.out.println(nombreLinea[i]);
 			if (nombreLinea[i].equals(Cod_Linea)) {
 				Cod_Linea2 = nombreLinea[i];
 			}

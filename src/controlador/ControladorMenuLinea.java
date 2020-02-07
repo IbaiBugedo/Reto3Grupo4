@@ -98,7 +98,7 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 	public static String recogerFecha() {
 		String fecha;
 		int dia, mes, ano;
-		String cero="";
+		String cero="",ceroDia="";
 
 		dia = vistaMenuLinea.getCalendar().getDayChooser().getDay();
 		mes = ((vistaMenuLinea.getCalendar().getMonthChooser().getMonth())+1);
@@ -106,7 +106,10 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 		if(Integer.toString(mes).length()==1) {
 			cero="0";
 		}
-		fecha = ( ano+ "-" + cero + mes + "-" + dia);
+		if(Integer.toString(dia).length()==1) {
+			ceroDia="0";
+		}
+		fecha = ( ano+ "-" + cero + mes + "-" +ceroDia+ dia);
 
 		return fecha;
 	}
@@ -124,6 +127,12 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 		int mes;
 		mes = vistaMenuLinea.getCalendar().getMonthChooser().getMonth();
 		return mes;
+	}
+	
+	public static Date conservarMesDate() {
+		Date mes; 
+	
+		return mes = vistaMenuLinea.getCalendar().getDate();
 	}
 	
 	private void mCargarLinea() {
@@ -146,7 +155,7 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 	private void mcargarfecha() {
 		Calendar calendario = Calendar.getInstance();
 		Date fechaMinima = calendario.getTime();
-		calendario.add(Calendar.DAY_OF_YEAR, 7);
+		calendario.add(Calendar.DAY_OF_YEAR, 14);
 		Date fechaMaxima = calendario.getTime();
 		vistaMenuLinea.getCalendar().setSelectableDateRange(fechaMinima,fechaMaxima);
 		

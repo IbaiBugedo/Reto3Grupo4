@@ -35,6 +35,12 @@ public class Fin extends JFrame {
 	 * Create the frame.
 	 */
 	public Fin() {
+		mCrearPanelContenedor();
+		mCrearJLabel();
+		
+
+	}
+	private void mCrearPanelContenedor() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		contentPane = new JPanel();
@@ -42,7 +48,9 @@ public class Fin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+	}
+	
+	private void mCrearJLabel() {
 		JLabel GraciasPorSu = new JLabel("Gracias por su");
 		GraciasPorSu.setFont(new Font("Tahoma", Font.PLAIN, 74));
 		GraciasPorSu.setBounds(107, 52, 494, 72);

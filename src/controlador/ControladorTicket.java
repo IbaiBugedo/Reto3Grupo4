@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -20,7 +22,7 @@ import vista.Ticket;
 public class ControladorTicket implements ActionListener, ListSelectionListener {
 
 	private Ticket vistaTicket;
-	private String fecha,cod_Linea,horaStr,origenS,destinoS;
+	private String fecha,cod_Linea,horaStr,origenS,destinoS,linea;
 	
 	
 	
@@ -40,7 +42,17 @@ public class ControladorTicket implements ActionListener, ListSelectionListener 
 		cod_Linea = listaLinea.get(ControladorMenuLinea.conservarLinea() - 1).getCod_Linea();
 		horaStr = (ControladorMenuOrigenDestino.recogerHora());
 		ArrayList<Autobus> listaAutobus = modeloDAO.AutobusDAO.mObtenerDatosAutobus(cod_Linea, horaStr, fecha);
-
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		LocalDate localDate = LocalDate.now();
+		linea = (ControladorMenuLinea.recogerLinea());
+		
+		
+		vistaTicket.getRespuestaLinea().setText(linea);
+		vistaTicket.getRespuestaFechaCompra().setText(localDate+"");
+		vistaTicket.getRespuestaCodigo().setText(listaAutobus.get(0).getCodAutobus()+"");
+		vistaTicket.getRespuestaFechaSalida().setText(fecha);
+		vistaTicket.getRespuestaOrigen().setText(origenS+destinoS);
+		vistaTicket.getRespuestaHoraSalida().setText(horaStr);
 	}
 
 	public void actionPerformed(ActionEvent e) {

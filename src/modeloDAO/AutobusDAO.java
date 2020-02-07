@@ -40,7 +40,34 @@ public class AutobusDAO {
 		
 		return listaAutobus;
 	}
-	
+	public static ArrayList<Autobus> mObtenerHoraPrimerAutobus(String fecha, String cod_Linea,String hora) {
+		Connection co =null;
+		Statement stm= null;
+		ResultSet rs=null;
+		
+		String sql="SELECT hora FROM linea_autobus where fecha='"+fecha+"'and cod_linea='"+cod_Linea+"' and hora >'" +hora+"'ORDER BY hora;";
+		
+		ArrayList<Autobus> listaAutobus= new ArrayList<Autobus>();
+		
+		try {			
+			co= Conexion.conectar();
+			stm=co.createStatement();
+			rs=stm.executeQuery(sql);
+			while (rs.next()) {
+				Autobus c=new Autobus();
+				c.setHora(rs.getString(1));
+				listaAutobus.add(c);
+			}
+			stm.close();
+			rs.close();
+			co.close();
+		} catch (SQLException e) {
+			System.out.println("Error: Clase Contacto, método mObtenerContactos");
+			e.printStackTrace();
+		}
+		
+		return listaAutobus;
+	}
 	public static ArrayList<Autobus> mObtenerDatosAutobus(String cod_Linea,String hora,String fecha) {
 		String horaS;
 		

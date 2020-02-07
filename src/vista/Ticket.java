@@ -38,17 +38,18 @@ public class Ticket extends JFrame {
 	respuestaLinea,
 	respuestaOrigen,
 	respuestaCodigo;
-	private JLabel respuestaFechaCompra;
-	private JLabel respuestaFechaSalida;
-	private JLabel respuestaCoste;
-	private JLabel respuestaTipoBillete;
-	private JLabel respuestaNombre;
-	private JLabel respuestaDNI;
-	private JLabel respuestaHombre;
-	private JLabel respuestaApellido;
-	private JLabel respuestaNBillete;
-	private JLabel CosteDeBillete;
-	private JLabel TipoDeBillete;
+	private JLabel respuestaFechaCompra,
+	respuestaFechaSalida,
+	respuestaCoste,
+	respuestaTipoBillete,
+	respuestaNombre,
+	respuestaDNI,
+	respuestaHombre,
+	respuestaApellido,
+	respuestaNBillete,
+	CosteDeBillete,
+	TipoDeBillete,
+	respuestaHoraSalida;
 	private JButton ImprimirTiquet;
 	private JButton Finalizar;
 
@@ -74,6 +75,8 @@ public class Ticket extends JFrame {
 	}
 
 	private void mCrearJButton() {
+		
+
 		
 		ImprimirTiquet = new JButton("Imprimir tiquet");
 		ImprimirTiquet.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -259,12 +262,12 @@ public class Ticket extends JFrame {
 		
 		respuestaFechaSalida = new JLabel("15/01/2020");
 		respuestaFechaSalida.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		respuestaFechaSalida.setBounds(70, 174, 84, 24);
+		respuestaFechaSalida.setBounds(21, 168, 84, 24);
 		contentPane.add(respuestaFechaSalida);
 		
 		respuestaCoste = new JLabel("18,85\u20AC");
 		respuestaCoste.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		respuestaCoste.setBounds(340, 174, 92, 24);
+		respuestaCoste.setBounds(334, 174, 92, 24);
 		contentPane.add(respuestaCoste);
 		
 		respuestaTipoBillete = new JLabel("Ida y vuelta");
@@ -296,6 +299,21 @@ public class Ticket extends JFrame {
 		respuestaNBillete.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		respuestaNBillete.setBounds(493, 350, 126, 24);
 		contentPane.add(respuestaNBillete);
+	
+		JLabel label_1 = new JLabel("21:35");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label_1.setBounds(150, 188, 84, 24);
+		contentPane.add(label_1);
+		
+		respuestaHoraSalida = new JLabel("12:00");
+		respuestaHoraSalida.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		respuestaHoraSalida.setBounds(150, 168, 84, 24);
+		contentPane.add(respuestaHoraSalida);
+		
+		JLabel label = new JLabel("15/01/2020");
+		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label.setBounds(21, 188, 84, 24);
+		contentPane.add(label);
 	}
 
 	
@@ -447,5 +465,16 @@ public JLabel getRespuestaEmpresa() {
 	public void setFinalizar(JButton finalizar) {
 		Finalizar = finalizar;
 	}
+
+	
+	public JLabel getRespuestaHoraSalida() {
+		return respuestaHoraSalida;
+	}
+
+	
+	public void setRespuestaHoraSalida(JLabel respuestaHoraSalida) {
+		this.respuestaHoraSalida = respuestaHoraSalida;
+	}
+
 
 }
