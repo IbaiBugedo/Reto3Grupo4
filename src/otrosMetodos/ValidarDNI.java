@@ -5,7 +5,7 @@ import controlador.ControladorAlerta;
 public class ValidarDNI {
 
 // Validar dni
-private static boolean error=true;
+private static boolean error=false;
     /**
      * Valida un DNI
      * Comprueba si tiene entre 8 y 9 caracteres
@@ -38,10 +38,10 @@ private static boolean error=true;
 			vista.Alerta ventanaAlerta = new vista.Alerta(3);
 			ventanaAlerta.setVisible(true);
 			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
-			error=false;
+			error=true;
         }
 
-        //
+        // Valida que la letra conincida con el resto del numero
         char letra = DNI.substring(DNI.length() - 1, DNI.length()).toUpperCase().charAt(0);
 
       
