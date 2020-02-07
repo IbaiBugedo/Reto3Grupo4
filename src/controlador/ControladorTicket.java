@@ -13,6 +13,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import modelo.Autobus;
+import modelo.Cliente;
 import modelo.Linea;
 import modelo.Parada;
 import vista.Bienvenida;
@@ -22,7 +23,7 @@ import vista.Ticket;
 public class ControladorTicket implements ActionListener, ListSelectionListener {
 
 	private Ticket vistaTicket;
-	private String fecha,cod_Linea,horaStr,origenS,destinoS,linea;
+	private String fecha,cod_Linea,horaStr,origenS,destinoS,linea,nombre,apellido,sexo;
 	
 	
 	
@@ -45,14 +46,33 @@ public class ControladorTicket implements ActionListener, ListSelectionListener 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		LocalDate localDate = LocalDate.now();
 		linea = (ControladorMenuLinea.recogerLinea());
+		ArrayList <Cliente> listaCliente = modeloDAO.ClienteDAO.mObtenerDatosCliente(ControladorIniciarSesion.DNI);
+		nombre=listaCliente.get(0).getNombre();
+		apellido=listaCliente.get(0).getApellido();
 		
-		
+		if(listaCliente.get(0).getSexo().equals("V")) {
+			sexo="Hombre";
+		}else if(listaCliente.get(0).getSexo().equals("M")) {
+			sexo="Mujer";
+		}else {
+			sexo="Alien";
+		}
+			
+			
 		vistaTicket.getRespuestaLinea().setText(linea);
 		vistaTicket.getRespuestaFechaCompra().setText(localDate+"");
 		vistaTicket.getRespuestaCodigo().setText(listaAutobus.get(0).getCodAutobus()+"");
 		vistaTicket.getRespuestaFechaSalida().setText(fecha);
 		vistaTicket.getRespuestaOrigen().setText(origenS+destinoS);
 		vistaTicket.getRespuestaHoraSalida().setText(horaStr);
+		vistaTicket.getLblFechaVuelta().setText(ControladorIdaVuelta.fechaVuelta);
+		vistaTicket.getLblHoraVuelta().setText(ControladorIdaVuelta.horaVuelta);
+		vistaTicket.getRespuestaCoste().setText(ControladorResumen.recogerPrecio()+"\u20AC");
+		vistaTicket.getRespuestaTipoBillete().setText(ControladorMenuOrigenDestino.recogerTipoBillete());
+		vistaTicket.getRespuestaDNI().setText(ControladorIniciarSesion.DNI);
+		vistaTicket.getRespuestaApellido().setText(apellido);
+		vistaTicket.getRespuestaNombre().setText(nombre);
+		vistaTicket.getRespuestaSexo().setText(sexo);
 	}
 
 	public void actionPerformed(ActionEvent e) {

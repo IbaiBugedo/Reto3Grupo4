@@ -28,7 +28,8 @@ public class ControladorIdaVuelta implements ActionListener, ListSelectionListen
 	
 	private IdaVuelta vistaIdaVuelta;
 	private int mes;
-
+	public static String fechaVuelta,horaVuelta;
+	
 	public ControladorIdaVuelta(IdaVuelta ventanaIdaVuelta) {
 		this.vistaIdaVuelta = ventanaIdaVuelta;
 
@@ -47,9 +48,11 @@ public class ControladorIdaVuelta implements ActionListener, ListSelectionListen
 			@Override
 			public void propertyChange(PropertyChangeEvent e) {
 				if(vistaIdaVuelta.getCalendar().getDayChooser().getDay()==(ControladorMenuLinea.conservarDia())) {
+					vistaIdaVuelta.getBoxHora().removeAllItems();
 					mCargarHoraPrimerAutobus();
 				}
 				else {
+					vistaIdaVuelta.getBoxHora().removeAllItems();
 					mCargarHoraAutobus();
 				}
 				}
@@ -80,6 +83,7 @@ public class ControladorIdaVuelta implements ActionListener, ListSelectionListen
 			ControladorBienvenida controladorBienvenida = new ControladorBienvenida(ventanaBienvenida);
 			break;
 		case CONFIRMAR:
+			mGuardarVariables();
 			vistaIdaVuelta.setVisible(false);
 			vista.Resumen ventanaResumen = new vista.Resumen();
 			ventanaResumen.setVisible(true);
@@ -147,6 +151,7 @@ public class ControladorIdaVuelta implements ActionListener, ListSelectionListen
 		vistaIdaVuelta.getCalendar().setSelectableDateRange(fechaMinima,fechaMaxima);
 		
 	}
+
 	private void mCargarHoraPrimerAutobus() {
 		String fecha, Cod_Linea, Cod_Linea2 = "";
 		fecha = recogerFecha();
@@ -176,4 +181,23 @@ public class ControladorIdaVuelta implements ActionListener, ListSelectionListen
 		}
 
 	}
+
+	private void mGuardarVariables() {
+		horaVuelta=vistaIdaVuelta.getBoxHora().getSelectedItem().toString();
+		
+		int dia, mes, ano;
+		String cero="",ceroDia="";
+
+		dia = vistaIdaVuelta.getCalendar().getDayChooser().getDay();
+		mes = ((vistaIdaVuelta.getCalendar().getMonthChooser().getMonth())+1);
+		ano = vistaIdaVuelta.getCalendar().getYearChooser().getYear();
+		if(Integer.toString(mes).length()==1) {
+			cero="0";
+		}
+		if(Integer.toString(dia).length()==1) {
+			ceroDia="0";
+		}
+		fechaVuelta = ( ano + "-" + cero + mes + "-" + ceroDia + dia);
+	}
+
 }

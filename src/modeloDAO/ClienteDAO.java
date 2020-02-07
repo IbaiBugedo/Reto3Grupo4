@@ -8,9 +8,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import conexion.Conexion;
 import modelo.Cliente;
+import modelo.Parada;
 
 public class ClienteDAO {
 	
@@ -85,7 +88,39 @@ public class ClienteDAO {
 	
 		return existeContacto;
 	}
-	
+public static ArrayList<Cliente> mObtenerDatosCliente(String DNI) {
+		
+		Connection co =null;
+		Statement stm= null;
+		ResultSet rs=null;
+		
+		
+		String sql="SELECT nombre,DNI,Apellidos,sexo FROM cliente where dni='"+DNI+"' ;";
+		
+		ArrayList<Cliente> listaCliente= new ArrayList<Cliente>();
+		
+		try {			
+			co= Conexion.conectar();
+			stm=co.createStatement();
+			rs=stm.executeQuery(sql);
+			while (rs.next()) {
+				Cliente c=new Cliente();
+				c.setNombre(rs.getString(1));
+				c.setDni(rs.getString(2));
+				c.setApellido(rs.getString(3));
+				c.setSexo(rs.getString(4));
+				listaCliente.add(c);
+			}
+			stm.close();
+			rs.close();
+			co.close();
+		} catch (SQLException e) {
+			System.out.println("Error: Clase ParadaDAO, método mObtenerParada");
+			e.printStackTrace();
+		}
+		
+		return listaCliente;
+	}
 	
 	public static String getMD5(String input) {
 		 try {

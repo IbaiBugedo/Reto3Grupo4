@@ -86,6 +86,7 @@ public class ControladorRegistro implements ActionListener {
 
 		ClienteDAO nuevoClienteDAO = new ClienteDAO();
 		if (modeloDAO.ClienteDAO.mInsetarContacto(nuevoCliente)) {
+			ControladorIniciarSesion.DNI=ventanaRegistro.getRespuestaDNI().getText().toString();
 			ventanaRegistro.setVisible(false);
 			vista.Pago ventanaPago = new vista.Pago();
 			ventanaPago.setVisible(true);

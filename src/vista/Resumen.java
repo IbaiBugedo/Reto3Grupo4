@@ -32,9 +32,8 @@ public class Resumen extends JFrame {
 	btnModificar,
 	btnAceptar;
 	private JComboBox boxNumeroTiquets;
-	
-	
-	
+	private JLabel lblHoraVuelta;
+	private JLabel lblFechaVuelta;
 	public Resumen() {
 		
 		mCrearJFrame();
@@ -110,18 +109,28 @@ public class Resumen extends JFrame {
 		
 		lblFecha = new JLabel("24 Enero 2020");
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFecha.setBounds(44, 221, 156, 25);
+		lblFecha.setBounds(44, 202, 156, 25);
 		contentPane.add(lblFecha);
 		
 		lblHora = new JLabel("15:30");
 		lblHora.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblHora.setBounds(297, 221, 156, 25);
+		lblHora.setBounds(297, 202, 156, 25);
 		contentPane.add(lblHora);
 		
 		lblPrecio = new JLabel("28,95\u20AC");
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblPrecio.setBounds(559, 221, 106, 25);
 		contentPane.add(lblPrecio);
+		
+		lblHoraVuelta = new JLabel("15:30");
+		lblHoraVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblHoraVuelta.setBounds(297, 245, 156, 25);
+		contentPane.add(lblHoraVuelta);
+		
+		lblFechaVuelta = new JLabel("24 Enero 2020");
+		lblFechaVuelta.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFechaVuelta.setBounds(44, 245, 156, 25);
+		contentPane.add(lblFechaVuelta);
 	}
 	
 	private void mCrearJButton() {
@@ -159,6 +168,8 @@ public class Resumen extends JFrame {
 		boxNumeroTiquets.setPrototypeDisplayValue(true);	
 		boxNumeroTiquets.setMaximumRowCount(8);
 		contentPane.add(boxNumeroTiquets);
+		
+
 	}
 
 	//
@@ -184,6 +195,23 @@ public class Resumen extends JFrame {
 
 	public void setLblTipoViaje(JLabel lblTipoViaje) {
 		this.lblTipoViaje = lblTipoViaje;
+	}
+
+
+	public JLabel getLblHoraVuelta() {
+		return lblHoraVuelta;
+	}
+
+	public void setLblHoraVuelta(JLabel lblHoraVuelta) {
+		this.lblHoraVuelta = lblHoraVuelta;
+	}
+
+	public JLabel getLblFechaVuelta() {
+		return lblFechaVuelta;
+	}
+
+	public void setLblFechaVuelta(JLabel lblFechaVuelta) {
+		this.lblFechaVuelta = lblFechaVuelta;
 	}
 
 	public JLabel getLblFecha() {
@@ -249,5 +277,4 @@ public class Resumen extends JFrame {
 	public void setBoxNumeroTiquets(JComboBox boxNumeroTiquets) {
 		this.boxNumeroTiquets = boxNumeroTiquets;
 	}
-
 }

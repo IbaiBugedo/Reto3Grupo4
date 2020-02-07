@@ -23,7 +23,9 @@ public class ControladorBienvenida implements ActionListener, ListSelectionListe
 	}
 
 	private void inicializarControlador() {
-
+		ControladorIdaVuelta.fechaVuelta="";
+		ControladorIdaVuelta.horaVuelta="";
+		
 		vistaBienvenida.getPanelBienvenida().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

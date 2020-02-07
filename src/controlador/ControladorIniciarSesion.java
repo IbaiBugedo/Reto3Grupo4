@@ -23,6 +23,8 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 		this.inicializarControlador();
 	}
 
+	public static String DNI;
+	
 	private void inicializarControlador() {
 		this.vistaIniciarSesion.getBtnIniciarSesion().addActionListener(this);
 		this.vistaIniciarSesion.getBtnIniciarSesion()
@@ -44,6 +46,7 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 
 		switch (accion) {
 		case SIGUIENTE_PAGINA:
+			
 			String respuestaDNI, respuestaContrasena, vacio;
 			respuestaDNI = vistaIniciarSesion.getRespuestaDNI().getText();	
 			ValidarDNI.validarDNI(respuestaDNI);
@@ -53,6 +56,7 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 			/*** descomentar al entregar ***/
 			if (respuestaDNI.equals(vacio) == false && respuestaContrasena.equals("") == false) {
 				if ((modeloDAO.ClienteDAO.mIniciarSesion(respuestaDNI, respuestaContrasena))) {
+					DNI=vistaIniciarSesion.getRespuestaDNI().getText().toString();
 					vistaIniciarSesion.setVisible(false);
 					vista.Pago ventanaPago = new vista.Pago();
 					ventanaPago.setVisible(true);

@@ -44,7 +44,7 @@ public class Ticket extends JFrame {
 	respuestaTipoBillete,
 	respuestaNombre,
 	respuestaDNI,
-	respuestaHombre,
+	respuestaSexo,
 	respuestaApellido,
 	respuestaNBillete,
 	CosteDeBillete,
@@ -52,6 +52,8 @@ public class Ticket extends JFrame {
 	respuestaHoraSalida;
 	private JButton ImprimirTiquet;
 	private JButton Finalizar;
+	private JLabel lblHoraVuelta;
+	private JLabel lblFechaVuelta;
 
 	public Ticket() {
 		mCrearPanelContenedor();
@@ -285,10 +287,10 @@ public class Ticket extends JFrame {
 		respuestaDNI.setBounds(330, 283, 76, 24);
 		contentPane.add(respuestaDNI);
 		
-		respuestaHombre = new JLabel("Hombre");
-		respuestaHombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		respuestaHombre.setBounds(535, 282, 76, 24);
-		contentPane.add(respuestaHombre);
+		respuestaSexo = new JLabel("Hombre");
+		respuestaSexo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		respuestaSexo.setBounds(535, 282, 76, 24);
+		contentPane.add(respuestaSexo);
 		
 		respuestaApellido = new JLabel("Picapiedra");
 		respuestaApellido.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -300,20 +302,20 @@ public class Ticket extends JFrame {
 		respuestaNBillete.setBounds(493, 350, 126, 24);
 		contentPane.add(respuestaNBillete);
 	
-		JLabel label_1 = new JLabel("21:35");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label_1.setBounds(150, 188, 84, 24);
-		contentPane.add(label_1);
+		lblHoraVuelta = new JLabel("21:35");
+		lblHoraVuelta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblHoraVuelta.setBounds(150, 188, 84, 24);
+		contentPane.add(lblHoraVuelta);
 		
 		respuestaHoraSalida = new JLabel("12:00");
 		respuestaHoraSalida.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		respuestaHoraSalida.setBounds(150, 168, 84, 24);
 		contentPane.add(respuestaHoraSalida);
 		
-		JLabel label = new JLabel("15/01/2020");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label.setBounds(21, 188, 84, 24);
-		contentPane.add(label);
+		lblFechaVuelta = new JLabel("15/01/2020");
+		lblFechaVuelta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFechaVuelta.setBounds(21, 188, 84, 24);
+		contentPane.add(lblFechaVuelta);
 	}
 
 	
@@ -321,6 +323,24 @@ public JLabel getRespuestaEmpresa() {
 		return respuestaEmpresa;
 	}
 
+
+	
+
+	public JLabel getLblHoraVuelta() {
+	return lblHoraVuelta;
+}
+
+public void setLblHoraVuelta(JLabel lblHoraVuelta) {
+	this.lblHoraVuelta = lblHoraVuelta;
+}
+
+public JLabel getLblFechaVuelta() {
+	return lblFechaVuelta;
+}
+
+public void setLblFechaVuelta(JLabel lblFechaVuelta) {
+	this.lblFechaVuelta = lblFechaVuelta;
+}
 
 	public void setRespuestaEmpresa(JLabel respuestaEmpresa) {
 		this.respuestaEmpresa = respuestaEmpresa;
@@ -417,13 +437,13 @@ public JLabel getRespuestaEmpresa() {
 	}
 
 
-	public JLabel getRespuestaHombre() {
-		return respuestaHombre;
+	public JLabel getRespuestaSexo() {
+		return respuestaSexo;
 	}
 
 
-	public void setRespuestaHombre(JLabel respuestaHombre) {
-		this.respuestaHombre = respuestaHombre;
+	public void setRespuestaSexo(JLabel respuestaHombre) {
+		this.respuestaSexo = respuestaHombre;
 	}
 
 
