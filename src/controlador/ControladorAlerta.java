@@ -34,8 +34,10 @@ import vista.MenuLinea;
 			@Override
 			public void windowOpened(WindowEvent arg0) {
 				try {
-					// TODO add your handling code here:
-					Thread.sleep(2500);
+
+
+					Thread.sleep(2750);
+
 					vistaAlerta.setVisible(false);
 				} catch (InterruptedException ex) {
 					Logger.getLogger(Devolucion.class.getName()).log(Level.SEVERE, null, ex);
