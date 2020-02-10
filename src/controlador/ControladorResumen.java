@@ -4,23 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.lang.reflect.Array;
+
+
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-
-import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import modelo.Autobus;
 import modelo.Linea;
 import modelo.Parada;
-import vista.IniciarSesion;
-import vista.MenuLinea;
 import vista.Resumen;
 
 public class ControladorResumen implements ActionListener, ListSelectionListener {
@@ -29,8 +22,9 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 	public static int Linea = 0, origen, horaInt, destino, objetoOrigen, objetoDestino, asientosOcupados, numAsientos,
 			asientosLibres, multiplicador;
 	String cod_Linea;
-	private static double precioBillete;
-	private int precioBilleteInt;
+	public static double precioTotalIda,precioTotalVuelta;
+	private static double precioBillete,precioBilleteTotal=0,precioBilleteTotalVuelta=0;
+
 
 	public ControladorResumen(Resumen ventanaResumen) {
 		this.vistaResumen = ventanaResumen;
@@ -44,8 +38,6 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 		ArrayList<Parada> listaParada = modeloDAO.ParadaDAO
 				.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea() - 1).getCod_Linea());
 
-		
-		
 		fecha = (ControladorMenuLinea.recogerFecha());
 		linea = (ControladorMenuLinea.recogerLinea());
 		origenS = (ControladorMenuOrigenDestino.recogerOrigen());
@@ -63,20 +55,44 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 		for (int i = 1; i <= asientosLibres; i++) {
 			vistaResumen.getBoxNumeroTiquets().addItem(i);
 		}
-		precioBillete = modeloDAO.BilleteDAO.mPrecioTrayecto(listaAutobus.get(0), listaParada.get(objetoOrigen),
-				listaParada.get(objetoDestino));
-		precioBillete = Math.round(precioBillete *100.0)/100.0;
-		
-		
-
-		if (tipoBillete.equals("Ida y Vuelta")) {
-			precioBillete = precioBillete * 2;
-			precioBillete = Math.round(precioBillete *100.0)/100.0;
+	
+		for(int i=objetoOrigen;i<=objetoDestino;i++) {
+			precioBillete = modeloDAO.BilleteDAO.mPrecioTrayecto(listaAutobus.get(0), listaParada.get(i),
+					listaParada.get(i+1));		
+			precioBilleteTotal=precioBilleteTotal+precioBillete;
+			precioBilleteTotal = Math.round(precioBilleteTotal * 100.0) / 100.0;
 		}
-		
+		for(int i=objetoDestino;i<=objetoOrigen;i++) {
+			precioBillete = modeloDAO.BilleteDAO.mPrecioTrayecto(listaAutobus.get(0), listaParada.get(i),
+					listaParada.get(i+1));
+			precioBilleteTotal=precioBilleteTotal+precioBillete;
+			precioBilleteTotal = Math.round(precioBilleteTotal * 100.0) / 100.0;
+		}
+		precioTotalIda=precioBilleteTotal;
+		if (tipoBillete.equals("Ida y Vuelta")) {
+			ArrayList<Autobus> listaAutobusVuelta = modeloDAO.AutobusDAO.mObtenerDatosAutobus(cod_Linea, ControladorIdaVuelta.horaVuelta, ControladorIdaVuelta.fechaVuelta);
+			
+			for(int i=objetoOrigen;i<=objetoDestino;i++) {
+				precioBillete = modeloDAO.BilleteDAO.mPrecioTrayecto(listaAutobusVuelta.get(0), listaParada.get(i),
+						listaParada.get(i+1));
+				precioBilleteTotalVuelta=precioBilleteTotalVuelta+precioBillete;
+				precioBilleteTotalVuelta = Math.round(precioBilleteTotalVuelta * 100.0) / 100.0;
+			}
+			for(int i=objetoDestino;i<=objetoOrigen;i++) {
+				precioBillete = modeloDAO.BilleteDAO.mPrecioTrayecto(listaAutobusVuelta.get(0), listaParada.get(i),
+						listaParada.get(i+1));
+				precioBilleteTotalVuelta=precioBilleteTotalVuelta+precioBillete;
+				precioBilleteTotalVuelta = Math.round(precioBilleteTotalVuelta * 100.0) / 100.0;
+			}	
+			precioTotalVuelta=precioBilleteTotalVuelta;
+			precioBilleteTotal=precioTotalIda+precioTotalVuelta;
+			
+			
+		}
+		precioBilleteTotal=precioTotalIda+precioTotalVuelta;
 		vistaResumen.getLblHoraVuelta().setText(ControladorIdaVuelta.horaVuelta);
 		vistaResumen.getLblFechaVuelta().setText(ControladorIdaVuelta.fechaVuelta);
-		vistaResumen.getLblPrecio().setText(precioBillete + "\u20AC");
+		vistaResumen.getLblPrecio().setText(precioBilleteTotal + "\u20AC");
 		vistaResumen.getLblFecha().setText(fecha);
 		vistaResumen.getLblLinea().setText(linea);
 		vistaResumen.getLblOrigenDestino().setText(origenDestino);
@@ -94,18 +110,11 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 
 		vistaResumen.getBoxNumeroTiquets().addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				precioBillete = modeloDAO.BilleteDAO.mPrecioTrayecto(listaAutobus.get(0), listaParada.get(objetoOrigen),
-						listaParada.get(objetoDestino));
-
+				precioBilleteTotal=precioTotalIda+precioTotalVuelta;
 				multiplicador = Integer.parseInt(vistaResumen.getBoxNumeroTiquets().getSelectedItem().toString());
-				precioBillete = precioBillete * multiplicador;
-				if (tipoBillete.equals("Ida y Vuelta")) {
-					precioBillete = precioBillete * 2;
-				}
-				MathContext formatoDecimal = new MathContext(3);
-				BigDecimal decimal = new BigDecimal(precioBillete, formatoDecimal);
-				precioBillete = decimal.doubleValue();
-				vistaResumen.getLblPrecio().setText(precioBillete + "\u20AC");
+				precioBilleteTotal = precioBilleteTotal * multiplicador;
+				precioBilleteTotal = Math.round(precioBilleteTotal * 100.0) / 100.0;
+				vistaResumen.getLblPrecio().setText(precioBilleteTotal + "\u20AC");
 			}
 		});
 	}

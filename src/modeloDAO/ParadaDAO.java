@@ -20,7 +20,7 @@ public class ParadaDAO {
 		ResultSet rs=null;
 		
 		
-		String sql="SELECT nombre,calle,latitud,longitud,cod_parada FROM parada where cod_parada in(select cod_parada from linea_parada where cod_linea='"+lineaS+"') ORDER BY cod_parada ;";
+		String sql="SELECT nombre,calle,latitud,longitud,a.cod_parada FROM parada a, linea_parada b where a.cod_parada=b.cod_parada and cod_linea='"+lineaS+"' ORDER BY num_parada ;";
 		
 		ArrayList<Parada> listaParada= new ArrayList<Parada>();
 		
