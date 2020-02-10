@@ -60,12 +60,12 @@ private static boolean error=false;
         if(DNI.startsWith("0")){
             nuevoDNI = "0"+nuevoDNI;
         }
-        if (!(letra >= 'A' && letra <= 'Z')||error==true) {
+        if (!(letra >= 'A' && letra <= 'Z')&&error==false) {
 			vista.Alerta ventanaAlerta = new vista.Alerta(4);
 			ventanaAlerta.setVisible(true);
 			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
         }
-        else if (!(nuevoDNI.equals(dniMayus))) {
+        else if (!(nuevoDNI.equals(dniMayus))&&error==false) {
         	vista.Alerta ventanaAlerta = new vista.Alerta(5);
 			ventanaAlerta.setVisible(true);
 			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
