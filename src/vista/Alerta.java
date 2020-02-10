@@ -35,7 +35,7 @@ public class Alerta extends JFrame {
 		mCrearJLabel(); 
 		switch (cod_Alerta) {
 		case 1:
-			txtAlert.setText("");
+			txtAlert.setText("Recoga su Ticket porfavor");
 			break;
 		case 2:
 			txtAlert.setText("La longitud debe estar entre 8 y 9");

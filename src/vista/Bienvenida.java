@@ -28,7 +28,6 @@ public class Bienvenida extends JFrame {
 		CONTINUAR
 	}
 	public JPanel PanelBienvenida;
-	private JButton botonContinuar;
 
 
 	public Bienvenida() {
@@ -68,22 +67,4 @@ public class Bienvenida extends JFrame {
 	public JPanel getPanelBienvenida() {
 		return PanelBienvenida;
 	}
-
-	public void setPanelBienvenida(JPanel panelBienvenida) {
-		PanelBienvenida = panelBienvenida;
-	}
-	
-	public JButton getBotonContinuar() {
-		return botonContinuar;
-	}
-
-/*	public Bienvenida(JButton botonContinuar) throws HeadlessException {
-		super();
-		this.botonContinuar = botonContinuar;
-	}*/
-
-	public void setBotonContinuar(JButton botonContinuar) {
-		this.botonContinuar = botonContinuar;
-	}
-
 }

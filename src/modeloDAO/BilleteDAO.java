@@ -4,8 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 import conexion.Conexion;
 import modelo.Autobus;
+import modelo.Billete;
+import modelo.Cliente;
+import modelo.Linea;
 import modelo.Parada;
 
 public class BilleteDAO {
@@ -42,71 +48,69 @@ public class BilleteDAO {
         return distancia;  
     } 
 	
-	/*public static double mLat1(int codParada) {
-		double latitud=0;
-		Connection co = null;
-	
-		ResultSet rs = null;
-	
-		PreparedStatement stmt = null;
+	public static ArrayList<Billete> mObtenerNBillete() {
+		Connection co =null;
+		Statement stm= null;
+		ResultSet rs=null;
 		
-		String sql = "SELECT Latitud FROM parada WHERE Cod_Parada = ?;";
-	
-	
-		try {
-			co = Conexion.conectar();
-	
-			stmt = co.prepareStatement(sql);
-			stmt.setInt(1, codParada);
-			rs = stmt.executeQuery();
-	
-			if (rs.first()) {
-				latitud=rs.getInt(1);
+		String sql="SELECT max(Cod_billete)+1 FROM billete ;";
+		
+		ArrayList<Billete> listaBillete= new ArrayList<Billete>();
+		
+		try {			
+			co= Conexion.conectar();
+			stm=co.createStatement();
+			rs=stm.executeQuery(sql);
+			while (rs.next()) {
+				Billete c=new Billete();
+				c.setCodBillete(rs.getInt(1));
+				listaBillete.add(c);
 			}
-			
-			stmt.close();
+			stm.close();
 			rs.close();
 			co.close();
-	
 		} catch (SQLException e) {
-			System.out.println("Error: Clase BilleteDAO, metodo Latitud1");
+			System.out.println("Error: Clase Contacto, método mObtenerContactos");
 			e.printStackTrace();
 		}
-	
-		return latitud;
+		
+		return listaBillete;
 	}
 	
-	public static double mLong1(int codParada) {
-		double longitud=0;
-		Connection co = null;
-	
-		ResultSet rs = null;
-	
-		PreparedStatement stmt = null;
+	public static boolean mInsertarBillete(Billete billete) {
+		boolean registrar = false;
 		
-		String sql = "SELECT Longitud FROM parada WHERE Cod_Parada = ?;";
+		Connection con=null;
+		PreparedStatement stmt = null;
 	
-	
+		String sql = " insert into billete values(?,?,?,?,?,?,?,?,?); ";
+		
 		try {
-			co = Conexion.conectar();
-	
-			stmt = co.prepareStatement(sql);
-			stmt.setInt(1, codParada);
-			rs = stmt.executeQuery();
-	
-			if (rs.first()) {
-				longitud=rs.getInt(1);
-			}
+			con=Conexion.conectar();
 			
-			stmt.close();
-			rs.close();
-			co.close();
+		   stmt = con.prepareStatement(sql);
+		   
+		   stmt.setInt(1, billete.getCodBillete());
+		   stmt.setString(2, billete.getCodLinea());
+		   stmt.setInt(3,billete.getCodBus());
+		   stmt.setInt(4,billete.getCodParadaInicio());
+		   stmt.setInt(5,billete.getCodParadaFin());
+		   stmt.setString(6,billete.getFecha());
+		   stmt.setString(7,billete.getHora());
+		   stmt.setString(8,billete.getDni());
+		   stmt.setDouble(9,billete.getPrecio());
+	
+		   stmt.executeUpdate();
+			
+		   stmt.close();
+		   con.close();
+		   registrar=true;
+		
 	
 		} catch (SQLException e) {
-			System.out.println("Error: Clase BilleteDAO, metodo Longitud1");
+			System.out.println("Error: Clase ClienteDAO, método insertar");
 			e.printStackTrace();
 		}
-	
-		return longitud;
-	}*/
+		return registrar;
+	}
 }

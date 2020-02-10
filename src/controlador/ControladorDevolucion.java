@@ -138,7 +138,7 @@ public class ControladorDevolucion implements ActionListener, ListSelectionListe
 			public void windowOpened(WindowEvent arg0) {
 				try {
 					// TODO add your handling code here:
-					Thread.sleep(5000);
+					Thread.sleep(2750);
 					vistaDevolucion.setVisible(false);
 					vista.Ticket ventanaTicket = new vista.Ticket();
 					ventanaTicket.setVisible(true);

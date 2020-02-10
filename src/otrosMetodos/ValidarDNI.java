@@ -60,7 +60,7 @@ private static boolean error=false;
         if(DNI.startsWith("0")){
             nuevoDNI = "0"+nuevoDNI;
         }
-        if (!(letra >= 'A' && letra <= 'Z')||error==false) {
+        if (!(letra >= 'A' && letra <= 'Z')||error==true) {
 			vista.Alerta ventanaAlerta = new vista.Alerta(4);
 			ventanaAlerta.setVisible(true);
 			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
