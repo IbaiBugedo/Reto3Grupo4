@@ -43,7 +43,7 @@ private static boolean error=false;
 
         // Valida que la letra conincida con el resto del numero
         char letra = DNI.substring(DNI.length() - 1, DNI.length()).toUpperCase().charAt(0);
-
+        String dniMayus=(numeroDNI+""+letra+"");
       
 
         //Ya hemos validado el formato
@@ -65,7 +65,7 @@ private static boolean error=false;
 			ventanaAlerta.setVisible(true);
 			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
         }
-        else if (!(nuevoDNI.equals(DNI))) {
+        else if (!(nuevoDNI.equals(dniMayus))) {
         	vista.Alerta ventanaAlerta = new vista.Alerta(5);
 			ventanaAlerta.setVisible(true);
 			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
