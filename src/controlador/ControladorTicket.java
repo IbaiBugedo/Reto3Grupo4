@@ -35,8 +35,7 @@ public class ControladorTicket implements ActionListener, ListSelectionListener 
 
 	private void inicializarControlador() {
 		ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
-		ArrayList<Parada> listaParada = modeloDAO.ParadaDAO
-				.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea() - 1).getCod_Linea());
+		ArrayList<Parada> listaParada = modeloDAO.ParadaDAO.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea() - 1).getCod_Linea());
 		origenS = (ControladorMenuOrigenDestino.recogerOrigen());
 		destinoS = (ControladorMenuOrigenDestino.recogerDestino());
 		fecha = (ControladorMenuLinea.recogerFecha());

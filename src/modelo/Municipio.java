@@ -26,6 +26,6 @@ public class Municipio {
 	public ArrayList<Parada> getArrayParadas() {
 		return arrayParadas;
 	}
-	
+		
 	
 }
