@@ -47,6 +47,14 @@ import vista.MenuLinea;
 		});
 
 	}
+	
+	
+	public void cerrarVentana() {
+		
+		vistaAlerta.setVisible(false);
+		
+	}
+	
 
 	public void actionPerformed(ActionEvent e) {
 

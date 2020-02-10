@@ -2,8 +2,11 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import modelo.Cliente;
+import modelo.Linea;
+import modelo.Parada;
 import modeloDAO.ClienteDAO;
 import vista.Registro;
 
@@ -84,6 +87,11 @@ public class ControladorRegistro implements ActionListener {
 		nuevoCliente.setContrasena(ventanaRegistro.getRespuestaContrasena().getText());
 		nuevoCliente.setDni(ventanaRegistro.getRespuestaDNI().getText());
 
+	
+		
+		
+		
+		
 		ClienteDAO nuevoClienteDAO = new ClienteDAO();
 		if (modeloDAO.ClienteDAO.mInsetarContacto(nuevoCliente)) {
 			ControladorIniciarSesion.DNI=ventanaRegistro.getRespuestaDNI().getText().toString();

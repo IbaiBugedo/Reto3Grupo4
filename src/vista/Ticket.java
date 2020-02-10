@@ -15,6 +15,10 @@ import javax.swing.JButton;
 
 public class Ticket extends JFrame {
 
+	public static enum enumAcciones{
+		IMPRIMIR, 
+		FINALIZAR
+	}
 	private JPanel contentPane;
 	private JTable table,
 	table_1,

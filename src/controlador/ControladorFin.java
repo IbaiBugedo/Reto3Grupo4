@@ -35,7 +35,7 @@ public class ControladorFin implements ActionListener, ListSelectionListener {
 			public void windowOpened(WindowEvent arg0) {
 				try {
 					// TODO add your handling code here:
-					Thread.sleep(5000);
+					Thread.sleep(2750);
 					vistaFin.setVisible(false);
 					vista.Bienvenida ventanaBienvenida = new vista.Bienvenida();
 					ventanaBienvenida.setVisible(true);
