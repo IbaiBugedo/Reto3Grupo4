@@ -27,7 +27,7 @@ public class ControladorPago implements ActionListener, ListSelectionListener {
 
 	private void inicializarControlador() {
 
-		// recoge de la ventana Resumen el precio para operar con el.
+		// recoje de la ventana Resumen el precio para operar con el.
 
 		precio = (ControladorResumen.recogerPrecio());
 		importeRestante = precio;
