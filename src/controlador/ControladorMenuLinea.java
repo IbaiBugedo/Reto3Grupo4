@@ -33,6 +33,7 @@ import vista.MenuOrigenDestino;
 
 public class ControladorMenuLinea implements ActionListener, ListSelectionListener {
 
+	ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
 	private static MenuLinea vistaMenuLinea;
 	public static String Imagen;
 	private int numArray;
@@ -44,6 +45,7 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 	}
 
 	private void inicializarControlador() {
+		
 		mcargarfecha();
 		mCargarLinea();
 		vistaMenuLinea.getBoxLinea().setSelectedIndex(ControladorResumen.Linea);
@@ -57,7 +59,6 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 			public void itemStateChanged(ItemEvent e) {
 				if ((vistaMenuLinea.getBoxLinea().getSelectedItem()) != "Selecciona la linea") {
 					vistaMenuLinea.getBtnSiguiente().setEnabled(true);
-					ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
 					numArray=(vistaMenuLinea.getBoxLinea().getSelectedIndex())-1;
 					Imagen=listaLinea.get(numArray).getImagen_linea().toString();
 					vistaMenuLinea.getLblImagen().setIcon(new ImageIcon(ControladorMenuLinea.class.getResource(Imagen)));
@@ -81,8 +82,7 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 			vistaMenuLinea.setVisible(false);
 			vista.MenuOrigenDestino ventanaMenuOrigenDestino = new vista.MenuOrigenDestino();
 			ventanaMenuOrigenDestino.setVisible(true);
-			ControladorMenuOrigenDestino controladorMenuOrigenDestino = new ControladorMenuOrigenDestino(
-					ventanaMenuOrigenDestino);
+			ControladorMenuOrigenDestino controladorMenuOrigenDestino = new ControladorMenuOrigenDestino(ventanaMenuOrigenDestino,listaLinea);
 			break;
 
 		}
@@ -137,11 +137,7 @@ public class ControladorMenuLinea implements ActionListener, ListSelectionListen
 	
 	private void mCargarLinea() {
 
-		
-
-		ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
-
-		String nombreLinea[][] = new String[listaLinea.size()][4];
+		String nombreLinea[][] = new String[listaLinea.size()][2];
 
 		for (int i = 0; i < listaLinea.size(); i++) {
 			nombreLinea[i][0] =(listaLinea.get(i).getNombreLinea());

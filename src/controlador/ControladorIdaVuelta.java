@@ -20,6 +20,7 @@ import javax.swing.event.ListSelectionListener;
 
 import modelo.Autobus;
 import modelo.Linea;
+import modelo.Parada;
 import vista.Bienvenida;
 import vista.IdaVuelta;
 import vista.MenuLinea;
@@ -30,8 +31,16 @@ public class ControladorIdaVuelta implements ActionListener, ListSelectionListen
 	private int mes;
 	public static String fechaVuelta,horaVuelta;
 	
-	public ControladorIdaVuelta(IdaVuelta ventanaIdaVuelta) {
+	ArrayList<Linea> listaLinea;
+	ArrayList<Parada> listaParada;
+	ArrayList<Autobus> listaAutobus;
+	
+	public ControladorIdaVuelta(IdaVuelta ventanaIdaVuelta, ArrayList<Linea> listaLinea, ArrayList<Parada> listaParada, ArrayList<Autobus> listaAutobus) {
 		this.vistaIdaVuelta = ventanaIdaVuelta;
+		
+		this.listaLinea=listaLinea;
+		this.listaParada=listaParada;
+		this.listaAutobus=listaAutobus;
 
 		this.inicializarControlador();
 	}
@@ -87,7 +96,7 @@ public class ControladorIdaVuelta implements ActionListener, ListSelectionListen
 			vistaIdaVuelta.setVisible(false);
 			vista.Resumen ventanaResumen = new vista.Resumen();
 			ventanaResumen.setVisible(true);
-			ControladorResumen controladorResumen = new ControladorResumen(ventanaResumen);
+			ControladorResumen controladorResumen = new ControladorResumen(ventanaResumen,listaLinea,listaParada,listaAutobus);
 			break;
 
 		}
@@ -97,24 +106,6 @@ public class ControladorIdaVuelta implements ActionListener, ListSelectionListen
 
 	}
 	private void mCargarHoraAutobus() {
-		String fecha, Cod_Linea, Cod_Linea2 = "";
-		fecha = recogerFecha();
-
-		ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
-
-		String nombreLinea[] = new String[listaLinea.size()];
-
-		for (int i = 0; i < listaLinea.size(); i++) {
-			Cod_Linea = ControladorMenuLinea.recogerLinea();
-			nombreLinea[i] = (listaLinea.get(i).getCod_Linea());
-			Cod_Linea = Cod_Linea.substring(0, nombreLinea[i].length());
-			System.out.println(nombreLinea[i]);
-			if (nombreLinea[i].equals(Cod_Linea)) {
-				Cod_Linea2 = nombreLinea[i];
-			}
-		}
-
-		ArrayList<Autobus> listaAutobus = modeloDAO.AutobusDAO.mObtenerHoraAutobus(fecha, Cod_Linea2);
 
 		String nombreAutobus[][] = new String[listaAutobus.size()][4];
 
@@ -153,10 +144,10 @@ public class ControladorIdaVuelta implements ActionListener, ListSelectionListen
 	}
 
 	private void mCargarHoraPrimerAutobus() {
+		
 		String fecha, Cod_Linea, Cod_Linea2 = "";
 		fecha = recogerFecha();
 		String hora=ControladorMenuOrigenDestino.recogerHora();
-		ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
 
 		String nombreLinea[] = new String[listaLinea.size()];
 
@@ -171,7 +162,6 @@ public class ControladorIdaVuelta implements ActionListener, ListSelectionListen
 		}
 
 		ArrayList<Autobus> listaAutobus = modeloDAO.AutobusDAO.mObtenerHoraPrimerAutobus(fecha, Cod_Linea2,hora);
-
 		String nombreAutobus[][] = new String[listaAutobus.size()][4];
 
 		for (int i = 0; i < listaAutobus.size(); i++) {

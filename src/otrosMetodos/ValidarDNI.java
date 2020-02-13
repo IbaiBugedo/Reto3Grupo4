@@ -15,13 +15,14 @@ private static boolean error=false;
      * @param DNI
      * @throws DNIException 
      */
-    public static void validarDNI(String DNI){
-
+    public static boolean validarDNI(String DNI){
+    	boolean DNICorrecto=true;
         //Comprobamos la longitud del dni
         if (!(DNI.length() >= 8 && DNI.length() <= 9)) {
 			vista.Alerta ventanaAlerta = new vista.Alerta(2);
 			ventanaAlerta.setVisible(true);
 			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
+			DNICorrecto=false;
         }
 
         //saco la parte numerica
@@ -39,6 +40,7 @@ private static boolean error=false;
 			ventanaAlerta.setVisible(true);
 			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
 			error=true;
+			DNICorrecto=false;
         }
 
         // Valida que la letra conincida con el resto del numero
@@ -64,13 +66,15 @@ private static boolean error=false;
 			vista.Alerta ventanaAlerta = new vista.Alerta(4);
 			ventanaAlerta.setVisible(true);
 			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
+			DNICorrecto=false;
         }
         else if (!(nuevoDNI.equals(dniMayus))&&error==false) {
         	vista.Alerta ventanaAlerta = new vista.Alerta(5);
 			ventanaAlerta.setVisible(true);
 			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
+			DNICorrecto=false;
         }
-
+        return DNICorrecto;
     }
 
 }

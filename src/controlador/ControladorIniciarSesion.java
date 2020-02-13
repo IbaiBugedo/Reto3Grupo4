@@ -4,10 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import modelo.Autobus;
+import modelo.Linea;
+import modelo.Parada;
 import otrosMetodos.ValidarDNI;
 import vista.Bienvenida;
 import vista.IniciarSesion;
@@ -16,14 +21,21 @@ import vista.MenuLinea;
 public class ControladorIniciarSesion implements ActionListener, ListSelectionListener {
 
 	private IniciarSesion vistaIniciarSesion;
-
-	public ControladorIniciarSesion(IniciarSesion ventanaIniciarSesion) {
+	public static String DNI;
+	ArrayList<Linea> listaLinea;
+	ArrayList<Parada> listaParada;
+	ArrayList<Autobus> listaAutobus;
+	
+	
+	public ControladorIniciarSesion(IniciarSesion ventanaIniciarSesion, ArrayList<Linea> listaLinea, ArrayList<Parada> listaParada, ArrayList<Autobus> listaAutobus) {
 		this.vistaIniciarSesion = ventanaIniciarSesion;
-
+		
+		this.listaLinea=listaLinea;
+		this.listaParada=listaParada;
+		this.listaAutobus=listaAutobus;
+		
 		this.inicializarControlador();
 	}
-
-	public static String DNI;
 	
 	private void inicializarControlador() {
 		this.vistaIniciarSesion.getBtnIniciarSesion().addActionListener(this);
@@ -53,14 +65,13 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 			respuestaContrasena = vistaIniciarSesion.getRespuestaContrasena().getText();
 			vacio = "";
 
-			/*** descomentar al entregar ***/
-			if (respuestaDNI.equals(vacio) == false && respuestaContrasena.equals("") == false) {
+			if (otrosMetodos.ValidarDNI.validarDNI(vistaIniciarSesion.getRespuestaDNI().getText())) {
 				if ((modeloDAO.ClienteDAO.mIniciarSesion(respuestaDNI, respuestaContrasena))) {
 					DNI=vistaIniciarSesion.getRespuestaDNI().getText().toString();
 					vistaIniciarSesion.setVisible(false);
 					vista.Pago ventanaPago = new vista.Pago();
 					ventanaPago.setVisible(true);
-					ControladorPago controladorPago = new ControladorPago(ventanaPago);
+					ControladorPago controladorPago = new ControladorPago(ventanaPago,listaLinea,listaParada,listaAutobus);
 				}
 			} 
 			break;
@@ -68,7 +79,7 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 			vistaIniciarSesion.setVisible(false);
 			vista.Registro ventanaRegistro = new vista.Registro();
 			ventanaRegistro.setVisible(true);
-			ControladorRegistro controladorRegistro = new ControladorRegistro(ventanaRegistro);
+			ControladorRegistro controladorRegistro = new ControladorRegistro(ventanaRegistro,listaLinea,listaParada,listaAutobus);
 			break;
 		case CANCELAR:
 			vistaIniciarSesion.setVisible(false);
@@ -80,7 +91,7 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 			vistaIniciarSesion.setVisible(false);
 			vista.Resumen ventanaResumen = new vista.Resumen();
 			ventanaResumen.setVisible(true);
-			ControladorResumen controladorResumen = new ControladorResumen(ventanaResumen);
+			ControladorResumen controladorResumen = new ControladorResumen(ventanaResumen,listaLinea,listaParada,listaAutobus);
 			break;
 		}
 	}

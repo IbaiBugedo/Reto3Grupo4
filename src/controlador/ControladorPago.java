@@ -6,11 +6,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import modelo.Autobus;
+import modelo.Linea;
+import modelo.Parada;
 import vista.MenuLinea;
 import vista.Pago;
 
@@ -19,9 +23,17 @@ public class ControladorPago implements ActionListener, ListSelectionListener {
 	private Pago vistaPago;
 	public static double importe, precio, importeRestante, sumaImporte = 0;
 
-	public ControladorPago(Pago ventanaPago) {
+	ArrayList<Linea> listaLinea;
+	ArrayList<Parada> listaParada;
+	ArrayList<Autobus> listaAutobus;
+	
+	public ControladorPago(Pago ventanaPago, ArrayList<Linea> listaLinea, ArrayList<Parada> listaParada, ArrayList<Autobus> listaAutobus) {
 		this.vistaPago = ventanaPago;
 
+		this.listaLinea=listaLinea;
+		this.listaParada=listaParada;
+		this.listaAutobus=listaAutobus;
+		
 		this.inicializarControlador();
 	}
 
@@ -54,7 +66,7 @@ public class ControladorPago implements ActionListener, ListSelectionListener {
 				vistaPago.setVisible(false);
 				vista.Devolucion ventanaDevolucion = new vista.Devolucion();
 				ventanaDevolucion.setVisible(true);
-				ControladorDevolucion controladorDevolucion = new ControladorDevolucion(ventanaDevolucion);
+				ControladorDevolucion controladorDevolucion = new ControladorDevolucion(ventanaDevolucion,listaLinea,listaParada,listaAutobus);
 			}
 			break;
 

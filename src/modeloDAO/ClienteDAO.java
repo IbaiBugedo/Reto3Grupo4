@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import conexion.Conexion;
+import controlador.ControladorAlerta;
 import modelo.Cliente;
 import modelo.Parada;
 
@@ -75,6 +76,11 @@ public class ClienteDAO {
 	
 			if (rs.first()) {
 				existeContacto=true;
+			}
+			else {
+				vista.Alerta ventanaAlerta = new vista.Alerta(6);
+				ventanaAlerta.setVisible(true);
+				ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
 			}
 			
 			stmt.close();

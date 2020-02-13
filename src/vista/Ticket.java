@@ -53,7 +53,8 @@ public class Ticket extends JFrame {
 	respuestaNBillete,
 	CosteDeBillete,
 	TipoDeBillete,
-	respuestaHoraSalida;
+	respuestaHoraSalida,
+	respuestaAutobus2;
 	private JButton ImprimirTiquet;
 	private JButton Finalizar;
 	private JLabel lblHoraVuelta;
@@ -82,9 +83,14 @@ public class Ticket extends JFrame {
 
 	private void mCrearJButton() {
 		
+		respuestaAutobus2 = new JLabel("");
+		respuestaAutobus2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		respuestaAutobus2.setBounds(330, 51, 75, 24);
+		contentPane.add(respuestaAutobus2);
+		
 
 		
-		ImprimirTiquet = new JButton("Imprimir tiquet");
+		ImprimirTiquet = new JButton("Imprimir ticket");
 		ImprimirTiquet.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		ImprimirTiquet.setBounds(70, 397, 272, 53);
 		contentPane.add(ImprimirTiquet);
@@ -176,6 +182,7 @@ public class Ticket extends JFrame {
 	}
 
 	private void mCrearJLabel() {
+		
 		JLabel Empresa = new JLabel("Empresa");
 		Empresa.setFont(new Font("Tahoma", Font.BOLD, 14));
 		Empresa.setBounds(117, 11, 75, 24);
@@ -258,7 +265,7 @@ public class Ticket extends JFrame {
 		
 		respuestaCodigo = new JLabel("2348");
 		respuestaCodigo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		respuestaCodigo.setBounds(331, 46, 75, 24);
+		respuestaCodigo.setBounds(330, 30, 75, 24);
 		contentPane.add(respuestaCodigo);
 		
 		respuestaFechaCompra = new JLabel("12/01/2020");
@@ -498,6 +505,16 @@ public void setLblFechaVuelta(JLabel lblFechaVuelta) {
 	
 	public void setRespuestaHoraSalida(JLabel respuestaHoraSalida) {
 		this.respuestaHoraSalida = respuestaHoraSalida;
+	}
+
+
+	public JLabel getRespuestaAutobus2() {
+		return respuestaAutobus2;
+	}
+
+	
+	public void setRespuestaAutobus2(JLabel respuestaAutobus2) {
+		this.respuestaAutobus2 = respuestaAutobus2;
 	}
 
 

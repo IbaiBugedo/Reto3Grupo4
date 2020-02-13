@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import modelo.Autobus;
 import modelo.Cliente;
 import modelo.Linea;
 import modelo.Parada;
@@ -14,10 +15,18 @@ public class ControladorRegistro implements ActionListener {
 
 	private Registro ventanaRegistro;
 
-	public ControladorRegistro(Registro VentanaRegistro) {
+	ArrayList<Linea> listaLinea;
+	ArrayList<Parada> listaParada;
+	ArrayList<Autobus> listaAutobus;
+	
+	public ControladorRegistro(Registro VentanaRegistro, ArrayList<Linea> listaLinea, ArrayList<Parada> listaParada, ArrayList<Autobus> listaAutobus) {
 
 		this.ventanaRegistro = VentanaRegistro;
 
+		this.listaLinea=listaLinea;
+		this.listaParada=listaParada;
+		this.listaAutobus=listaAutobus;
+		
 		metInicializarControlador();
 
 	}
@@ -58,7 +67,7 @@ public class ControladorRegistro implements ActionListener {
 		ventanaRegistro.setVisible(false);
 		vista.IniciarSesion ventanaIniciarSesion = new vista.IniciarSesion();
 		ventanaIniciarSesion.setVisible(true);
-		ControladorIniciarSesion controladorIniciarSesion = new ControladorIniciarSesion(ventanaIniciarSesion);
+		ControladorIniciarSesion controladorIniciarSesion = new ControladorIniciarSesion(ventanaIniciarSesion,listaLinea,listaParada,listaAutobus);
 	}
 
 	private void metCancelar() {
@@ -98,7 +107,7 @@ public class ControladorRegistro implements ActionListener {
 			ventanaRegistro.setVisible(false);
 			vista.Pago ventanaPago = new vista.Pago();
 			ventanaPago.setVisible(true);
-			ControladorPago controladorPago = new ControladorPago(ventanaPago);
+			ControladorPago controladorPago = new ControladorPago(ventanaPago,listaLinea,listaParada,listaAutobus);
 		}
 
 	}
