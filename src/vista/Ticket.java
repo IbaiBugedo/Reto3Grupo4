@@ -188,7 +188,7 @@ public class Ticket extends JFrame {
 		Empresa.setBounds(117, 11, 75, 24);
 		contentPane.add(Empresa);
 		
-		JLabel Linea = new JLabel("Linea");
+		JLabel Linea = new JLabel("L\u00EDnea");
 		Linea.setFont(new Font("Tahoma", Font.BOLD, 14));
 		Linea.setBounds(166, 78, 45, 24);
 		contentPane.add(Linea);
@@ -198,7 +198,7 @@ public class Ticket extends JFrame {
 		OrigenDestino.setBounds(493, 81, 121, 24);
 		contentPane.add(OrigenDestino);
 		
-		JLabel CodigoAutobus = new JLabel("Codigo Autobus");
+		JLabel CodigoAutobus = new JLabel("C\u00F3digo Autob\u00FAs");
 		CodigoAutobus.setFont(new Font("Tahoma", Font.BOLD, 14));
 		CodigoAutobus.setBounds(300, 11, 126, 24);
 		contentPane.add(CodigoAutobus);

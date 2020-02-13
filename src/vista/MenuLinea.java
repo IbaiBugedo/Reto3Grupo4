@@ -95,7 +95,7 @@ public class MenuLinea extends JFrame {
 		
 		boxLinea = new JComboBox();
 		boxLinea.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		boxLinea.setModel(new DefaultComboBoxModel(new String[] {"Selecciona la linea"}));
+		boxLinea.setModel(new DefaultComboBoxModel(new String[] {"Seleccione la l\u00EDnea"}));
 		boxLinea.setBounds(33, 29, 444, 98);
 		contentPane.add(boxLinea);
 	}

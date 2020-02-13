@@ -57,10 +57,10 @@ public class Resumen extends JFrame {
 
 	private void mCrearJLabel() {
 		
-		JLabel label = new JLabel("Linea");
-		label.setFont(new Font("Tahoma", Font.BOLD, 20));
-		label.setBounds(79, 40, 62, 25);
-		contentPane.add(label);
+		JLabel lblLnea = new JLabel("L\u00EDnea");
+		lblLnea.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblLnea.setBounds(79, 40, 62, 25);
+		contentPane.add(lblLnea);
 		
 		JLabel label_1 = new JLabel("Origen - Destino");
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -87,10 +87,10 @@ public class Resumen extends JFrame {
 		label_5.setBounds(559, 166, 77, 25);
 		contentPane.add(label_5);
 		
-		JLabel label_6 = new JLabel("Numero de tiquets :");
-		label_6.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		label_6.setBounds(135, 311, 185, 25);
-		contentPane.add(label_6);
+		JLabel lblNmeroDeTiquets = new JLabel("N\u00FAmero de tickets :");
+		lblNmeroDeTiquets.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNmeroDeTiquets.setBounds(135, 311, 185, 25);
+		contentPane.add(lblNmeroDeTiquets);
 		
 		lblLinea = new JLabel("Bilbao-San Sebastian");
 		lblLinea.setFont(new Font("Tahoma", Font.PLAIN, 16));

@@ -115,7 +115,7 @@ public class Registro extends JFrame {
 		btnCancelar.setBounds(291, 368, 150, 51);
 		contentPane.add(btnCancelar);
 		
-		btnAtras = new JButton("Atras");
+		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnAtras.setBackground(Color.LIGHT_GRAY);
 		btnAtras.setBounds(501, 368, 150, 51);
@@ -124,7 +124,7 @@ public class Registro extends JFrame {
 
 	private void mCrearJComboBox() {
 		respuestaSexo = new JComboBox();
-		respuestaSexo.setModel(new DefaultComboBoxModel(new String[] {"otro", "Hombre", "Mujer"}));
+		respuestaSexo.setModel(new DefaultComboBoxModel(new String[] {"Otro", "Hombre", "Mujer"}));
 		respuestaSexo.setToolTipText("");
 		respuestaSexo.setMaximumRowCount(50);
 		respuestaSexo.setFont(new Font("Tahoma", Font.PLAIN, 17));

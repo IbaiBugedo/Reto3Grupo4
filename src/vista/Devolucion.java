@@ -50,7 +50,7 @@ public class Devolucion extends JFrame {
 		panelCambios.setBounds(0, 0, 310, 264);
 		panelCambios2.add(panelCambios);
 		
-		RecojaSusCambios = new JLabel("Recoja sus cambios porfavor");
+		RecojaSusCambios = new JLabel("Recoja sus cambios por favor");
 		RecojaSusCambios.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		RecojaSusCambios.setBounds(196, 122, 301, 28);
 		contentPane.add(RecojaSusCambios);

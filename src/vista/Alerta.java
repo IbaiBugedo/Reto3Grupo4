@@ -35,13 +35,13 @@ public class Alerta extends JFrame {
 		mCrearJLabel(); 
 		switch (cod_Alerta) {
 		case 1:
-			txtAlert.setText("Recoga su Ticket por favor");
+			txtAlert.setText("Recoja su Ticket por favor");
 			break;
 		case 2:
-			txtAlert.setText("La longitud debe estar entre 8 y 9");
+			txtAlert.setText("La longitud debe estar entre 8 y 9 caracteres");
 			break;
 		case 3:
-			txtAlert.setText("La parte numerica del DNI debe ser un numero");
+			txtAlert.setText("La parte numérica del DNI debe ser un número");
 			break;
 		case 4:
 			txtAlert.setText("La parte de la letra del DNI debe ser una letra entre A y Z");
@@ -52,6 +52,14 @@ public class Alerta extends JFrame {
 		case 6:
 			txtAlert.setText("DNI o Contraseña incorrectos");
 			break;
+		case 7:
+			txtAlert.setText("Rellene todos los campos por favor");
+			break;
+		case 8:
+			txtAlert.setText("El DNI introducido ya existe");
+			break;
+		case 9:
+			txtAlert.setText("Por favor, seleccion 'Hombre' o 'Mujer' en el campo 'sexo'");
 		}
 		
        

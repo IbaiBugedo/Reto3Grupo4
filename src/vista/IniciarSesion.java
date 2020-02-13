@@ -87,7 +87,7 @@ public class IniciarSesion extends JFrame {
 	}
 	
 	private void mCrearJLabel() {
-		JLabel iniciarSesion = new JLabel("Iniciar Sesion");
+		JLabel iniciarSesion = new JLabel("Iniciar Sesi\u00F3n");
 		iniciarSesion.setFont(new Font("Tahoma", Font.BOLD, 60));
 		iniciarSesion.setBounds(149, 11, 442, 92);
 		contentPane.add(iniciarSesion);
@@ -111,7 +111,7 @@ public class IniciarSesion extends JFrame {
 		btnRetroceso.setBounds(0, 422, 49, 39);
 		contentPane.add(btnRetroceso);
 		
-		btnIniciarSesion = new JButton("Iniciar Sesion");
+		btnIniciarSesion = new JButton("Iniciar Sesi\u00F3n");
 		btnIniciarSesion.setHorizontalAlignment(SwingConstants.LEFT);
 		btnIniciarSesion.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnIniciarSesion.setBackground(Color.LIGHT_GRAY);

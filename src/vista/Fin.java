@@ -36,20 +36,20 @@ public class Fin extends JFrame {
 	private void mCrearJLabel() {
 		JLabel GraciasPorSu = new JLabel("Gracias por su");
 		GraciasPorSu.setFont(new Font("Tahoma", Font.PLAIN, 74));
-		GraciasPorSu.setBounds(107, 52, 494, 72);
+		GraciasPorSu.setBounds(104, 52, 494, 72);
 		contentPane.add(GraciasPorSu);
 		
-		JLabel CompraSu = new JLabel("compra su");
+		JLabel CompraSu = new JLabel("compra. Su");
 		CompraSu.setFont(new Font("Tahoma", Font.PLAIN, 74));
 		CompraSu.setBounds(107, 135, 438, 78);
 		contentPane.add(CompraSu);
 		
-		JLabel SesionASido = new JLabel("sesion ha sido");
+		JLabel SesionASido = new JLabel("sesi\u00F3n ha sido");
 		SesionASido.setFont(new Font("Tahoma", Font.PLAIN, 74));
 		SesionASido.setBounds(107, 224, 590, 78);
 		contentPane.add(SesionASido);
 		
-		JLabel Cerrada = new JLabel("cerrada");
+		JLabel Cerrada = new JLabel("cerrada.");
 		Cerrada.setFont(new Font("Tahoma", Font.PLAIN, 74));
 		Cerrada.setBounds(107, 313, 309, 78);
 		contentPane.add(Cerrada);
