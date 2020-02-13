@@ -25,10 +25,18 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 	public static double precioTotalIda,precioTotalVuelta;
 	private static double precioBillete,precioBilleteTotal=0,precioBilleteTotalVuelta=0;
 
-
-	public ControladorResumen(Resumen ventanaResumen) {
+	ArrayList<Linea> listaLinea;
+	ArrayList<Parada> listaParada;
+	ArrayList<Autobus> listaAutobus;
+	
+	public ControladorResumen(Resumen ventanaResumen, ArrayList<modelo.Linea> listaLinea, ArrayList<Parada> listaParada, ArrayList<Autobus> listaAutobus)
+	{
 		this.vistaResumen = ventanaResumen;
 
+		this.listaAutobus=listaAutobus;
+		this.listaLinea=listaLinea;
+		this.listaParada=listaParada;
+		
 		this.inicializarControlador();
 	}
 
@@ -92,6 +100,7 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 		precioBilleteTotal=precioTotalIda+precioTotalVuelta;
 		vistaResumen.getLblHoraVuelta().setText(ControladorIdaVuelta.horaVuelta);
 		vistaResumen.getLblFechaVuelta().setText(ControladorIdaVuelta.fechaVuelta);
+		precioBilleteTotal = Math.round(precioBilleteTotal * 100.0) / 100.0;
 		vistaResumen.getLblPrecio().setText(precioBilleteTotal + "\u20AC");
 		vistaResumen.getLblFecha().setText(fecha);
 		vistaResumen.getLblLinea().setText(linea);
@@ -132,7 +141,7 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 			vistaResumen.setVisible(false);
 			vista.IniciarSesion ventanaIniciarSesion = new vista.IniciarSesion();
 			ventanaIniciarSesion.setVisible(true);
-			ControladorIniciarSesion controladorIniciarSesion = new ControladorIniciarSesion(ventanaIniciarSesion);
+			ControladorIniciarSesion controladorIniciarSesion = new ControladorIniciarSesion(ventanaIniciarSesion,listaLinea,listaParada,listaAutobus);
 			break;
 		case CANCELAR_COMPRA:
 			Linea = 0;
@@ -149,7 +158,7 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 			vista.MenuOrigenDestino ventanaMenuOrigenDestino = new vista.MenuOrigenDestino();
 			ventanaMenuOrigenDestino.setVisible(true);
 			ControladorMenuOrigenDestino controladorMenuOrigenDestino = new ControladorMenuOrigenDestino(
-					ventanaMenuOrigenDestino);
+					ventanaMenuOrigenDestino,listaLinea);
 			break;
 		case MODIFICAR_COMPRA:
 			Linea = (ControladorMenuLinea.conservarLinea());
@@ -170,11 +179,6 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 	}
 
 	private int mDevolverNObjetoOrigen() {
-
-		ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
-		ArrayList<Parada> listaParada = modeloDAO.ParadaDAO
-				.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea() - 1).getCod_Linea());
-
 		int origenDestino = 1000;
 
 		String nombreParada[][] = new String[listaParada.size()][4];
@@ -190,10 +194,6 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 	}
 
 	private int mDevolverNObjetoDestino() {
-
-		ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
-		ArrayList<Parada> listaParada = modeloDAO.ParadaDAO
-				.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea() - 1).getCod_Linea());
 
 		int origenDestino = 1000;
 
@@ -213,7 +213,7 @@ public class ControladorResumen implements ActionListener, ListSelectionListener
 	public static double recogerPrecio() {
 		// recoge aqui el precio para llevarlo al ControladorPago //
 
-		return precioBillete;
+		return precioBilleteTotal;
 	}
 
 }

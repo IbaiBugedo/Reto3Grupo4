@@ -23,10 +23,32 @@ import vista.MenuOrigenDestino;
 	public class ControladorMenuOrigenDestino implements ActionListener, ListSelectionListener {
 		
 		private static MenuOrigenDestino vistaMenuOrigenDestino;
+		ArrayList<Linea> listaLinea;
+		ArrayList<Parada> listaParada; 
+		ArrayList<Autobus> listaAutobus;
 		
-		public ControladorMenuOrigenDestino(MenuOrigenDestino ventanaMenuOrigenDestino) {
+		public ControladorMenuOrigenDestino(MenuOrigenDestino ventanaMenuOrigenDestino, ArrayList<Linea> listaLinea) {
 			this.vistaMenuOrigenDestino = ventanaMenuOrigenDestino;
 			
+			this.listaLinea=listaLinea;
+			listaParada = modeloDAO.ParadaDAO.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea() - 1).getCod_Linea());
+			
+			String fecha, Cod_Linea, Cod_Linea2 = "";
+			fecha = ControladorMenuLinea.recogerFecha();
+
+
+			String nombreLinea[] = new String[listaLinea.size()];
+
+			for (int i = 0; i < listaLinea.size(); i++) {
+				Cod_Linea = ControladorMenuLinea.recogerLinea();
+				nombreLinea[i] = (listaLinea.get(i).getCod_Linea());
+				Cod_Linea = Cod_Linea.substring(0, nombreLinea[i].length());
+				if (nombreLinea[i].equals(Cod_Linea)) {
+					Cod_Linea2 = nombreLinea[i];
+				}
+			}
+			
+			listaAutobus = modeloDAO.AutobusDAO.mObtenerHoraAutobus(fecha, Cod_Linea2);
 			this.inicializarControlador();
 		}
 
@@ -105,12 +127,12 @@ import vista.MenuOrigenDestino;
 				vistaMenuOrigenDestino.setVisible(false);
 				vista.IdaVuelta ventanaIdaVuelta = new vista.IdaVuelta();
 				ventanaIdaVuelta.setVisible(true);
-				ControladorIdaVuelta controladorIdaVuelta = new ControladorIdaVuelta(ventanaIdaVuelta);
+				ControladorIdaVuelta controladorIdaVuelta = new ControladorIdaVuelta(ventanaIdaVuelta,listaLinea,listaParada,listaAutobus);
 			}else {
 			vistaMenuOrigenDestino.setVisible(false);
 			vista.Resumen ventanaResumen = new vista.Resumen();
 			ventanaResumen.setVisible(true);
-			ControladorResumen controladorResumen = new ControladorResumen(ventanaResumen);
+			ControladorResumen controladorResumen = new ControladorResumen(ventanaResumen,listaLinea,listaParada,listaAutobus);
 			}
 			break;
 		case VIAJE_IDA:
@@ -216,10 +238,6 @@ import vista.MenuOrigenDestino;
 
 	private void mCargarParada() {
 
-		ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
-		ArrayList<Parada> listaParada = modeloDAO.ParadaDAO
-				.mObtenerParada(listaLinea.get(ControladorMenuLinea.conservarLinea() - 1).getCod_Linea());
-
 		String nombreParada[][] = new String[listaParada.size()][4];
 
 		for (int i = 0; i < listaParada.size(); i++) {
@@ -231,23 +249,9 @@ import vista.MenuOrigenDestino;
 	}
 
 	private void mCargarHoraAutobus() {
-		String fecha, Cod_Linea, Cod_Linea2 = "";
-		fecha = ControladorMenuLinea.recogerFecha();
 
-		ArrayList<Linea> listaLinea = modeloDAO.LineaDAO.mObtenerLinea();
 
-		String nombreLinea[] = new String[listaLinea.size()];
-
-		for (int i = 0; i < listaLinea.size(); i++) {
-			Cod_Linea = ControladorMenuLinea.recogerLinea();
-			nombreLinea[i] = (listaLinea.get(i).getCod_Linea());
-			Cod_Linea = Cod_Linea.substring(0, nombreLinea[i].length());
-			if (nombreLinea[i].equals(Cod_Linea)) {
-				Cod_Linea2 = nombreLinea[i];
-			}
-		}
-
-		ArrayList<Autobus> listaAutobus = modeloDAO.AutobusDAO.mObtenerHoraAutobus(fecha, Cod_Linea2);
+		
 
 		String nombreAutobus[][] = new String[listaAutobus.size()][4];
 

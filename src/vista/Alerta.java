@@ -35,7 +35,7 @@ public class Alerta extends JFrame {
 		mCrearJLabel(); 
 		switch (cod_Alerta) {
 		case 1:
-			txtAlert.setText("Recoga su Ticket porfavor");
+			txtAlert.setText("Recoga su Ticket por favor");
 			break;
 		case 2:
 			txtAlert.setText("La longitud debe estar entre 8 y 9");
@@ -48,6 +48,9 @@ public class Alerta extends JFrame {
 			break;
 		case 5:
 			txtAlert.setText("El DNI es incorrecto");
+			break;
+		case 6:
+			txtAlert.setText("DNI o Contraseña incorrectos");
 			break;
 		}
 		

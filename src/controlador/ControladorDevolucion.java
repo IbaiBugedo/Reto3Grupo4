@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import modelo.Autobus;
+import modelo.Linea;
+import modelo.Parada;
 import vista.Bienvenida;
 import vista.Devolucion;
 import vista.MenuLinea;
@@ -22,9 +26,18 @@ public class ControladorDevolucion implements ActionListener, ListSelectionListe
 
 	private Devolucion vistaDevolucion;
 
-	public ControladorDevolucion(Devolucion ventanaDevolucion) {
+
+	ArrayList<modelo.Linea> listaLinea;
+	ArrayList<Parada> listaParada;
+	ArrayList<Autobus> listaAutobus;
+	
+	public ControladorDevolucion(Devolucion ventanaDevolucion, ArrayList<Linea> listaLinea, ArrayList<Parada> listaParada, ArrayList<Autobus> listaAutobus) {
 		this.vistaDevolucion = ventanaDevolucion;
 
+		this.listaLinea=listaLinea;
+		this.listaParada=listaParada;
+		this.listaAutobus=listaAutobus;
+		
 		this.inicializarControlador();
 	}
 
@@ -44,7 +57,7 @@ public class ControladorDevolucion implements ActionListener, ListSelectionListe
 			vistaDevolucion.setVisible(false);
 			vista.Ticket ventanaTicket = new vista.Ticket();
 			ventanaTicket.setVisible(true);
-			ControladorTicket controladorTicket = new ControladorTicket(ventanaTicket);
+			ControladorTicket controladorTicket = new ControladorTicket(ventanaTicket,listaLinea,listaParada,listaAutobus);
 		}
 		vueltas = vueltas * 100;
 
@@ -142,7 +155,7 @@ public class ControladorDevolucion implements ActionListener, ListSelectionListe
 					vistaDevolucion.setVisible(false);
 					vista.Ticket ventanaTicket = new vista.Ticket();
 					ventanaTicket.setVisible(true);
-					ControladorTicket controladorTicket = new ControladorTicket(ventanaTicket);
+					ControladorTicket controladorTicket = new ControladorTicket(ventanaTicket,listaLinea,listaParada,listaAutobus);
 				} catch (InterruptedException ex) {
 					Logger.getLogger(Devolucion.class.getName()).log(Level.SEVERE, null, ex);
 				}
