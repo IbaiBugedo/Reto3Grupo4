@@ -75,7 +75,7 @@ public class ControladorTicket implements ActionListener, ListSelectionListener 
 			codigoBilleteVuelta=codigoBilleteIda+1;
 			codigoBillete=codigoBilleteIda+"-"+codigoBilleteVuelta;
 			String Cod_Linea, Cod_Linea2 = "";
-			codigoAutobus2=Integer.toString(listaAutobus2.get(0).getCodAutobus());
+			
 
 			String nombreLinea[] = new String[listaLinea.size()];
 
@@ -89,7 +89,7 @@ public class ControladorTicket implements ActionListener, ListSelectionListener 
 			}
 			
 			listaAutobus2 = modeloDAO.AutobusDAO.mObtenerDatosAutobus2(Cod_Linea2,ControladorIdaVuelta.horaVuelta,ControladorIdaVuelta.fechaVuelta);
-			
+			codigoAutobus2=Integer.toString(listaAutobus2.get(0).getCodAutobus());
 		}
 		else {
 			codigoBillete=codigoBilleteIda+"";
