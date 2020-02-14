@@ -60,6 +60,10 @@ public class Alerta extends JFrame {
 			break;
 		case 9:
 			txtAlert.setText("Por favor, seleccion 'Hombre' o 'Mujer' en el campo 'sexo'");
+			break;
+		case 10:
+			txtAlert.setText("Usuario registrado con exito");
+			break;
 		}
 		
        

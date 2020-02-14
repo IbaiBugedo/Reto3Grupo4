@@ -27,7 +27,7 @@ public class ControladorDevolucion implements ActionListener, ListSelectionListe
 	private Devolucion vistaDevolucion;
 
 
-	ArrayList<modelo.Linea> listaLinea;
+	ArrayList<Linea> listaLinea;
 	ArrayList<Parada> listaParada;
 	ArrayList<Autobus> listaAutobus;
 	
@@ -39,10 +39,6 @@ public class ControladorDevolucion implements ActionListener, ListSelectionListe
 		this.listaAutobus=listaAutobus;
 		
 		this.inicializarControlador();
-	}
-
-	public ControladorDevolucion(ControladorDevolucion ventanaDevolucion) {
-		// TODO Auto-generated constructor stub
 	}
 
 	private void inicializarControlador() {

@@ -79,7 +79,7 @@ public class ControladorRegistro implements ActionListener {
 	}
 
 	private void metRegistrarse() {
-		String sexo, letraSexo;
+		String sexo, letraSexo="Otro";
 		sexo = ventanaRegistro.getRespuestaSexo().getSelectedItem().toString();
 		if(ventanaRegistro.getRespuestaApellido().getText().equals("")||
 			ventanaRegistro.getRespuestaContrasena().getText().equals("")||
@@ -101,13 +101,14 @@ public class ControladorRegistro implements ActionListener {
 				} else if (sexo.contentEquals("Mujer")) {
 					letraSexo = "M";
 				} else {
+				letraSexo = "Otro";
 				vista.Alerta ventanaAlerta = new vista.Alerta(9);
 				ventanaAlerta.setVisible(true);
 				ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
 				}
 			}
 		}
-		letraSexo = "Otro";
+		
 		Cliente nuevoCliente = new Cliente();
 
 		nuevoCliente.setNombre(ventanaRegistro.getRespuestaNombre().getText());
@@ -128,6 +129,7 @@ public class ControladorRegistro implements ActionListener {
 			vista.Pago ventanaPago = new vista.Pago();
 			ventanaPago.setVisible(true);
 			ControladorPago controladorPago = new ControladorPago(ventanaPago,listaLinea,listaParada,listaAutobus);
+			
 		}
 			
 	}

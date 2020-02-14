@@ -11,7 +11,7 @@ public class Conexion {
 		
 		String password = "";
 		String usuario = "root"; //root@localhost
-		String url = "jdbc:mysql://localhost:3306/reto3db?user=" + usuario
+		String url = "jdbc:mysql://localhost:3306/reto3dbgrupo4?user=" + usuario
 				                                     + "&password=" + password;
 		try {
 			con = DriverManager.getConnection(url);

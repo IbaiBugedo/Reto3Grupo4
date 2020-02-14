@@ -27,7 +27,7 @@ import vista.Ticket;
 public class ControladorTicket implements ActionListener, ListSelectionListener {
 
 	private Ticket vistaTicket;
-	private String fecha, cod_Linea, horaStr, origenS, destinoS, linea, nombre, apellido, sexo,codigoBillete;
+	private String fecha, cod_Linea, horaStr, origenS, destinoS, linea, nombre, apellido, sexo,codigoBillete,codigoAutobus2;
 	private double precio;
 	private int codigoBilleteIda, codigoBilleteVuelta;
 	ArrayList<Linea> listaLinea;
@@ -35,6 +35,7 @@ public class ControladorTicket implements ActionListener, ListSelectionListener 
 	ArrayList<Autobus> listaAutobus;
 	ArrayList <Cliente> listaCliente;
 	ArrayList <Autobus> listaAutobus2;
+	
 	public ControladorTicket(Ticket ventanaTicket, ArrayList<Linea> listaLinea, ArrayList<Parada> listaParada, ArrayList<Autobus> listaAutobus) {
 		this.vistaTicket = ventanaTicket;
 
@@ -74,7 +75,7 @@ public class ControladorTicket implements ActionListener, ListSelectionListener 
 			codigoBilleteVuelta=codigoBilleteIda+1;
 			codigoBillete=codigoBilleteIda+"-"+codigoBilleteVuelta;
 			String Cod_Linea, Cod_Linea2 = "";
-
+			codigoAutobus2=Integer.toString(listaAutobus2.get(0).getCodAutobus());
 
 			String nombreLinea[] = new String[listaLinea.size()];
 
@@ -111,7 +112,7 @@ public class ControladorTicket implements ActionListener, ListSelectionListener 
 		vistaTicket.getRespuestaApellido().setText(apellido);
 		vistaTicket.getRespuestaNombre().setText(nombre);
 		vistaTicket.getRespuestaSexo().setText(sexo);
-		vistaTicket.getRespuestaAutobus2().setText(Integer.toString(listaAutobus2.get(0).getCodAutobus()));
+		vistaTicket.getRespuestaAutobus2().setText(codigoAutobus2);
 		
 		Billete nuevoBillete = new Billete();
 
