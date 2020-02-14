@@ -81,13 +81,33 @@ public class ControladorRegistro implements ActionListener {
 	private void metRegistrarse() {
 		String sexo, letraSexo;
 		sexo = ventanaRegistro.getRespuestaSexo().getSelectedItem().toString();
-		if (sexo.equals("Hombre")) {
-			letraSexo = "V";
-		} else if (sexo.contentEquals("Mujer")) {
-			letraSexo = "M";
-		} else {
-			letraSexo = "Otro";
+		if(ventanaRegistro.getRespuestaApellido().getText().equals("")||
+			ventanaRegistro.getRespuestaContrasena().getText().equals("")||
+			ventanaRegistro.getRespuestaDNI().getText().equals("")||
+			ventanaRegistro.getRespuestaNombre().getText().equals("")) {
+			
+			vista.Alerta ventanaAlerta = new vista.Alerta(7);
+			ventanaAlerta.setVisible(true);
+			ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
+		}else {
+			if(modeloDAO.ClienteDAO.mComprobarDniCliente(ventanaRegistro.getRespuestaDNI().getText())) {
+				vista.Alerta ventanaAlerta = new vista.Alerta(8);
+				ventanaAlerta.setVisible(true);
+				ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
+			}
+			else if(otrosMetodos.ValidarDNI.validarDNI(ventanaRegistro.getRespuestaDNI().getText())) {
+				if (sexo.equals("Hombre")) {
+					letraSexo = "V";
+				} else if (sexo.contentEquals("Mujer")) {
+					letraSexo = "M";
+				} else {
+				vista.Alerta ventanaAlerta = new vista.Alerta(9);
+				ventanaAlerta.setVisible(true);
+				ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
+				}
+			}
 		}
+		letraSexo = "Otro";
 		Cliente nuevoCliente = new Cliente();
 
 		nuevoCliente.setNombre(ventanaRegistro.getRespuestaNombre().getText());
@@ -109,7 +129,9 @@ public class ControladorRegistro implements ActionListener {
 			ventanaPago.setVisible(true);
 			ControladorPago controladorPago = new ControladorPago(ventanaPago,listaLinea,listaParada,listaAutobus);
 		}
-
+			
 	}
 
 }
+
+

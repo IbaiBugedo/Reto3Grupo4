@@ -61,19 +61,22 @@ public class ControladorIniciarSesion implements ActionListener, ListSelectionLi
 			
 			String respuestaDNI, respuestaContrasena, vacio;
 			respuestaDNI = vistaIniciarSesion.getRespuestaDNI().getText();	
-			ValidarDNI.validarDNI(respuestaDNI);
+			
 			respuestaContrasena = vistaIniciarSesion.getRespuestaContrasena().getText();
 			vacio = "";
 
-			if (otrosMetodos.ValidarDNI.validarDNI(vistaIniciarSesion.getRespuestaDNI().getText())) {
+			
 				if ((modeloDAO.ClienteDAO.mIniciarSesion(respuestaDNI, respuestaContrasena))) {
 					DNI=vistaIniciarSesion.getRespuestaDNI().getText().toString();
 					vistaIniciarSesion.setVisible(false);
 					vista.Pago ventanaPago = new vista.Pago();
 					ventanaPago.setVisible(true);
 					ControladorPago controladorPago = new ControladorPago(ventanaPago,listaLinea,listaParada,listaAutobus);
-				}
-			} 
+				}else {
+					vista.Alerta ventanaAlerta = new vista.Alerta(6);
+					ventanaAlerta.setVisible(true);
+					ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
+			}
 			break;
 		case PAGINA_REGISTRO:
 			vistaIniciarSesion.setVisible(false);

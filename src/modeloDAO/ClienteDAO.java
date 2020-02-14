@@ -55,7 +55,7 @@ public class ClienteDAO {
 		return registrar;
 	}
 
-	public static boolean mIniciarSesion(String dniCliente, String contraseñaCliente) {
+	public static boolean mComprobarDniCliente(String dniCliente) {
 		boolean existeContacto=false;
 		Connection co = null;
 	
@@ -63,7 +63,7 @@ public class ClienteDAO {
 	
 		PreparedStatement stmt = null;
 		
-		String sql = "SELECT * FROM cliente WHERE DNI = ? && Contraseña = ?;";
+		String sql = "SELECT * FROM cliente WHERE DNI = ?;";
 	
 	
 		try {
@@ -71,16 +71,10 @@ public class ClienteDAO {
 	
 			stmt = co.prepareStatement(sql);
 			stmt.setString(1, dniCliente);
-			stmt.setString(2, getMD5(contraseñaCliente));
 			rs = stmt.executeQuery();
 	
 			if (rs.first()) {
 				existeContacto=true;
-			}
-			else {
-				vista.Alerta ventanaAlerta = new vista.Alerta(6);
-				ventanaAlerta.setVisible(true);
-				ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
 			}
 			
 			stmt.close();
@@ -94,7 +88,8 @@ public class ClienteDAO {
 	
 		return existeContacto;
 	}
-public static ArrayList<Cliente> mObtenerDatosCliente(String DNI) {
+
+	public static ArrayList<Cliente> mObtenerDatosCliente(String DNI) {
 		
 		Connection co =null;
 		Statement stm= null;
@@ -144,4 +139,44 @@ public static ArrayList<Cliente> mObtenerDatosCliente(String DNI) {
 		 throw new RuntimeException(e);
 		 }
 	 }
+
+	public static boolean mIniciarSesion(String dniCliente, String contraseñaCliente) {
+		boolean existeContacto=false;
+		Connection co = null;
+	
+		ResultSet rs = null;
+	
+		PreparedStatement stmt = null;
+		
+		String sql = "SELECT * FROM cliente WHERE DNI = ? && Contraseña = ?;";
+	
+	
+		try {
+			co = Conexion.conectar();
+	
+			stmt = co.prepareStatement(sql);
+			stmt.setString(1, dniCliente);
+			stmt.setString(2, getMD5(contraseñaCliente));
+			rs = stmt.executeQuery();
+	
+			if (rs.first()) {
+				existeContacto=true;
+			}
+			else {
+				vista.Alerta ventanaAlerta = new vista.Alerta(6);
+				ventanaAlerta.setVisible(true);
+				ControladorAlerta controladorAlerta = new ControladorAlerta(ventanaAlerta);
+			}
+			
+			stmt.close();
+			rs.close();
+			co.close();
+	
+		} catch (SQLException e) {
+			System.out.println("Error: Clase ClienteDAO, metodo Iniciar Sesion");
+			e.printStackTrace();
+		}
+	
+		return existeContacto;
+	}
 }
